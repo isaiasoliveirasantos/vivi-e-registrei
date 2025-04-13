@@ -1343,8 +1343,8 @@
       background-position: center top;
       background-repeat: no-repeat;
       overflow: hidden;
-      min-height: 120vh; /* altura mínima maior que a tela */
-      padding: 1px 0 500px 0; /* espaço extra embaixo */
+      min-height: 100vh; /* Altura mínima ajustada para 100% da tela */
+      padding: 1px 0; /* Remover o padding extra embaixo */
       transition: background-position 0.3s ease-out;
     }
   
@@ -1360,12 +1360,12 @@
       pointer-events: none;
       z-index: 1;
       transition: transform 0.3s ease-out;
-      transform: translateY(var(--gradientPosition, 0px));
+      transform: translateY(20px);
     }
 </style>
 
 <script>
-    // Efeito parallax com velocidade unificada para imagem de fundo e gradiente
+    // Efeito parallax ajustado
     window.addEventListener('scroll', function () {
       var scrollPosition = window.scrollY;
 
@@ -1374,9 +1374,12 @@
       var speed = 0.3;
       
       // Deslocamento manual para o gradiente
-      var gradientOffset = 42;  // Altere esse valor para subir/descer o gradiente
+      var gradientOffset = 42;
 
       var position = positionInitial - scrollPosition * speed;
+
+      // Limitar o deslocamento da imagem de fundo para não sair da tela
+      position = Math.max(position, -500); // Ajuste para não mover demais para cima
 
       // Ajusta imagem de fundo
       document.querySelector('.bloco-flex').style.backgroundPosition = 'center ' + position + 'px';
