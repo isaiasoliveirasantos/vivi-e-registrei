@@ -1,0 +1,2160 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vivi. Registrei. Agora, você vê</title>
+    <style>
+
+/* INICIO CSS DA GALERIA 1 DO PRIMEIRO ABERTURA + GALERIA*/
+.onde-o-horizonte-encontra-a-alma {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+.foto-cortada {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.foto {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  border-radius: 16px;
+}
+
+.foto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 16px;
+}
+
+.legenda {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: #444;
+  text-align: center;
+  font-family: sans-serif;
+}
+
+/* Responsividade */
+@media (max-width: 1024px) {
+  .onde-o-horizonte-encontra-a-alma {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .onde-o-horizonte-encontra-a-alma {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .onde-o-horizonte-encontra-a-alma {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* FIM CSS DA GALERIA 1 DO PRIMEIRO ABERTURA + GALERIA*/
+
+
+/* CSS DO FLEXBOX PRINCIPAL     */
+/* ============================= */
+.video-comentario {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  padding: 40px 60px;
+  flex-wrap: wrap;
+}
+
+.video-comentario .video-box {
+  flex: 1 1 300px;
+  max-width: 305px;
+  
+  
+}
+
+.video-comentario .comentario {
+  flex: 1 1 300px;
+  font-size: 18px;
+  color: #444;
+  max-width: 600px;
+}
+
+@media (max-width: 768px) {
+  .video-comentario {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+/* CSS DO SEGUNDO FLEXBOX (2 vídeos + 1 texto) */
+.video-comentario {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px 60px;
+}
+
+.video-container {
+  position: relative;
+  flex: 1 1 305px;
+  max-width: 305px;
+}
+
+.video-container video {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+}
+
+.comentario {
+  flex: 1 1 300px;
+  max-width: 600px;
+  font-size: 18px;
+  color: #444;
+}
+
+
+
+
+
+      html {
+    scroll-behavior: smooth;
+  }
+
+      .divider {
+        width: 90%; /*A parte do CSS responsável pela linha que separa a galeria do vídeo é a seguinte*/
+        margin: 1rem auto;
+        border: none;
+        border-top: 1px solid rgba(74, 74, 74, 0.3);
+      }
+
+      body {
+        font-family: Raleway, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #fafafa;
+        color: #555555;
+      }
+
+      header {
+        position: relative;
+        padding: 150px 20px 40px;
+        text-align: center;
+        background: url("https://lh3.googleusercontent.com/d/1rBmIRVRxHl0w2XkZ9n2lMzWw-AfiJGCj=w2000") center/cover no-repeat;
+        color: white;
+      }
+      header h1 {
+        font-family: "Helvetica Neue", sans-serif;
+        font-weight: 300;
+        font-size: 1.8rem; /* Título principal no topo do site */
+        margin: 0;
+      }
+
+      /*CSS DO 3 FLEXBOX*/
+
+      .foto-comentario {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background-color: #f8f8f8;
+  border-radius: 16px;
+  flex-wrap: wrap;
+}
+
+.foto-container img {
+  max-width: 500px;
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  object-fit: cover;
+}
+
+.comentario {
+  max-width: 600px;
+  font-family: 'Helvetica Neue', sans-serif;
+  color: #222;
+}
+
+.comentario h2 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.comentario p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .foto-comentario {
+    flex-direction: column;
+    padding: 1.5rem;
+  }
+
+  .comentario h2 {
+    font-size: 1.5rem;
+  }
+
+  .comentario p {
+    font-size: 0.95rem;
+  }
+}
+      
+/* algo separando*/
+
+      .gallery {
+        display: grid;
+        grid-template-columns: 2.2fr 1fr 0.7fr;
+        gap: 20px;
+        padding: 50px; /* Tamanho Espaçamento interno da galeria */
+        max-width: 100%;
+        margin: auto;
+      }
+      .gallery figure {
+        margin: 0;
+        cursor: pointer;
+      }
+      .gallery img {
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+        transition: transform 0.3s ease;
+      }
+      .gallery img:hover {
+        transform: scale(1.02);
+      }
+      .gallery figcaption {
+        margin-top: 8px;
+        font-size: 0.95rem; /* Tamanho da legenda das fotos */
+        color: #777;
+      }
+
+      /* AQUI ESTÃO AS ALTERAÇÕES QUE DEVEM SER ADICIONADAS */
+      
+    .about {
+      padding: 60px;
+      max-width: 1500px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+      flex-wrap: wrap;
+      text-align: left;
+    }
+
+    .about img {
+      width: 325px; 
+      max-width: 100%;
+      border-radius: 150px;
+      object-fit: cover;  /* Garantir que a imagem não distorça */
+    }
+
+    .about-text {
+      max-width: 1000px;
+      width: 100%;  /* Ajustar a largura do texto */
+      box-sizing: border-box;  /* Certifique-se de que a largura do texto não ultrapasse as margens */
+    }
+
+    @media (max-width: 768px) {
+      .about {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .about img {
+        width: 250px;  /* Ajustar o tamanho da imagem para telas pequenas */
+      }
+
+      .about-text {
+        max-width: 100%;  /* Aumenta a largura do texto para ocupar todo o espaço */
+        padding: 0 10px;  /* Adiciona padding para melhorar a estética em telas pequenas */
+      }
+    }
+
+    /* Restante do código CSS */
+
+    .about {
+  padding: 60px;
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* <-- agora os itens ficam centralizados */
+  gap: 50px; /* espaço menor entre foto e texto */
+  flex-wrap: wrap;
+  text-align: left;
+}
+
+      .contact {
+        padding: 60px;
+        max-width: 1200px;
+        margin: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 40px;
+        flex-wrap: wrap;
+        text-align: left;
+      }
+      .about img {
+        width: 280px; /* Tamanho da foto de perfil */
+        max-width: 100%;
+        border-radius: 150px;
+      }
+      .about-text {
+        max-width: 800px; /* Garante que o texto da seção "Sobre" não ultrapasse */
+      }
+      h2 {
+        font-size: 2.3rem;/* Ajuste o tamanho do título principal */
+        line-height: 1.3;
+        font-weight: 100;
+        color: #222;
+        font-family: "montserrat", sans-serif;
+      }
+      strong {
+        font-weight: 600;
+      }
+      .about h2 {
+        margin-bottom: 10px; /* Altura do "Sobre Mim" */
+      }
+      .about h3 {
+        font-weight: normal;
+        font-size: 2rem; /* Ajuste o subtítulo da seção "Sobre Mim" */
+        margin-top: 0;
+        color: #777;
+      }
+      footer {
+        text-align: center;
+        padding: 20px;
+        background-color: #f2f2f2;
+        font-size: 0.9rem;
+        color: #777;
+      }
+      .fade {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+      }
+      .fade.show {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.7);
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+      }
+      .modal-content {
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        max-width: 90vw;
+        max-height: 90vh;
+        overflow: auto;
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+        justify-content: space-between;
+      }
+      .modal-content img {
+        max-width: 60%;
+        height: auto;
+        border-radius: 10px;
+      }
+      .modal-content iframe {
+        width: 35%;
+        height: 300px;
+        border: none;
+      }
+      .close-modal {
+        position: absolute;
+        top: 20px;
+        right: 30px;
+        font-size: 30px;
+        color: white;
+        cursor: pointer;
+      }
+      p {
+        text-align: justify;
+        font-size: 17px; /* Tamanho dos parágrafos */
+        line-height: 30px;
+      }
+      @media (max-width: 768px) {
+        nav {
+          top: 10px;
+          width: 100%;
+          text-align: center;
+        }
+        .nav-links {
+          flex-direction: column;
+          gap: 10px;
+        }
+        .gallery {
+          grid-template-columns: 1fr;
+          padding: 20px;
+        }
+        .about {
+          flex-direction: column;
+          text-align: center;
+        }
+        .modal-content {
+          flex-direction: column;
+        }
+        .modal-content iframe {
+          width: 100%;
+        }
+      }
+      
+     
+
+
+
+      /*AJUSTE DO 1 VIDEO*/
+      .video-section {
+  
+  max-width: 305px; /* Limita a largura máxima do vídeo */
+  padding: 20px; /* Espaço ao redor */
+  text-align: left; /* Alinha o conteúdo à esquerda */
+  padding-left: 60px; /* Ajuste manual da distância da borda esquerda */
+  
+}
+
+.video-container {
+  flex: 1 1 305px;/* Cresce, encolhe e largura base de 305px */
+  max-width: 305px; /* Limita a largura máxima */
+  aspect-ratio: 9 / 16; /* Limita a largura máxima */
+  background-color: #fff; /* Cor de fundo branca */
+  border-radius: 12px; /* Bordas arredondadas */
+  overflow: hidden; /* Esconde o que ultrapassar a borda */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05); /* Sombra suave em todos os cantos */
+}
+
+.video-container video {
+  width: 100%;  /* Largura total do contêiner */
+  height: 100%;  /* Altura total do contêiner */
+  object-fit: cover;
+  display: block;
+}
+
+ /* Título principal */
+ .main-title {
+        text-align: center;
+        font-size: 2.05em; /* Define o tamanho da fonte */
+        font-weight: 500; /* Define o peso da fonte */
+        margin: 60px 0 15px; /* Define a margem */
+        color: #333;
+      }
+
+      /* Estilo da frase debaixo do título */
+.subtitle {
+  font-size: 12px; /* Fonte menor para se assemelhar a um comentário */
+  color: #565656; /* Cor suave para dar o aspecto de um comentário discreto */
+  text-align: center;
+  margin-top: 8px;
+  font-weight: 300; /* Peso da fonte bem leve */
+  font-style: italic; /* Estilo itálico para o toque de comentário */
+  font-family: SF Pro Text, SF Pro Icons, Helvetica Neue, Helvetica, Arial, sans-serif;
+  letter-spacing: 0.5px; /* Espaçamento entre letras suave */
+  line-height: 0.9; /* Mantém o espaçamento para boa legibilidade */
+}
+
+.Titulo2Horizonte {
+  font-size: 36px; /* Tamanho da fonte */
+  text-align: center; /* Alinha o texto */
+  margin: 0; /* Remove margens automáticas */
+  padding: 0px 0; /* Adiciona espaçamento acima e abaixo */
+  max-width: 10000px; /* Define a largura máxima do título */
+  width: 100%; /* Faz o título ocupar toda a largura disponível */
+  line-height: 1.1; /* Define o espaçamento entre as linhas */
+  color: #333; /* Cor do texto */
+  font-weight: normal; /* Remove o negrito */
+  
+}
+
+.Titulo2Horizonte strong {
+  font-weight: normal; /* Remove o negrito do strong */
+}
+
+    </style>
+  </head>
+  <body>
+<!-- INÍCIO BARRA DE NAVEGAÇÃO -->
+
+<nav id="navbar">
+  <div class="nav-links">
+    <a href="#" onclick="window.scrollTo({ top: 0, behavior: 'smooth' }); return false;">Início</a>
+    <a href="sobre" onclick="window.scrollTo({ top: 1194, behavior: 'smooth' }); return false;">Sobre</a>
+
+    <!-- Portfólio com subitens -->
+    <div class="portfolio">
+      <a href="#portifolio">Portfólio</a>
+      <ul class="submenu">
+        <li><a href="#" onclick="scrollToSection('horizonte'); return false;">Onde o horizonte encontra a alma</a></li>
+        <li><a href="#" onclick="scrollToSection('cidade'); return false;">Paz no intervalo do caos</a></li>
+        <li><a href="#" onclick="scrollToSection('almas'); return false;">Almas silenciosas em movimento</a></li>
+        <li><a href="#" onclick="scrollToSection('detalhes'); return false;">Detalhes que Falam</a></li>
+        <li><a href="#" onclick="scrollToSection('luz'); return false;">Luz & Silêncio</a></li>
+      </ul>
+    </div>
+
+    <a href="#contato">Contato</a>
+  </div>
+</nav>
+
+<style>
+  /* BARRA DE NAVEGAÇÃO */
+  nav {
+    position: fixed;
+    top: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(30% - 40px); /* deixa uma margem de 20px de cada lado */
+    max-width: 1000px;
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(10px);
+    padding: 5px 0;
+    border-radius: 20px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.05);
+    z-index: 999;
+    transition: top 1s ease;
+  }
+
+  .nav-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 22px;
+    background: none;
+  }
+
+  nav a {
+    font-family: SF Pro Text, SF Pro Icons, Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size: 12.5px;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.7); /* preto mais suave */
+  transition: background 0.3s ease, color 0.3s ease;
+    text-decoration: none;
+    padding: 5px 23.4px;
+    border-radius: 15px;
+  }
+
+  nav a:hover {
+    background: rgba(0, 0, 0, 0.05);
+  color: rgba(0, 0, 0, 1); /* preto 100% */
+  }
+
+  /* Estilos específicos para o Portfólio */
+  .portfolio {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-bottom: 0;
+  }
+
+  .portfolio > a {
+    font-weight: 500;
+  }
+
+  .portfolio .submenu {
+    display: block;
+    max-height: 0;
+    overflow: hidden;
+    position: absolute;
+    top: 114%;
+    left: 0;
+    background: rgba(255, 255, 255, 1);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    list-style: none;
+    padding: 0;
+    border-radius: 0 0 20px 20px;
+    min-width: 180px;
+    z-index: 998;
+    margin-top: 0;
+    transition: max-height 0.4s ease, padding 0.4s ease;
+  }
+
+  .portfolio:hover .submenu {
+    max-height: 500px;
+    padding: 5px 0;
+  }
+
+  .submenu li {
+    padding: 5px 20px;
+  }
+
+  .submenu a {
+    color: rgba(0, 0, 0, 0.7); /* preto mais suave */
+    font-weight: normal;
+  padding: 5px 16px;
+  text-decoration: none;
+  border-radius: 12px;
+  display: block;
+  transition: background 0.3s ease, color 0.3s ease;
+  }
+
+  .submenu a:hover {
+    background: rgba(0, 0, 0, 0.1);
+  color: rgba(0, 0, 0, 1); /* preto total no hover */
+  }
+</style>
+
+<!-- SCRIPT PARA COMPENSAR A NAVBAR FIXA -->
+<script>
+  function scrollToSection(id) {
+    const element = document.getElementById(id);
+    if (!element) return;
+
+    const offset = 4;
+    const bodyTop = document.body.getBoundingClientRect().top;
+    const elementTop = element.getBoundingClientRect().top;
+    const position = elementTop - bodyTop + offset;
+
+    window.scrollTo({
+      top: position,
+      behavior: 'smooth'
+    });
+  }
+
+  let lastScrollTop = 0;
+  const navbar = document.getElementById("navbar");
+  let hideTimeout = null;
+  let isHiding = false;
+
+  const delayToHide = 300; // ms para esconder
+  const delayToShow = 0;   // ms para mostrar
+
+  window.addEventListener("scroll", function () {
+    const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+
+    if (currentScroll > lastScrollTop) {
+      // ROLANDO PARA BAIXO
+      if (!isHiding) {
+        clearTimeout(hideTimeout);
+        hideTimeout = setTimeout(() => {
+          navbar.style.top = "-100px";
+          isHiding = false;
+        }, delayToHide);
+        isHiding = true;
+      }
+    } else {
+      // ROLANDO PARA CIMA
+      clearTimeout(hideTimeout);
+      navbar.style.top = "5px";
+      isHiding = false;
+    }
+
+    lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+  }, false);
+</script>
+
+<!-- FIM BARRA DE NAVEGAÇÃO -->
+
+
+    
+
+ <!-- Título principal -->
+  <h1 id="home" class="main-title">Vivi. Registrei. Agora, você vê</h1>
+
+<!-- INÍCIO ANIMAÇÃO SUAVE E ATRAENTE COM COLORAÇÃO -->
+<style>
+  #typed-text {
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    font-size: 0.97em;
+    color: #565656; /* Começa com a cor original do texto */
+    margin-top: 8px;
+    font-weight: 320;
+    font-style: italic;
+    letter-spacing: 0.5px;
+    line-height: 1.6;
+    display: inline-block;
+    opacity: 0; /* Começa invisível */
+    transform: translateY(20px); /* Começa 20px abaixo da posição */
+    animation: slideIn 3s ease-out forwards, colorSweep 1s ease-in-out forwards;
+  }
+
+  /* Animação de subir o texto e clarear */
+  @keyframes slideIn {
+    0% {
+      opacity: 0;
+      transform: translateY(30px); /* Começa abaixo */
+    }
+    100% {
+      opacity: 1; /* Vai ficando visível */
+      transform: translateY(0); /* Vai subindo até a posição original */
+    }
+  }
+
+  /* Animação de cor do texto */
+  @keyframes colorSweep {
+    0% {
+      color: #565656; /* Começa com a cor original do texto (preto) */
+    }
+    50% {
+      color: #99360f; /* Azul no meio da animação */
+    }
+    100% {
+      color: #565656; /* Retorna à cor original (preto) */
+    }
+  }
+
+  .typed-text-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 7vh;
+  }
+  
+
+
+
+  
+</style>
+
+<div class="typed-text-container">
+  <div id="typed-text"></div>
+</div>
+
+<script>
+  const text = "Capturo momentos únicos e os transformo em fotografias que carregam um silêncio, uma paisagem, uma história.\nExiste vida lá fora. A natureza, o sol, as águas e os animais pedem nossa conexão. Respirar e viver é o que nos torna parte dela.";
+  document.getElementById("typed-text").innerHTML = text.replace(/\n/g, "<br>");
+</script>
+<!-- FIM ANIMAÇÃO SUAVE E ATRAENTE COM COLORAÇÃO -->
+
+
+
+
+
+
+
+<section id="galeria" class="gallery fade show">
+  <figure onclick="openModal(
+      'https://lh3.googleusercontent.com/d/1RgONJDqYym0w3rvHkuXYx1FN8yPTSgyO=w2000',
+      'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3675.077397821107!2d-43.22410432388767!3d-22.98359407921186!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x997fd908d5b00f%3A0x5e5cfd6c2801a7c3!2sPraia%20do%20Leblon!5e0!3m2!1spt-BR!2sbr!4v1712398753000!5m2!1spt-BR!2sbr',
+      '89vh',
+      'Rio de Janeiro - Leblon'
+    )" class="gallery-item">
+    <img src="https://lh3.googleusercontent.com/d/1RgONJDqYym0w3rvHkuXYx1FN8yPTSgyO=w2000" alt="Rio de Janeiro - Leblon" />
+    <figcaption>Rio de Janeiro - Leblon</figcaption>
+  </figure>
+
+  <figure onclick="openModal(
+      'https://lh3.googleusercontent.com/d/1vAIop-LwrkL0uJ19dEg5gdw8QN4Dp3ch=w1000',
+      'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1678.276779114176!2d-43.422279!3d-20.4737467!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xa38b002295d8c7%3A0x1fba9b3405e26323!2sCachoeira%20do%20Sibr%C3%A3o!5e0!3m2!1spt-BR!2sbr!4v1712400256563!5m2!1spt-BR!2sbr',
+      '87vh',
+      'Cachoeira Sibrao - Mariana - MG'
+    )">
+    <img src="https://lh3.googleusercontent.com/d/1vAIop-LwrkL0uJ19dEg5gdw8QN4Dp3ch=w1000" alt="Cachoeira Sibrao - Mariana - Minas Gerais" />
+    <figcaption>Cachoeira Sibrao - Mariana - Minas Gerais</figcaption>
+  </figure>
+
+  <figure onclick="openModal(
+      'https://lh3.googleusercontent.com/d/1Rq1cor1yy74qLsBnGwwDpN-5duNMCyxc=w1000',
+      'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3974.065251631001!2d-48.4457018!3d-1.4256853!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x92a48b14df0b4c1d%3A0x19808db05d7d17b0!2sParque%20Estadual%20do%20Utinga%20Camillo%20Vianna!5e0!3m2!1spt-BR!2sbr!4v1712400434653!5m2!1spt-BR!2sbr',
+      '87vh',
+      'Parque do Utinga - Belém - PA'
+    )">
+    <img src="https://lh3.googleusercontent.com/d/1Rq1cor1yy74qLsBnGwwDpN-5duNMCyxc=w1000" alt="Parque do Utinga - Belém - Pará" />
+    <figcaption>Parque do Utinga - Belém - Pará</figcaption>
+  </figure>
+</section>
+
+<!-- Modal -->
+<div id="imageModal" style="
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.85);
+  justify-content: center;
+  align-items: flex-start;
+  overflow-y: auto;
+  z-index: 1000;
+  padding: 40px 20px;
+  transition: opacity 0.3s ease;
+  box-sizing: border-box;
+">
+  <div id="modalContent" style="
+    background: white;
+    border-radius: 16px;
+    max-width: 1400px;
+    width: 100%;
+    overflow-y: auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: fadeIn 0.4s ease;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    position: relative;
+  ">
+    <!-- Conteúdo do modal será inserido via JS -->
+  </div>
+</div>
+
+<style>
+  @keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  .modal-image {
+    width: auto;
+    max-width: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    margin-bottom: 20px;
+  }
+</style>
+
+<script>
+  function openModal(imageSrc, mapEmbedUrl, imageHeight = 'auto', imageTitle = '') {
+    const modal = document.getElementById("imageModal");
+    const content = document.getElementById("modalContent");
+
+    content.innerHTML = `
+      <span onclick="closeModal()" style="
+        position: absolute;
+        top: 12px;
+        right: 20px;
+        font-size: 1.8rem;
+        color: #666;
+        cursor: pointer;
+        z-index: 1001;
+        transition: color 0.2s ease;
+      " onmouseover="this.style.color='#333'" onmouseout="this.style.color='#666'">
+        &times;
+      </span>
+
+      <div style="
+        font-size: 0.95rem;
+        font-weight: normal;
+        margin-bottom: 10px;
+        text-align: center;
+        color: #444;
+      ">
+        ${imageTitle}
+      </div>
+
+      <img 
+        src="${imageSrc}" 
+        alt="${imageTitle}" 
+        class="modal-image"
+        style="height: ${imageHeight};"
+      >
+      <iframe 
+        src="${mapEmbedUrl}" 
+        style="width: 82%; height: 300px; border: 0; border-radius: 12px;" 
+        allowfullscreen 
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+      ></iframe>
+    `;
+
+    modal.style.display = "flex";
+  }
+
+  function closeModal() {
+    const modal = document.getElementById("imageModal");
+    modal.style.display = "none";
+    document.getElementById("modalContent").innerHTML = '';
+  }
+  
+</script>
+
+
+    <hr class="divider" />
+<!-- INICIO SOBRE MIM + IMAGEM DE FUNDO HTML+CSS -->
+<section id="sobre" class="about fade show" style="position: relative; z-index: 0; padding: 4rem 2rem; overflow: hidden; min-height: 180vh;">
+  <style>
+    .background-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 10%),
+    url('https://lh3.googleusercontent.com/d/1ycy414uFW6tNlMoNzVChPhe6JkGOxa-Y=w1000');
+  background-size: 100% auto;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 0;
+}
+
+
+    
+
+    #sobre > img,
+    #sobre .about-text {
+      position: relative;
+      z-index: 2;
+    }
+
+
+    
+  </style>
+
+  <div class="background-image"></div>
+  
+
+  <img
+    src="https://lh3.googleusercontent.com/d/1ETy848krfPZw6lPsd0tC54gA76DDKKoz=w1000"
+    alt="Isaias Oliveira Santos"
+  />
+  
+
+  <div class="about-text">
+    <h2>
+      <strong>Onde o Silêncio Mora</strong> <br />
+      O mundo que respiro quando ninguém está olhando
+    </h2>
+
+    <p>Eu sou <b>Isaias Oliveira.</b></p> 
+
+    <p>Não capturo apenas o que vejo —  procuro o que se sente. <i> A luz que nasce, o vento que toca, 
+      a vastidão que serena a alma, o pôr do sol que aquieta</i> — e o instante onde tudo cessa para que algo novo comece.</p>
+      
+      <p><b>Cada imagem é uma metáfora do existir.</b></p>
+      <p>Componho fragmentos do tempo que acompanham o ciclo da vida e convidam à pausa, à contemplação, ao instante vivido com alma.</p>
+
+    <p><b>Sou um observador da vida</b></p>
+  </div>
+</section>
+
+
+
+<!-- FIM SOBRE MIM + IMAGEM DE FUNDO HTML+CSS -->
+ 
+    <hr class="divider" />
+
+    <section id="horizonte">
+
+    <h2 class="Titulo2Horizonte">
+      <strong>Onde o horizonte encontra a alma</strong>
+    </h2>
+
+<!-- TESTE FLEXBOX PRIMEIRO -->
+<section>
+  <div class="video-comentario">
+    <div class="video-container">
+      <!-- Substituindo o vídeo por uma imagem -->
+      <img src="https://lh3.googleusercontent.com/d/1rGt3cfoDAGFKnLdrX4p0QyhoY9awePGX=w1000" alt="Peixe" style="width: 100%; height: auto;" />
+    </div>
+
+    <div class="video-container">
+      <video autoplay muted loop>
+        <source src="Video Parque do Utinga - Caminhada edit.mp4" type="video/mp4" />
+      </video>
+    </div>
+
+    <div class="comentario">
+      <h2>Caminhada na Floresta</h2>
+      <p>Respire fundo.</p>
+      <p>Sinta a alma do lugar. Muitos vídeos mostram paisagens, mas poucos fazem você perceber o vento, o silêncio, a luz tocando a pele.</p>
+      <p>No coração pulsante de Belém, o Parque do Utinga é um santuário amazônico onde o silêncio da alma é preenchido pelos sons da natureza. Um santuário onde a natureza se impõe com delicadeza — e tudo convida à contemplação. Correr ao amanhecer, pedalar entre sombras, caminhar em silêncio. Entre passos e pausas, a respiração ecoa pela mata — como se a floresta respirasse junto.</p>
+      <p>Parque do Utinga – Belém, Pará</p>
+    </div>
+  </div>
+</section>
+
+
+    
+
+
+
+<!-- INÍCIO DO CARROSSEL -->
+
+<style>
+  .carrossel-wrapper {
+    position: relative;
+    padding: 8px 0 40px;
+    overflow: hidden;
+    z-index: 0;
+
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 1.2s ease, transform 1.2s ease;
+  }
+
+  .carrossel-wrapper.visivel {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .carrossel-wrapper.invisivel {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  .carrossel-container {
+    overflow: hidden;
+    width: 100%;
+    padding: 0 5vw;
+    position: relative;
+  }
+
+  .carrossel {
+    display: flex;
+    gap: 24px;
+    width: max-content;
+    animation: deslizar 40s linear infinite;
+    scroll-behavior: smooth;
+  }
+
+  @keyframes deslizar {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  .card-container {
+    flex: 0 0 auto;
+    width: calc((100vw - 72px) / 3.3);
+    position: relative;
+    margin-top: 30px;
+  }
+
+  .card {
+    aspect-ratio: 4 / 5;
+    border-radius: 20px;
+    overflow: hidden;
+    background-color: #111;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+  }
+
+  .card:hover {
+    transform: translateY(-20px) scale(1.03);
+    z-index: 10;
+  }
+
+  .card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .legenda {
+    text-align: center;
+    color: #777;
+    font-size: 0.85rem;
+    margin-top: 12px;
+  }
+
+  .indicadores {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+  }
+
+  .indicadores .bolinha {
+    width: 12px;
+    height: 12px;
+    background-color: #aaa;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+  }
+
+  .indicadores .bolinha.ativa {
+    background-color: #333;
+    transform: scale(1.2);
+  }
+
+  @media (max-width: 768px) {
+    .card-container {
+      width: 80vw;
+    }
+  }
+</style>
+
+<div class="carrossel-wrapper">
+  <div class="carrossel-container">
+    <div class="carrossel" id="carrossel">
+      <!-- Slides (alguns duplicados para efeito infinito) -->
+      <div class="card-container">
+        <div class="card">
+          <img src="https://lh3.googleusercontent.com/d/1ltefx-460DfFwZzz9LQQ31EQaz35C5_o=w1000" alt="">
+        </div>
+        <p class="legenda">Pico do Itacolomi - Ouro Preto - Minas Gerais</p>
+      </div>
+      <div class="card-container">
+        <div class="card">
+          <img src="https://lh3.googleusercontent.com/d/1T055TCmUtrjXxda3DuOdvtAIAibN8YS2=w1000" alt="">
+        </div>
+        <p class="legenda">Cachoeira do Sibrão - Mariana - Minas Gerais</p>
+      </div>
+      <div class="card-container">
+        <div class="card">
+          <img src="https://lh3.googleusercontent.com/d/1fFo3JzxxFC5RtmMZWmIX2qgJp8uN-rEA=w1000" alt="">
+        </div>
+        <p class="legenda">Pico da Cartuxa - Mariana - Minas Gerais</p>
+      </div>
+      <div class="card-container">
+        <div class="card">
+          <img src="https://lh3.googleusercontent.com/d/11nq9EzEPoGSMDY2g6r5FWBDJHyu_PHrJ=w1000" alt="">
+        </div>
+        <p class="legenda">Parque do Utinga - Belém - Pará</p>
+      </div>
+      <div class="card-container">
+        <div class="card">
+          <img src="https://lh3.googleusercontent.com/d/1RuoH8nZL_zvlR9JUT2VLT6YjBRaBlYQS=w1000" alt="">
+        </div>
+        <p class="legenda">Farol da Barra - Salvador - Bahia</p>
+      </div>
+      <!-- Duplicados para efeito contínuo -->
+      <div class="card-container">
+        <div class="card">
+          <img src="https://lh3.googleusercontent.com/d/1ltefx-460DfFwZzz9LQQ31EQaz35C5_o=w1000" alt="">
+        </div>
+        <p class="legenda">Pico do Itacolomi - Ouro Preto - Minas Gerais</p>
+      </div>
+      <div class="card-container">
+        <div class="card">
+          <img src="https://lh3.googleusercontent.com/d/1T055TCmUtrjXxda3DuOdvtAIAibN8YS2=w1000" alt="">
+        </div>
+        <p class="legenda">Cachoeira do Sibrão - Mariana - Minas Gerais</p>
+      </div>
+      <div class="card-container">
+        <div class="card">
+          <img src="https://lh3.googleusercontent.com/d/1fFo3JzxxFC5RtmMZWmIX2qgJp8uN-rEA=w1000" alt="">
+        </div>
+        <p class="legenda">Pico da Cartuxa -Mariana - Minas Gerais</p>
+      </div>
+      <div class="card-container">
+        <div class="card">
+          <img src="https://lh3.googleusercontent.com/d/1RuoH8nZL_zvlR9JUT2VLT6YjBRaBlYQS=w1000" alt="">
+        </div>
+        <p class="legenda">Farol da Barra - Salvador - Bahia</p>
+      </div>
+    </div>
+  </div>
+  <!-- Indicadores -->
+  <div class="indicadores" id="indicadores"></div>
+</div>
+
+<script>
+  const carrosselWrapper = document.querySelector('.carrossel-wrapper');
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          carrosselWrapper.classList.add('visivel');
+          carrosselWrapper.classList.remove('invisivel');
+        } else {
+          carrosselWrapper.classList.remove('visivel');
+          carrosselWrapper.classList.add('invisivel');
+        }
+      });
+    },
+    { threshold: 0.5 }
+  );
+  observer.observe(carrosselWrapper);
+
+  const carrossel = document.getElementById('carrossel');
+  const cardContainers = carrossel.querySelectorAll('.card-container');
+  const indicadores = document.getElementById('indicadores');
+
+  const totalSlides = cardContainers.length / 2; // conteúdo duplicado
+  const slideWidth = cardContainers[0].offsetWidth + 24; // incluindo gap
+  const duracaoTotal = 40; // segundos da animação inteira
+  const totalLargura = slideWidth * cardContainers.length;
+
+  let indiceAtivo = 0;
+  let intervaloIndicadores;
+
+  // Função para atualizar as bolinhas
+  function atualizarIndicadores(indice) {
+    document.querySelectorAll('.bolinha').forEach((b, i) => {
+      b.classList.toggle('ativa', i === indice);
+    });
+  }
+
+  // Função que reinicia a animação do carrossel com as bolinhas sincronizadas
+  function reiniciarAnimacao() {
+    // Calcula a nova posição e reinicia a animação
+    const tempoCorrespondente = (indiceAtivo / totalSlides) * duracaoTotal;
+    carrossel.style.animationDelay = `-${tempoCorrespondente}s`;
+
+    // Reinicia a animação de forma contínua, sem travamento
+    carrossel.style.animationPlayState = 'paused';
+    setTimeout(() => {
+      carrossel.style.animationPlayState = 'running';
+    }, 50);
+  }
+
+  // Inicia o loop das bolinhas
+  function iniciarLoopBolinhas(indiceInicial = 0) {
+    clearInterval(intervaloIndicadores);
+    indiceAtivo = indiceInicial;
+    atualizarIndicadores(indiceAtivo);
+
+    intervaloIndicadores = setInterval(() => {
+      indiceAtivo = (indiceAtivo + 1) % totalSlides;
+      atualizarIndicadores(indiceAtivo);
+    }, (duracaoTotal * 1000) / totalSlides);
+  }
+
+  // Função que move o carrossel para um slide específico
+  function irParaSlide(indice) {
+    // Atualiza o índice ativo
+    indiceAtivo = indice;
+    const offset = indice * slideWidth;
+    const tempoCorrespondente = (offset / totalLargura) * duracaoTotal;
+
+    // Move manualmente o carrossel
+    carrossel.style.transform = `translateX(-${offset}px)`;
+
+    setTimeout(() => {
+      carrossel.style.transform = '';
+      reiniciarAnimacao();
+    }, 100);
+
+    atualizarIndicadores(indiceAtivo);
+  }
+
+  // Cria as bolinhas de controle
+  for (let i = 0; i < totalSlides; i++) {
+    const bolinha = document.createElement('div');
+    bolinha.classList.add('bolinha');
+    if (i === 0) bolinha.classList.add('ativa');
+
+    bolinha.addEventListener('click', () => irParaSlide(i));
+    indicadores.appendChild(bolinha);
+  }
+
+  // Inicia o loop das bolinhas
+  iniciarLoopBolinhas();
+
+  // Criando um loop infinito suave sem travamento
+  let isAnimating = false;
+  function ajustarLoopCarrossel() {
+    if (isAnimating) return; // Impede de reiniciar se já estiver animando
+    isAnimating = true;
+
+    setTimeout(() => {
+      // Reposiciona o carrossel de forma imperceptível
+      carrossel.style.transition = 'none';
+      carrossel.style.transform = `translateX(0)`;
+      setTimeout(() => {
+        carrossel.style.transition = `transform ${duracaoTotal}s linear infinite`;
+      }, 50);
+      isAnimating = false;
+    }, duracaoTotal * 1000);
+  }
+
+  // Ajusta o carrossel em looping a cada "duracaoTotal" segundos
+  setInterval(ajustarLoopCarrossel, duracaoTotal * 1000); // Este setInterval garante que o loop reinicie suavemente
+
+</script>
+
+
+
+
+
+
+
+<hr class="divider" />
+
+
+
+<section id="cidade">
+
+<h2 class="Titulo2Horizonte">
+  <strong>Paz no intervalo do caos</strong>
+</h2>
+
+
+<!-- TESTE FLEXBOX PAO DE ACUCAR -->
+<section class="bloco-flex">
+  <div class="video-comentario">
+    <div class="video-container">
+      <!-- Substituindo o vídeo por uma imagem -->
+      <img src="https://lh3.googleusercontent.com/d/1MbAZUAaQ25FxyNXSX2xmFWlX-L8SryBr=w2000" alt="Peixe" style="width: 100%; height: auto;" />
+    </div>
+
+    <div class="video-container">
+      <video autoplay muted loop>
+        <source src="VIDEO PAO DE ACUCAR.mp4" type="video/mp4" />
+      </video>
+    </div>
+
+    <div class="comentario">
+      <h2>O céu aberto, o vento suave <br> e a cidade aos pés</h2>
+      <p>Sinta o abraço da altura.</p>
+
+      <p>O Bondinho parte devagar, como quem não tem pressa de chegar. Lá embaixo, a cidade pulsa. Lá em cima, tudo se aquieta.
+         Entre o Morro da Urca e o Pão de Açúcar, o Rio se revela em camadas — mar, mata, pedra e céu — numa dança silenciosa.</p>
+
+      <p>É no alto que o tempo desacelera. O vento toca o rosto com delicadeza, e o olhar se perde no horizonte.
+         Um instante de contemplação entre a terra e o infinito, onde cada respiração parece maior.</p>
+
+      <p>Pão de Açúcar – Rio de Janeiro, RJ</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOTO DE FUNDO -->
+<style>
+    /* Foto de fundo */
+    .bloco-flex {
+      position: relative;
+      background-image: url('https://lh3.googleusercontent.com/d/1M3af42EN5nDtUtfpm-5FHje3YI7L7H1t=w2000');
+      background-size: cover;
+      background-position: center top;
+      background-repeat: no-repeat;
+      overflow: hidden;
+      min-height: 1200px;
+      padding: 1px 0;
+      transition: background-position 0.3s ease-out;
+    }
+
+    /* Gradiente */
+    .bloco-flex::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 150px;
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 0), #fbfbfb);
+      pointer-events: none;
+      z-index: 1;
+      transition: transform 0.3s ease-out;
+      transform: translateY(var(--gradientPosition, 0px));
+    }
+</style>
+
+<script>
+    // Efeito parallax com velocidade unificada para imagem de fundo e gradiente
+    window.addEventListener('scroll', function () {
+      var scrollPosition = window.scrollY;
+
+      // Posição inicial única para os dois elementos
+      var positionInitial = 990;
+      var speed = 0.3;
+      
+      // Deslocamento manual para o gradiente
+      var gradientOffset = 42;  // Altere esse valor para subir/descer o gradiente
+
+      var position = positionInitial - scrollPosition * speed;
+
+      // Ajusta imagem de fundo
+      document.querySelector('.bloco-flex').style.backgroundPosition = 'center ' + position + 'px';
+
+      // Ajusta gradiente via variável CSS com o deslocamento manual
+      var blocoFlex = document.querySelector('.bloco-flex');
+      blocoFlex.style.setProperty('--gradientPosition', (position + gradientOffset) + 'px');
+    });
+</script>
+
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+<hr class="divider" />
+
+
+
+<!-- FLEXBOX4 -->
+
+<section class="video-comentario">
+
+  <div class="comentario">
+    <h2> Quando o Atlântico respira frio</h2>
+    <p>Na Praia de Porto do Sauípe, não se entra no mar apenas com o corpo.</p>
+    
+    <p>Entra-se com silêncio, com pausa.</p>
+
+    <p>É um lugar que fala baixo — mas diz tudo.</p>
+
+    <p>Porto do Sauípe, Bahia</p>
+  </div>
+
+  
+  <div class="video-box">
+    <div class="video-container">
+      <video autoplay muted loop>
+        <source src="2.mp4" type="video/mp4" />
+      </video>
+    </div>
+  </div>
+
+
+  <div class="video-container">
+    <video autoplay muted loop>
+      <source src="4.mp4" type="video/mp4" />
+    </video>
+  </div>
+
+  
+
+  
+
+  
+</section>
+
+
+
+
+
+<!-- INICIO DA ABERTURA 1 -->
+<!-- BOTÃO ESTILIZADO E AFASTADO -->
+<div style="margin-left: 60px; margin-top: -10px; margin-bottom: 16px;">
+  <button
+    id="toggleBtnCustom"
+    style="
+      width: 13rem;
+      padding: 0.5rem 1.5rem;
+      background-color: #669cd2;
+      color: white;
+      border: none;
+      border-radius: 1rem;
+      box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+      transition: background-color 0.3s ease;
+      cursor: pointer;
+      font-size: 1rem;
+    "
+  >
+    + Abrir Galeria
+  </button>
+</div>
+
+<!-- CONTEÚDO OCULTO -->
+<div
+  id="contentBoxCustom"
+  style="
+    overflow: hidden;
+    transition: all 0.7s ease-in-out;
+    max-height: 0px;
+    opacity: 0;
+    margin-left: 60px;
+    margin-right: 24px;
+  "
+>
+  <div style="
+    background-color: #d3d3d3;
+    color: #3a3a3a;
+    padding: 20px;
+    border-radius: 1rem;
+    box-shadow: 0 10px 15px -3px rgba(0,0,0,0.2);
+    font-size: 1rem;
+    line-height: 1.6;
+  ">
+
+
+
+    
+<!-- INICIO DO CONTEÚDO DA GALERIA 1 -->
+ 
+
+<!-- FLEXBOX5 -->
+<section class="video-comentario">
+
+  
+  
+  <div class="video-container">
+    <video autoplay muted loop>
+      <source src="1.mp4" type="video/mp4" />
+    </video>
+  </div>
+
+  <div class="video-box">
+    <div class="video-container">
+      <video autoplay muted loop>
+        <source src="3.mp4" type="video/mp4" />
+      </video>
+    </div>
+  </div>
+
+  <div class="video-box">
+    <div class="video-container">
+      <video autoplay muted loop>
+        <source src="5.mp4" type="video/mp4" />
+      </video>
+    </div>
+  </div>
+
+
+</section>
+
+<!--FIM FLEXBOX5 -->
+
+
+<!-- FIM DO CONTEÚDO DA GALERIA 1 -->
+
+
+    
+  </div>
+</div>
+
+<!-- SCRIPT -->
+<script>
+  const btnCustom = document.getElementById('toggleBtnCustom');
+  const boxCustom = document.getElementById('contentBoxCustom');
+  let isOpen = false;
+
+  // Armazena as cores originais
+  const defaultColor = "#83b1df";
+  const hoverColor = "#6c9fd3";
+
+  // Define os efeitos de hover via JS para manter a cor personalizada
+  btnCustom.addEventListener('mouseenter', () => {
+    btnCustom.style.backgroundColor = hoverColor;
+  });
+
+  btnCustom.addEventListener('mouseleave', () => {
+    btnCustom.style.backgroundColor = defaultColor;
+  });
+
+  // Alterna o conteúdo e mantém a cor correta
+  btnCustom.addEventListener('click', () => {
+    isOpen = !isOpen;
+    boxCustom.style.maxHeight = isOpen ? boxCustom.scrollHeight + "px" : "0px";
+    boxCustom.style.opacity = isOpen ? "1" : "0";
+    btnCustom.textContent = isOpen ? "− Fechar Galeria" : "+ Abrir Galeria";
+    btnCustom.style.backgroundColor = defaultColor; // Garante que a cor continue correta após clique
+  });
+</script>
+
+
+<!-- FECHAMENTO DA ABERTURA 1 -->
+
+
+    
+    <hr class="divider" />
+<section id="almas">
+
+    <h2 class="Titulo2Horizonte">
+      <strong>Almas silenciosas em movimento</strong>
+    </h2>
+      
+<!-- FLEXBOX2 -->
+<section class="video-comentario">
+  <div class="video-container">
+    <video autoplay muted loop>
+      <source src="Video Peixe.mp4" type="video/mp4" />
+    </video>
+  </div>
+
+  <div class="video-container">
+    <video autoplay muted loop>
+      <source src="Garça.mp4" type="video/mp4" />
+    </video>
+  </div>
+
+  <div class="comentario">
+    <h2>O ritmo tranquilo da natureza no coração da cidade</h2>
+    <p>Observe com calma.</p>
+    
+    <p>Nem todo movimento faz barulho. Às vezes, ele desliza sob a superfície — sereno, contido — como o nado lento dos pirarucus nas águas da Praça Batista Campos.</p>
+
+    <p>Ali, entre árvores centenárias e caminhos sombreados, a natureza habita em estado de contemplação. Garças repousam imóveis, como estátuas vivas. Tartarugas emergem em silêncio. Os peixes traçam rotas suaves, como se meditassem. É uma cena onde o tempo desacelera e a alma encontra repouso no simples existir.</p>
+
+    <p>Praça Batista Campos – Belém, Pará</p>
+  </div>
+</section>
+
+<!-- INICIO FLEXBOX3 -->
+
+<style>
+  .video-comentario.bg-mangal {
+    position: relative;
+    display: flex;
+    justify-content: flex-start; /* Mantém alinhado à esquerda inicialmente */
+    align-items: center;
+    padding: 40px;
+    gap: 40px;
+    color: white;
+    height: 100vh;
+    overflow: hidden;
+    z-index: 1;
+    border-radius: 20px;
+  }
+
+  /* Posição do vídeo entre o meio e a direita */
+  .video-comentario.bg-mangal .video-box {
+    position: relative;
+    z-index: 2;
+    margin-left: auto;
+    margin-right: 20%; /* Ajusta a posição para que fique entre o meio e a direita */
+  }
+
+  .video-comentario.bg-mangal .video-container {
+    background: none;
+  }
+
+  .video-comentario.bg-mangal .video-container video {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+  }
+
+  .video-comentario.bg-mangal .bg-parallax {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+    background-image: url('https://lh3.googleusercontent.com/d/1R8Y44LSmXBvAe3PVRsbGMs8L7ZABptNq=w1000');
+    background-size: cover;
+    background-position: center;
+    z-index: 0;
+    opacity: 0.9;
+    will-change: transform;
+    transform: translateY(0);
+    transition: transform 0.1s linear;
+    border-radius: 30px;
+    overflow: hidden;
+    border: 7px solid white; /* borda branca */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* sombra atrás */
+  }
+
+  /* Faixa translúcida que vai ser esticada manualmente */
+  .video-comentario.bg-mangal .comentario {
+    position: relative;
+    z-index: 2;
+    max-width: 100%; /* A faixa pode ocupar até 100% da largura do container */
+    width: 500px; /* Ajuste manual da largura da faixa. Substitua 500px pelo valor desejado */
+    height: 70%; /* ajuste conforme o tamanho da faixa desejada */
+    background: rgba(255, 255, 255, 0.5); /* barra translúcida */
+    backdrop-filter: blur(4px); /* Efeito vidro */
+    -webkit-backdrop-filter: blur(4px); /* Compatibilidade Safari */
+    border-radius: 20px;
+    padding: 20px;
+    border-radius: 19px;
+    backdrop-filter: blur(2px);
+  }
+</style>
+
+<script>
+  window.addEventListener('scroll', () => {
+    const section = document.querySelector('.video-comentario.bg-mangal');
+    const bg = section.querySelector('.bg-parallax');
+    const rect = section.getBoundingClientRect();
+    const offset = rect.top * 0.3;
+    bg.style.transform = `translateY(${offset}px)`;
+  });
+</script>
+
+<!-- FLEXBOX3 -->
+<section class="video-comentario bg-mangal">
+  <div class="bg-parallax"></div>
+
+  <div class="comentario">
+    <h2>O silêncio paira sobre as águas do Mangal</h2>
+    <p>Um refúgio natural</p>
+    <p>Entre garças que repousam, iguanas que se aquecem ao sol e borboletas que dançam no ar, a vida segue em leveza e pausa. 
+      Os animais vivem livres, com todo cuidado e respeito que o parque oferece — num equilíbrio raro entre o homem e a natureza.</p>
+    <p>Mangal das Garças – Belém, Pará</p>
+  </div>
+
+  <div class="video-box">
+    <div class="video-container">
+      <video autoplay muted loop>
+        <source src="VIDEO PAPAGAIO.MP4.mp4" type="video/mp4" />
+      </video>
+    </div>
+  </div>
+
+</section>
+<!-- FIM FLEXBOX3 -->
+
+
+<!-- inicio carrosel mangal das garças -->
+<!-- INÍCIO DO CARROSSEL -->
+<div class="meu-carrossel-wrapper">
+  <div class="meu-carrossel">
+    <div class="meu-card-container">
+      <img src="https://lh3.googleusercontent.com/d/1eSaC1R0Yozix-K9SSxYA58LGu2Aovd2R=w1000" alt="Imagem 1">
+    </div>
+    <div class="meu-card-container">
+      <img src="https://lh3.googleusercontent.com/d/1AH_jsLFxzcFwptWSYitlLtXvtEqTBWfb=w1000" alt="Imagem 2">
+    </div>
+    <div class="meu-card-container">
+      <img src="https://lh3.googleusercontent.com/d/1fsuMHAezkISTgs8lrMUEp3b8_HzmvAbU=w1000" alt="Imagem 3">
+    </div>
+    <div class="meu-card-container">
+      <img src="https://lh3.googleusercontent.com/d/1TPaXfSBCteTUsIrenlMPy7dyJD1DF2_d=w1000" alt="Imagem 4">
+    </div>
+    <div class="meu-card-container">
+      <img src="https://lh3.googleusercontent.com/d/1giqciEHeQNKmyMVoIXsrwBtLDvCAl5qH=w1000" alt="Imagem 5">
+    </div>
+  </div>
+  <!-- Controles -->
+  <div class="meu-controle">
+    <button id="prev" onclick="moverCarrossel(-1)">&#10094;</button>
+    <button id="next" onclick="moverCarrossel(1)">&#10095;</button>
+  </div>
+</div>
+
+<!-- FIM DO CARROSSEL -->
+
+<style>
+  .meu-carrossel-wrapper {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .meu-carrossel {
+    display: flex;
+    transition: transform 0.5s ease;
+  }
+
+  .meu-card-container {
+    flex: 0 0 100%;
+    padding: 5px;
+  }
+
+  .meu-card-container img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }
+
+  .meu-controle {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+    z-index: 10;
+  }
+
+  .meu-controle button {
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+  }
+
+  .meu-controle button:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+</style>
+
+<script>
+  let currentIndex = 0;
+
+  function moverCarrossel(direction) {
+    const carrossel = document.querySelector('.meu-carrossel');
+    const totalSlides = document.querySelectorAll('.meu-card-container').length;
+    currentIndex += direction;
+
+    if (currentIndex < 0) {
+      currentIndex = totalSlides - 1;
+    } else if (currentIndex >= totalSlides) {
+      currentIndex = 0;
+    }
+
+    const newTransformValue = -currentIndex * 100;
+    carrossel.style.transform = `translateX(${newTransformValue}%)`;
+  }
+</script>
+
+<!-- fim carrosel mangal das garças -->
+
+<!-- INICIO DA ABERTURA 2 -->
+
+<!-- BOTÃO ESTILIZADO E AFASTADO - BLOCO 2 -->
+<div style="margin-left: 60px; margin-top: -10px; margin-bottom: 16px;">
+
+
+<!-- fim carrosel mangal das garças -->
+
+
+
+<!-- INICIO DA ABERTURA 2 -->
+
+<!-- BOTÃO ESTILIZADO E AFASTADO - BLOCO 2 -->
+<div style="margin-left: 60px; margin-top: -10px; margin-bottom: 16px;">
+  <button
+    id="toggleBtnCustom2"
+    style="
+      width: 13rem;
+      padding: 0.5rem 1.5rem;
+      background-color: #6ca0d3;
+      color: white;
+      border: none;
+      border-radius: 1rem;
+      box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+      transition: background-color 0.3s ease;
+      cursor: pointer;
+      font-size: 1rem;
+    "
+  >
+    + Abrir Galeria
+  </button>
+</div>
+
+<!-- CONTEÚDO OCULTO - BLOCO 2 -->
+<div
+  id="contentBoxCustom2"
+  style="
+    overflow: hidden;
+    transition: all 0.7s ease-in-out;
+    max-height: 0px;
+    opacity: 0;
+    margin-left: 60px;
+    margin-right: 24px;
+  "
+>
+  <div style="
+    background-color: #c4c4c4;
+    color: #3a3a3a;
+    padding: 20px;
+    border-radius: 1rem;
+    box-shadow: 0 10px 15px -3px rgba(0,0,0,0.2);
+    font-size: 1rem;
+    line-height: 1.6;
+  ">
+    Aqui vai o conteúdo da <strong>segunda galeria</strong> ou seção extra.
+  </div>
+</div>
+
+<!-- SCRIPT -->
+<script>
+  const btnCustom2 = document.getElementById('toggleBtnCustom2');
+  const boxCustom2 = document.getElementById('contentBoxCustom2');
+  let isOpen2 = false;
+
+  const defaultColor2 = "#83b1df";
+  const hoverColor2 = "#6c9fd3";
+
+  btnCustom2.addEventListener('click', () => {
+    isOpen2 = !isOpen2;
+    boxCustom2.style.maxHeight = isOpen2 ? boxCustom2.scrollHeight + "px" : "0px";
+    boxCustom2.style.opacity = isOpen2 ? "1" : "0";
+    btnCustom2.textContent = isOpen2 ? "− Fechar Galeria" : "+ Abrir Galeria";
+    btnCustom2.style.backgroundColor = defaultColor2;
+  });
+
+  btnCustom2.addEventListener('mouseenter', () => {
+    btnCustom2.style.backgroundColor = hoverColor2;
+  });
+
+  btnCustom2.addEventListener('mouseleave', () => {
+    btnCustom2.style.backgroundColor = defaultColor2;
+  });
+</script>
+
+
+
+<!-- FECHAMENTO DA ABERTURA 2 -->
+
+
+
+</section>
+    <hr class="divider" />
+    <section id="detalhes">
+    <h2 class="Titulo2Horizonte">
+      <strong>Detalhes que Falam</strong>
+    </h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </section>
+
+</section>
+    <hr class="divider" />
+    <section id="luz">
+    <h2 class="Titulo2Horizonte">
+      <strong>Luz & Silêncio</strong>
+    </h2>
+
+    <!-- FLEXBOX3 -->
+    <section class="foto-comentario">
+      <div class="foto-container">
+        <img src= "ADICIONAR FOTO" alt="ADICIONAR TITULO DA FOTO" />
+      </div>
+    
+      <div class="comentario">
+        <h2>Luz que desperta</h2>
+        <p>A luz do sol toca a terra — e tudo desperta.</p>
+        
+        <p>Nas folhas, nas ondas, na pele... ela chama à vida. Acorda o corpo devagar, aquece a alma por dentro. O mar respira em silêncio, acompanhando o ritmo desse renascimento diário.</p>
+    
+        <p>Cada imagem desta galeria vem desse instante: quando a luz não apenas chega — ela desperta o mundo.</p>
+    
+        <p>Jardim de Alah – Salvador, Bahia</p>
+      </div>
+    </section>
+  </section>
+    <hr class="divider" />
+</h2>
+
+</section>
+
+
+
+<div id="typed-text"></div>
+
+
+
+    <hr class="divider" />
+    
+      <style>
+        .additional-images {
+          display: flex;
+          gap: 1rem;
+          max-width: 1000px;
+          margin: 2rem auto;
+          justify-content: center;
+          width: 100%;
+          flex-wrap: wrap;
+        }
+      
+        .left-image {
+          flex: 1;
+          cursor: pointer;
+        }
+      
+        .left-image img {
+          height: 100%;
+          object-fit: cover;
+          width: 100%;
+          border-radius: 10px;
+          transition: transform 0.3s ease;
+        }
+      
+        .right-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 1rem;
+          flex: 1;
+          min-width: 300px;
+        }
+      
+        .image-card {
+          cursor: pointer;
+        }
+      
+        .image-card img {
+          width: 100%;
+          border-radius: 10px;
+          transition: transform 0.3s ease;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+        }
+      
+        .image-card img:hover,
+        .left-image img:hover {
+          transform: scale(1.02);
+        }
+      
+        .image-caption,
+        .additional-images figcaption {
+          margin-top: 8px;
+          font-size: 0.95rem;
+          color: #777;
+        }
+      
+        @media (max-width: 768px) {
+          .additional-images {
+            flex-direction: column;
+            align-items: center;
+          }
+      
+          .right-grid {
+            grid-template-columns: 1fr;
+            width: 100%;
+          }
+        }
+        .background-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+
+      </style>
+      
+      <style>
+        
+      
+            .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 999;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.6s ease;
+          }
+
+          .modal.show {
+            opacity: 1;
+            pointer-events: auto;
+          }
+
+          .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            transform: scale(0.9);
+            opacity: 0;
+            transition: all 0.6s ease;
+          }
+
+          .modal.show .modal-content {
+            transform: scale(1);
+            opacity: 1;
+          }
+
+          .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 2rem;
+            color: white;
+            cursor: pointer;
+            z-index: 1000;
+          }
+      </style>
+      
+ <!-- PARTE FINAL - CONTATOS E OUTROS -->
+ <section id="contato" class="contact fade show" style="background-color: #ffffff; padding: 50px 0; display: flex; justify-content: space-between; align-items: center;">
+  <div style="flex: 1; max-width: 500px; margin-right: 50px;">
+    <h2 style="font-size: 28px; color: #333; font-weight: 600; margin-bottom: 20px; text-transform: uppercase;">Conecte-se Comigo</h2>
+    <p style="font-size: 16px; color: #666; line-height: 1.6; margin-bottom: 40px; max-width: 700px;">
+      Se você está buscando criar algo único ou precisa de ajuda para capturar momentos especiais, estou à disposição. Vamos trocar ideias e criar algo incrível.
+    </p>
+    <div style="display: flex; flex-direction: column; gap: 30px; align-items: flex-start;">
+      <!-- Seção de Email -->
+      <div style="display: flex; align-items: center; justify-content: flex-start; gap: 15px; padding: 10px 0;">
+        <i class="fa fa-envelope" style="font-size: 24px; color: #333;"></i>
+        <div>
+          <strong style="font-size: 16px; color: #333; font-weight: 600;">Email:</strong>
+          <a href="mailto:isaiasoliveira@outlook.com" style="color: #0077cc; font-size: 16px; text-decoration: none; transition: color 0.3s; display: block; margin-top: 5px;">
+            isaiasoliveira@outlook.com
+          </a>
+          <p style="font-size: 14px; color: #666; margin-top: 5px;">Envie um e-mail para discutir parcerias ou projetos.</p>
+        </div>
+      </div>
+
+      <!-- Seção de Instagram -->
+      <div style="display: flex; align-items: center; justify-content: flex-start; gap: 15px; padding: 10px 0;">
+        <i class="fa fa-instagram" style="font-size: 24px; color: #333;"></i>
+        <div>
+          <strong style="font-size: 16px; color: #333; font-weight: 600;">Instagram:</strong>
+          <a href="https://www.instagram.com/zaauoliveira" target="_blank" style="color: #0077cc; font-size: 16px; text-decoration: none; transition: color 0.3s; display: block; margin-top: 5px;">
+            @zaauoliveira
+          </a>
+          <p style="font-size: 14px; color: #666; margin-top: 5px;">Veja o meu portfólio visual e mais sobre meus projetos.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Desenho do Celular com Instagram -->
+  <div style="flex: 1; position: relative; width: 300px; height: 550px; background: #f4f4f4; border-radius: 30px; overflow: hidden; box-shadow: 0 6px 12px rgba(0,0,0,0.1);">
+    <div style="position: absolute; top: 30px; left: 50%; transform: translateX(-50%); width: 90%; height: 90%; background-color: #fff; border-radius: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.2); padding: 20px;">
+      <!-- Ícone do Instagram -->
+      <div style="text-align: center; margin-bottom: 20px;">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Instagram_logo_2022.svg" alt="Instagram" style="width: 50px; height: 50px; object-fit: contain; filter: invert(60%);"/>
+      </div>
+      <div style="text-align: center; font-size: 20px; font-weight: 600; color: #333; margin-bottom: 10px;">
+        @zaauoliveira
+      </div>
+      <div style="height: 350px; overflow: hidden; border-radius: 10px;">
+        <div style="background-color: #f0f0f0; padding: 10px; margin-bottom: 10px; display: flex; gap: 10px; border-radius: 10px;">
+          <div style="width: 30%; background-color: #ddd; height: 60px;"></div>
+          <div style="width: 30%; background-color: #ddd; height: 60px;"></div>
+          <div style="width: 30%; background-color: #ddd; height: 60px;"></div>
+        </div>
+        <p style="text-align: center; font-size: 14px; color: #666;">Confira mais no meu perfil.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Rodapé -->
+<footer style="background-color: #f1f1f1; color: #333; padding: 10px 20px; font-size: 12px; text-align: center;">
+  <p style="margin: 0;">&copy; 2025 Isaias Oliveira. Todos os direitos reservados.</p>
+</footer>
+
+<!-- FontAwesome Script -->
+<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+
+      
+    
+
+    </script>
+    
+    
+  </body>
+</html>
+
