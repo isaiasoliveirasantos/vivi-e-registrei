@@ -4,68 +4,532 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vivi. Registrei. Agora, você vê</title>
-    <style>
+    
 
-/* INICIO CSS DA GALERIA 1 DO PRIMEIRO ABERTURA + GALERIA*/
-.onde-o-horizonte-encontra-a-alma {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1rem;
+<!-- INÍCIO BARRA DE NAVEGAÇÃO -->
+<nav id="navbar">
+  <div class="nav-links">
+    <a href="#" onclick="window.scrollTo({ top: 0, behavior: 'smooth' }); return false;">Início</a>
+    <a href="sobre" onclick="window.scrollTo({ top: 1194, behavior: 'smooth' }); return false;">Sobre</a>
+
+    <!-- Portfólio com subitens -->
+    <div class="portfolio">
+      <a href="#portifolio">Portfólio</a>
+      <ul class="submenu">
+        <li><a href="#" onclick="scrollToSection('horizonte'); return false;">Onde o horizonte encontra a alma</a></li>
+        <li><a href="#" onclick="scrollToSection('cidade'); return false;">Paz no intervalo do caos</a></li>
+        <li><a href="#" onclick="scrollToSection('almas'); return false;">Almas silenciosas em movimento</a></li>
+        <li><a href="#" onclick="scrollToSection('detalhes'); return false;">Detalhes que Falam</a></li>
+        <li><a href="#" onclick="scrollToSection('luz'); return false;">Luz & Silêncio</a></li>
+      </ul>
+    </div>
+
+    <a href="#contato">Contato</a>
+  </div>
+</nav>
+
+<style>
+  /* BARRA DE NAVEGAÇÃO */
+  nav {
+  position: fixed;
+  top: 5px;
+  left: 50%;
+  transform: translate(-50%, 10px) scale(0.7); /* Inicia pequeno e abaixo */
+  width: calc(30% - 40px);
+  max-width: 1000px;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(10px);
+  padding: 5px 0;
+  border-radius: 20px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.05);
+  z-index: 999;
+  transition: transform 0.4s ease, opacity 0.4s ease;
+  opacity: 0;
+  pointer-events: none;
 }
 
-.foto-cortada {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+nav.show {
+  transform: translate(-50%, 0px) scale(1); /* Sobe e cresce lateralmente */
+  opacity: 1;
+  pointer-events: auto;
 }
 
-.foto {
-  width: 100%;
-  aspect-ratio: 4 / 5;
-  overflow: hidden;
-  border-radius: 16px;
+nav.hidden {
+  opacity: 0;
+  transform: translate(-50%, -25px) scale(0.6); /* Sobe e encolhe lateralmente */
+  pointer-events: none;
 }
 
-.foto img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 16px;
-}
 
-.legenda {
-  margin-top: 0.5rem;
-  font-size: 0.9rem;
-  color: #444;
+  .nav-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 22px;
+    background: none;
+  }
+
+  nav a {
+    font-family: SF Pro Text, SF Pro Icons, Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size: 12.5px;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.7); /* preto mais suave */
+    transition: background 0.3s ease, color 0.3s ease;
+    text-decoration: none;
+    padding: 5px 23.4px;
+    border-radius: 15px;
+  }
+
+  nav a:hover {
+    background: rgba(0, 0, 0, 0.05);
+    color: rgba(0, 0, 0, 1); /* preto 100% */
+  }
+
+  /* Estilos específicos para o Portfólio */
+  .portfolio {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-bottom: 0;
+  }
+
+  .portfolio > a {
+    font-weight: 500;
+  }
+
+  .portfolio .submenu {
+    display: block;
+    max-height: 0;
+    overflow: hidden;
+    position: absolute;
+    top: 114%;
+    left: 0;
+    background: rgba(255, 255, 255, 1);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    list-style: none;
+    padding: 0;
+    border-radius: 0 0 20px 20px;
+    min-width: 180px;
+    z-index: 998;
+    margin-top: 0;
+    transition: max-height 0.4s ease, padding 0.4s ease;
+  }
+
+  .portfolio:hover .submenu {
+    max-height: 500px;
+    padding: 5px 0;
+  }
+
+  .submenu li {
+    padding: 5px 20px;
+  }
+
+  .submenu a {
+    color: rgba(0, 0, 0, 0.7); /* preto mais suave */
+    font-weight: normal;
+    padding: 5px 16px;
+    text-decoration: none;
+    border-radius: 12px;
+    display: block;
+    transition: background 0.3s ease, color 0.3s ease;
+  }
+
+  .submenu a:hover {
+    background: rgba(0, 0, 0, 0.1);
+    color: rgba(0, 0, 0, 1); /* preto total no hover */
+  }
+</style>
+
+<script>
+  function scrollToSection(id) {
+    const element = document.getElementById(id);
+    if (!element) return;
+
+    const offset = 4;
+    const bodyTop = document.body.getBoundingClientRect().top;
+    const elementTop = element.getBoundingClientRect().top;
+    const position = elementTop - bodyTop + offset;
+
+    window.scrollTo({
+      top: position,
+      behavior: 'smooth'
+    });
+  }
+
+  let lastScrollTop = 0;
+const navbar = document.getElementById("navbar");
+let hideTimeout = null;
+let isHiding = false;
+
+const delayToHide = 300;
+const delayToShow = 0;
+
+window.addEventListener("scroll", function () {
+  const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+
+  if (currentScroll > lastScrollTop) {
+    // ROLANDO PARA BAIXO
+    if (!isHiding) {
+      clearTimeout(hideTimeout);
+      hideTimeout = setTimeout(() => {
+        navbar.classList.remove("show");
+        navbar.classList.add("hidden");
+        isHiding = false;
+      }, delayToHide);
+      isHiding = true;
+    }
+  } else {
+    // ROLANDO PARA CIMA
+    clearTimeout(hideTimeout);
+    navbar.classList.remove("hidden");
+    navbar.classList.add("show");
+    isHiding = false;
+  }
+
+  lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+}, false);
+</script>
+
+<!-- FIM BARRA DE NAVEGAÇÃO -->
+
+  
+
+<!--Titulo e Subtítulo HTML E CSS-->     
+<style>
+
+/*CSS DO TITULO*/
+body {
+        font-family: Raleway, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #fafafa;
+        color: #555555;
+      }
+
+      header h1 {
+        font-family: "Helvetica Neue", sans-serif;
+        font-weight: 300;
+        font-size: 1.8rem; /* Título principal no topo do site */
+        margin: 0;
+      }
+
+
+/*CSS DO TITULO PRINCIPAL*/
+ .main-title {
+        text-align: center;
+        font-size: 2.05em; /* Define o tamanho da fonte */
+        font-weight: 500; /* Define o peso da fonte */
+        margin: 60px 0 15px; /* Define a margem */
+        color: #333;
+      }
+
+/* CSS Subtítulo Principal */
+.subtitle {
+  font-size: 12px; /* Fonte menor para se assemelhar a um comentário */
+  color: #565656; /* Cor suave para dar o aspecto de um comentário discreto */
   text-align: center;
-  font-family: sans-serif;
+  margin-top: 8px;
+  font-weight: 300; /* Peso da fonte bem leve */
+  font-style: italic; /* Estilo itálico para o toque de comentário */
+  font-family: SF Pro Text, SF Pro Icons, Helvetica Neue, Helvetica, Arial, sans-serif;
+  letter-spacing: 0.5px; /* Espaçamento entre letras suave */
+  line-height: 0.9; /* Mantém o espaçamento para boa legibilidade */
 }
+</style>
 
-/* Responsividade */
-@media (max-width: 1024px) {
-  .onde-o-horizonte-encontra-a-alma {
-    grid-template-columns: repeat(3, 1fr);
+<h1 id="home" class="main-title">Vivi. Registrei. Agora, você vê</h1>
+
+<!-- INICIO SUBTITULO + ANIMAÇÃO -->
+<style>
+  #typed-text {
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    font-size: 0.97em;
+    color: #565656; /* Começa com a cor original do texto */
+    margin-top: 8px;
+    font-weight: 320;
+    font-style: italic;
+    letter-spacing: 0.5px;
+    line-height: 1.6;
+    display: inline-block;
+    opacity: 0; /* Começa invisível */
+    transform: translateY(20px); /* Começa 20px abaixo da posição */
+    animation: slideIn 3s ease-out forwards, colorSweep 1s ease-in-out forwards;
+  }
+
+  /* Animação de subir o texto e clarear */
+  @keyframes slideIn {
+    0% {
+      opacity: 0;
+      transform: translateY(30px); /* Começa abaixo */
+    }
+    100% {
+      opacity: 1; /* Vai ficando visível */
+      transform: translateY(0); /* Vai subindo até a posição original */
+    }
+  }
+
+  /* Animação de cor do texto */
+  @keyframes colorSweep {
+    0% {
+      color: #565656; /* Começa com a cor original do texto (preto) */
+    }
+    50% {
+      color: #99360f; /* Azul no meio da animação */
+    }
+    100% {
+      color: #565656; /* Retorna à cor original (preto) */
+    }
+  }
+
+  .typed-text-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 7vh;
+  }
+  
+
+
+
+  
+</style>
+
+<div class="typed-text-container">
+  <div id="typed-text"></div>
+</div>
+
+<script>
+  const text = "Capturo momentos únicos e os transformo em fotografias que carregam um silêncio, uma paisagem, uma história.\nExiste vida lá fora. A natureza, o sol, as águas e os animais pedem nossa conexão. Respirar e viver é o que nos torna parte dela.";
+  document.getElementById("typed-text").innerHTML = text.replace(/\n/g, "<br>");
+</script>
+<!-- FIM SUBTITULO + ANIMAÇÃO -->
+
+<!--INICIO GALERIA 1-->
+<section id="galeria" class="gallery fade show">
+    <figure onclick="openModal(
+        'https://lh3.googleusercontent.com/d/1RgONJDqYym0w3rvHkuXYx1FN8yPTSgyO=w2000',
+        'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3675.077397821107!2d-43.22410432388767!3d-22.98359407921186!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x997fd908d5b00f%3A0x5e5cfd6c2801a7c3!2sPraia%20do%20Leblon!5e0!3m2!1spt-BR!2sbr!4v1712398753000!5m2!1spt-BR!2sbr',
+        '89vh',
+        'Rio de Janeiro - Leblon'
+      )" class="gallery-item">
+      <img src="https://lh3.googleusercontent.com/d/1RgONJDqYym0w3rvHkuXYx1FN8yPTSgyO=w2000" alt="Rio de Janeiro - Leblon" />
+      <figcaption>Rio de Janeiro - Leblon</figcaption>
+    </figure>
+  
+    <figure onclick="openModal(
+        'https://lh3.googleusercontent.com/d/1vAIop-LwrkL0uJ19dEg5gdw8QN4Dp3ch=w1000',
+        'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1678.276779114176!2d-43.422279!3d-20.4737467!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xa38b002295d8c7%3A0x1fba9b3405e26323!2sCachoeira%20do%20Sibr%C3%A3o!5e0!3m2!1spt-BR!2sbr!4v1712400256563!5m2!1spt-BR!2sbr',
+        '87vh',
+        'Cachoeira Sibrao - Mariana - MG'
+      )">
+      <img src="https://lh3.googleusercontent.com/d/1vAIop-LwrkL0uJ19dEg5gdw8QN4Dp3ch=w1000" alt="Cachoeira Sibrao - Mariana - Minas Gerais" />
+      <figcaption>Cachoeira Sibrao - Mariana - Minas Gerais</figcaption>
+    </figure>
+  
+    <figure onclick="openModal(
+        'https://lh3.googleusercontent.com/d/1Rq1cor1yy74qLsBnGwwDpN-5duNMCyxc=w1000',
+        'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3974.065251631001!2d-48.4457018!3d-1.4256853!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x92a48b14df0b4c1d%3A0x19808db05d7d17b0!2sParque%20Estadual%20do%20Utinga%20Camillo%20Vianna!5e0!3m2!1spt-BR!2sbr!4v1712400434653!5m2!1spt-BR!2sbr',
+        '87vh',
+        'Parque do Utinga - Belém - PA'
+      )">
+      <img src="https://lh3.googleusercontent.com/d/1Rq1cor1yy74qLsBnGwwDpN-5duNMCyxc=w1000" alt="Parque do Utinga - Belém - Pará" />
+      <figcaption>Parque do Utinga - Belém - Pará</figcaption>
+    </figure>
+  </section>
+  
+  <div id="imageModal" style="
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    justify-content: center;
+    align-items: flex-start;
+    overflow-y: auto;
+    z-index: 1000;
+    padding: 40px 20px;
+    transition: opacity 0.3s ease;
+    box-sizing: border-box;
+  ">
+    <div id="modalContent" style="
+      background: white;
+      border-radius: 16px;
+      max-width: 1400px;
+      width: 100%;
+      overflow-y: auto;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      animation: fadeIn 0.4s ease;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+      position: relative;
+    ">
+      <!-- Conteúdo do modal será inserido via JS -->
+    </div>
+  </div>
+  
+  <style>
+    /* Aplica animação padrão */
+    #galeria figure img {
+  transform: scale(0.95);
+  filter: blur(4px);
+  transition: transform 2s ease-in-out, filter 2s ease-in-out;
+  animation: floatZoom 6s ease-in-out infinite;
+  will-change: transform, filter;
+}
+  
+    /* Animações individuais para cada imagem */
+    #galeria figure:nth-child(1) img {
+      animation: floatZoom 6s ease-in-out infinite;
+      animation-delay: 0s;
+    }
+  
+    #galeria figure:nth-child(2) img {
+      animation: floatZoom 6s ease-in-out infinite;
+      animation-delay: 2s;
+    }
+  
+    #galeria figure:nth-child(3) img {
+      animation: floatZoom 6s ease-in-out infinite;
+      animation-delay: 4s;
+    }
+  
+    @keyframes floatZoom {
+  0%, 100% {
+    transform: scale(0.95); /* Tamanho "pequeno" (normal) */
+    filter: blur(4px);   /* Desfocado */
+  }
+  50% {
+    transform: scale(1.01); /* Tamanho "grande" (crescido) */
+    filter: blur(0px);       /* Focado */
   }
 }
+  </style>
+  
+  
+  
+  <script>
+    function openModal(imageSrc, mapEmbedUrl, imageHeight = 'auto', imageTitle = '') {
+      const modal = document.getElementById("imageModal");
+      const content = document.getElementById("modalContent");
+  
+      content.innerHTML = `
+        <span onclick="closeModal()" style="
+          position: absolute;
+          top: 12px;
+          right: 20px;
+          font-size: 1.8rem;
+          color: #666;
+          cursor: pointer;
+          z-index: 1001;
+          transition: color 0.2s ease;
+        " onmouseover="this.style.color='#333'" onmouseout="this.style.color='#666'">
+          &times;
+        </span>
+  
+        <div style="
+          font-size: 0.95rem;
+          font-weight: normal;
+          margin-bottom: 10px;
+          text-align: center;
+          color: #444;
+        ">
+          ${imageTitle}
+        </div>
+  
+        <img 
+          src="${imageSrc}" 
+          alt="${imageTitle}" 
+          class="modal-image"
+          style="height: ${imageHeight};"
+        >
+        <iframe 
+          src="${mapEmbedUrl}" 
+          style="width: 82%; height: 300px; border: 0; border-radius: 12px;" 
+          allowfullscreen 
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
+      `;
+  
+      modal.style.display = "flex";
+    }
+  
+    function closeModal() {
+      const modal = document.getElementById("imageModal");
+      modal.style.display = "none";
+      document.getElementById("modalContent").innerHTML = '';
+    }
+    
+  </script>
 
-@media (max-width: 768px) {
-  .onde-o-horizonte-encontra-a-alma {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
+<!-- INICIO CSS DA GALERIA 1 DO PRIMEIRO ABERTURA + GALERIA -->
+<style>
+    .onde-o-horizonte-encontra-a-alma {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+    }
+    
+    .foto-cortada {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .foto {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      overflow: hidden;
+      border-radius: 16px;
+    }
+    
+    .foto img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 16px;
+    }
+    
+    .legenda {
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+      color: #444;
+      text-align: center;
+      font-family: sans-serif;
+    }
+    
+    /* Responsividade */
+    @media (max-width: 1024px) {
+      .onde-o-horizonte-encontra-a-alma {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .onde-o-horizonte-encontra-a-alma {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .onde-o-horizonte-encontra-a-alma {
+        grid-template-columns: 1fr;
+      }
+    }
+    /* FIM CSS DA GALERIA 1 DO PRIMEIRO ABERTURA + GALERIA*/
+    </style>
+<!--FIM GALERIA 1-->
 
-@media (max-width: 480px) {
-  .onde-o-horizonte-encontra-a-alma {
-    grid-template-columns: 1fr;
-  }
-}
 
-
-/* FIM CSS DA GALERIA 1 DO PRIMEIRO ABERTURA + GALERIA*/
-
-
+<style>
 /* CSS DO FLEXBOX PRINCIPAL     */
-/* ============================= */
 .video-comentario {
   display: flex;
   align-items: center;
@@ -125,44 +589,18 @@
   color: #444;
 }
 
-
-
-
-
-      html {
+html {
     scroll-behavior: smooth;
   }
 
-      .divider {
+.divider {
         width: 90%; /*A parte do CSS responsável pela linha que separa a galeria do vídeo é a seguinte*/
         margin: 1rem auto;
         border: none;
         border-top: 1px solid rgba(74, 74, 74, 0.3);
       }
 
-      body {
-        font-family: Raleway, sans-serif;
-        margin: 0;
-        padding: 0;
-        background-color: #fafafa;
-        color: #555555;
-      }
-
-      header {
-        position: relative;
-        padding: 150px 20px 40px;
-        text-align: center;
-        background: url("https://lh3.googleusercontent.com/d/1rBmIRVRxHl0w2XkZ9n2lMzWw-AfiJGCj=w2000") center/cover no-repeat;
-        color: white;
-      }
-      header h1 {
-        font-family: "Helvetica Neue", sans-serif;
-        font-weight: 300;
-        font-size: 1.8rem; /* Título principal no topo do site */
-        margin: 0;
-      }
-
-      /*CSS DO 3 FLEXBOX*/
+/*CSS DO 3 FLEXBOX*/
 
       .foto-comentario {
   display: flex;
@@ -218,7 +656,7 @@
   }
 }
       
-/* algo separando*/
+
 
       .gallery {
         display: grid;
@@ -463,27 +901,7 @@
   display: block;
 }
 
- /* Título principal */
- .main-title {
-        text-align: center;
-        font-size: 2.05em; /* Define o tamanho da fonte */
-        font-weight: 500; /* Define o peso da fonte */
-        margin: 60px 0 15px; /* Define a margem */
-        color: #333;
-      }
 
-      /* Estilo da frase debaixo do título */
-.subtitle {
-  font-size: 12px; /* Fonte menor para se assemelhar a um comentário */
-  color: #565656; /* Cor suave para dar o aspecto de um comentário discreto */
-  text-align: center;
-  margin-top: 8px;
-  font-weight: 300; /* Peso da fonte bem leve */
-  font-style: italic; /* Estilo itálico para o toque de comentário */
-  font-family: SF Pro Text, SF Pro Icons, Helvetica Neue, Helvetica, Arial, sans-serif;
-  letter-spacing: 0.5px; /* Espaçamento entre letras suave */
-  line-height: 0.9; /* Mantém o espaçamento para boa legibilidade */
-}
 
 .Titulo2Horizonte {
   font-size: 36px; /* Tamanho da fonte */
@@ -501,254 +919,16 @@
 .Titulo2Horizonte strong {
   font-weight: normal; /* Remove o negrito do strong */
 }
-
-    </style>
-  </head>
-  <body>
-<!-- INÍCIO BARRA DE NAVEGAÇÃO -->
-
-<nav id="navbar">
-  <div class="nav-links">
-    <a href="#" onclick="window.scrollTo({ top: 0, behavior: 'smooth' }); return false;">Início</a>
-    <a href="sobre" onclick="window.scrollTo({ top: 1194, behavior: 'smooth' }); return false;">Sobre</a>
-
-    <!-- Portfólio com subitens -->
-    <div class="portfolio">
-      <a href="#portifolio">Portfólio</a>
-      <ul class="submenu">
-        <li><a href="#" onclick="scrollToSection('horizonte'); return false;">Onde o horizonte encontra a alma</a></li>
-        <li><a href="#" onclick="scrollToSection('cidade'); return false;">Paz no intervalo do caos</a></li>
-        <li><a href="#" onclick="scrollToSection('almas'); return false;">Almas silenciosas em movimento</a></li>
-        <li><a href="#" onclick="scrollToSection('detalhes'); return false;">Detalhes que Falam</a></li>
-        <li><a href="#" onclick="scrollToSection('luz'); return false;">Luz & Silêncio</a></li>
-      </ul>
-    </div>
-
-    <a href="#contato">Contato</a>
-  </div>
-</nav>
-
-<style>
-  /* BARRA DE NAVEGAÇÃO */
-  nav {
-    position: fixed;
-    top: 5px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: calc(30% - 40px); /* deixa uma margem de 20px de cada lado */
-    max-width: 1000px;
-    background: rgba(255, 255, 255, 0.6);
-    backdrop-filter: blur(10px);
-    padding: 5px 0;
-    border-radius: 20px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.05);
-    z-index: 999;
-    transition: top 1s ease;
-  }
-
-  .nav-links {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 22px;
-    background: none;
-  }
-
-  nav a {
-    font-family: SF Pro Text, SF Pro Icons, Helvetica Neue, Helvetica, Arial, sans-serif;
-    font-size: 12.5px;
-    font-weight: 500;
-    color: rgba(0, 0, 0, 0.7); /* preto mais suave */
-  transition: background 0.3s ease, color 0.3s ease;
-    text-decoration: none;
-    padding: 5px 23.4px;
-    border-radius: 15px;
-  }
-
-  nav a:hover {
-    background: rgba(0, 0, 0, 0.05);
-  color: rgba(0, 0, 0, 1); /* preto 100% */
-  }
-
-  /* Estilos específicos para o Portfólio */
-  .portfolio {
-    position: relative;
-    display: flex;
-    align-items: center;
-    margin-bottom: 0;
-  }
-
-  .portfolio > a {
-    font-weight: 500;
-  }
-
-  .portfolio .submenu {
-    display: block;
-    max-height: 0;
-    overflow: hidden;
-    position: absolute;
-    top: 114%;
-    left: 0;
-    background: rgba(255, 255, 255, 1);
-    backdrop-filter: blur(20px);
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
-    list-style: none;
-    padding: 0;
-    border-radius: 0 0 20px 20px;
-    min-width: 180px;
-    z-index: 998;
-    margin-top: 0;
-    transition: max-height 0.4s ease, padding 0.4s ease;
-  }
-
-  .portfolio:hover .submenu {
-    max-height: 500px;
-    padding: 5px 0;
-  }
-
-  .submenu li {
-    padding: 5px 20px;
-  }
-
-  .submenu a {
-    color: rgba(0, 0, 0, 0.7); /* preto mais suave */
-    font-weight: normal;
-  padding: 5px 16px;
-  text-decoration: none;
-  border-radius: 12px;
-  display: block;
-  transition: background 0.3s ease, color 0.3s ease;
-  }
-
-  .submenu a:hover {
-    background: rgba(0, 0, 0, 0.1);
-  color: rgba(0, 0, 0, 1); /* preto total no hover */
-  }
 </style>
 
-<!-- SCRIPT PARA COMPENSAR A NAVBAR FIXA -->
-<script>
-  function scrollToSection(id) {
-    const element = document.getElementById(id);
-    if (!element) return;
 
-    const offset = 4;
-    const bodyTop = document.body.getBoundingClientRect().top;
-    const elementTop = element.getBoundingClientRect().top;
-    const position = elementTop - bodyTop + offset;
-
-    window.scrollTo({
-      top: position,
-      behavior: 'smooth'
-    });
-  }
-
-  let lastScrollTop = 0;
-  const navbar = document.getElementById("navbar");
-  let hideTimeout = null;
-  let isHiding = false;
-
-  const delayToHide = 300; // ms para esconder
-  const delayToShow = 0;   // ms para mostrar
-
-  window.addEventListener("scroll", function () {
-    const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-
-    if (currentScroll > lastScrollTop) {
-      // ROLANDO PARA BAIXO
-      if (!isHiding) {
-        clearTimeout(hideTimeout);
-        hideTimeout = setTimeout(() => {
-          navbar.style.top = "-100px";
-          isHiding = false;
-        }, delayToHide);
-        isHiding = true;
-      }
-    } else {
-      // ROLANDO PARA CIMA
-      clearTimeout(hideTimeout);
-      navbar.style.top = "5px";
-      isHiding = false;
-    }
-
-    lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
-  }, false);
-</script>
-
-<!-- FIM BARRA DE NAVEGAÇÃO -->
+  </head>
+  <body>
 
 
     
 
- <!-- Título principal -->
-  <h1 id="home" class="main-title">Vivi. Registrei. Agora, você vê</h1>
-
-<!-- INÍCIO ANIMAÇÃO SUAVE E ATRAENTE COM COLORAÇÃO -->
-<style>
-  #typed-text {
-    font-family: 'Roboto', sans-serif;
-    text-align: center;
-    font-size: 0.97em;
-    color: #565656; /* Começa com a cor original do texto */
-    margin-top: 8px;
-    font-weight: 320;
-    font-style: italic;
-    letter-spacing: 0.5px;
-    line-height: 1.6;
-    display: inline-block;
-    opacity: 0; /* Começa invisível */
-    transform: translateY(20px); /* Começa 20px abaixo da posição */
-    animation: slideIn 3s ease-out forwards, colorSweep 1s ease-in-out forwards;
-  }
-
-  /* Animação de subir o texto e clarear */
-  @keyframes slideIn {
-    0% {
-      opacity: 0;
-      transform: translateY(30px); /* Começa abaixo */
-    }
-    100% {
-      opacity: 1; /* Vai ficando visível */
-      transform: translateY(0); /* Vai subindo até a posição original */
-    }
-  }
-
-  /* Animação de cor do texto */
-  @keyframes colorSweep {
-    0% {
-      color: #565656; /* Começa com a cor original do texto (preto) */
-    }
-    50% {
-      color: #99360f; /* Azul no meio da animação */
-    }
-    100% {
-      color: #565656; /* Retorna à cor original (preto) */
-    }
-  }
-
-  .typed-text-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 7vh;
-  }
-  
-
-
-
-  
-</style>
-
-<div class="typed-text-container">
-  <div id="typed-text"></div>
-</div>
-
-<script>
-  const text = "Capturo momentos únicos e os transformo em fotografias que carregam um silêncio, uma paisagem, uma história.\nExiste vida lá fora. A natureza, o sol, as águas e os animais pedem nossa conexão. Respirar e viver é o que nos torna parte dela.";
-  document.getElementById("typed-text").innerHTML = text.replace(/\n/g, "<br>");
-</script>
-<!-- FIM ANIMAÇÃO SUAVE E ATRAENTE COM COLORAÇÃO -->
+ 
 
 
 
@@ -756,143 +936,6 @@
 
 
 
-<section id="galeria" class="gallery fade show">
-  <figure onclick="openModal(
-      'https://lh3.googleusercontent.com/d/1RgONJDqYym0w3rvHkuXYx1FN8yPTSgyO=w2000',
-      'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3675.077397821107!2d-43.22410432388767!3d-22.98359407921186!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x997fd908d5b00f%3A0x5e5cfd6c2801a7c3!2sPraia%20do%20Leblon!5e0!3m2!1spt-BR!2sbr!4v1712398753000!5m2!1spt-BR!2sbr',
-      '89vh',
-      'Rio de Janeiro - Leblon'
-    )" class="gallery-item">
-    <img src="https://lh3.googleusercontent.com/d/1RgONJDqYym0w3rvHkuXYx1FN8yPTSgyO=w2000" alt="Rio de Janeiro - Leblon" />
-    <figcaption>Rio de Janeiro - Leblon</figcaption>
-  </figure>
-
-  <figure onclick="openModal(
-      'https://lh3.googleusercontent.com/d/1vAIop-LwrkL0uJ19dEg5gdw8QN4Dp3ch=w1000',
-      'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1678.276779114176!2d-43.422279!3d-20.4737467!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xa38b002295d8c7%3A0x1fba9b3405e26323!2sCachoeira%20do%20Sibr%C3%A3o!5e0!3m2!1spt-BR!2sbr!4v1712400256563!5m2!1spt-BR!2sbr',
-      '87vh',
-      'Cachoeira Sibrao - Mariana - MG'
-    )">
-    <img src="https://lh3.googleusercontent.com/d/1vAIop-LwrkL0uJ19dEg5gdw8QN4Dp3ch=w1000" alt="Cachoeira Sibrao - Mariana - Minas Gerais" />
-    <figcaption>Cachoeira Sibrao - Mariana - Minas Gerais</figcaption>
-  </figure>
-
-  <figure onclick="openModal(
-      'https://lh3.googleusercontent.com/d/1Rq1cor1yy74qLsBnGwwDpN-5duNMCyxc=w1000',
-      'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3974.065251631001!2d-48.4457018!3d-1.4256853!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x92a48b14df0b4c1d%3A0x19808db05d7d17b0!2sParque%20Estadual%20do%20Utinga%20Camillo%20Vianna!5e0!3m2!1spt-BR!2sbr!4v1712400434653!5m2!1spt-BR!2sbr',
-      '87vh',
-      'Parque do Utinga - Belém - PA'
-    )">
-    <img src="https://lh3.googleusercontent.com/d/1Rq1cor1yy74qLsBnGwwDpN-5duNMCyxc=w1000" alt="Parque do Utinga - Belém - Pará" />
-    <figcaption>Parque do Utinga - Belém - Pará</figcaption>
-  </figure>
-</section>
-
-<!-- Modal -->
-<div id="imageModal" style="
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.85);
-  justify-content: center;
-  align-items: flex-start;
-  overflow-y: auto;
-  z-index: 1000;
-  padding: 40px 20px;
-  transition: opacity 0.3s ease;
-  box-sizing: border-box;
-">
-  <div id="modalContent" style="
-    background: white;
-    border-radius: 16px;
-    max-width: 1400px;
-    width: 100%;
-    overflow-y: auto;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    animation: fadeIn 0.4s ease;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
-    position: relative;
-  ">
-    <!-- Conteúdo do modal será inserido via JS -->
-  </div>
-</div>
-
-<style>
-  @keyframes fadeIn {
-    from { opacity: 0; transform: scale(0.95); }
-    to { opacity: 1; transform: scale(1); }
-  }
-
-  .modal-image {
-    width: auto;
-    max-width: 100%;
-    object-fit: cover;
-    border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-    margin-bottom: 20px;
-  }
-</style>
-
-<script>
-  function openModal(imageSrc, mapEmbedUrl, imageHeight = 'auto', imageTitle = '') {
-    const modal = document.getElementById("imageModal");
-    const content = document.getElementById("modalContent");
-
-    content.innerHTML = `
-      <span onclick="closeModal()" style="
-        position: absolute;
-        top: 12px;
-        right: 20px;
-        font-size: 1.8rem;
-        color: #666;
-        cursor: pointer;
-        z-index: 1001;
-        transition: color 0.2s ease;
-      " onmouseover="this.style.color='#333'" onmouseout="this.style.color='#666'">
-        &times;
-      </span>
-
-      <div style="
-        font-size: 0.95rem;
-        font-weight: normal;
-        margin-bottom: 10px;
-        text-align: center;
-        color: #444;
-      ">
-        ${imageTitle}
-      </div>
-
-      <img 
-        src="${imageSrc}" 
-        alt="${imageTitle}" 
-        class="modal-image"
-        style="height: ${imageHeight};"
-      >
-      <iframe 
-        src="${mapEmbedUrl}" 
-        style="width: 82%; height: 300px; border: 0; border-radius: 12px;" 
-        allowfullscreen 
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"
-      ></iframe>
-    `;
-
-    modal.style.display = "flex";
-  }
-
-  function closeModal() {
-    const modal = document.getElementById("imageModal");
-    modal.style.display = "none";
-    document.getElementById("modalContent").innerHTML = '';
-  }
-  
-</script>
 
 
     <hr class="divider" />
@@ -908,33 +951,36 @@
   background-image: 
     linear-gradient(to bottom, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 10%),
     url('https://lh3.googleusercontent.com/d/1ycy414uFW6tNlMoNzVChPhe6JkGOxa-Y=w1000');
-  background-size: 100% auto;
-  background-position: center;
+  background-size: contain; /* Aqui ajusta para não cortar a imagem */
+  background-position: center center; /* Centraliza a imagem */
   background-repeat: no-repeat;
   z-index: 0;
+  will-change: transform;
+  transition: transform 0.5s linear;
 }
-
-
-    
 
     #sobre > img,
     #sobre .about-text {
       position: relative;
       z-index: 2;
     }
-
-
-    
   </style>
 
+  <script>
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+      const bg = document.querySelector('.background-image');
+      const offset = scrollY * -0.05; // Inverte a direção para a imagem subir
+      bg.style.transform = `translateY(${offset}px)`;
+    });
+  </script>
+
   <div class="background-image"></div>
-  
 
   <img
     src="https://lh3.googleusercontent.com/d/1ETy848krfPZw6lPsd0tC54gA76DDKKoz=w1000"
     alt="Isaias Oliveira Santos"
   />
-  
 
   <div class="about-text">
     <h2>
@@ -947,16 +993,14 @@
     <p>Não capturo apenas o que vejo —  procuro o que se sente. <i> A luz que nasce, o vento que toca, 
       a vastidão que serena a alma, o pôr do sol que aquieta</i> — e o instante onde tudo cessa para que algo novo comece.</p>
       
-      <p><b>Cada imagem é uma metáfora do existir.</b></p>
-      <p>Componho fragmentos do tempo que acompanham o ciclo da vida e convidam à pausa, à contemplação, ao instante vivido com alma.</p>
+    <p><b>Cada imagem é uma metáfora do existir.</b></p>
+    <p>Componho fragmentos do tempo que acompanham o ciclo da vida e convidam à pausa, à contemplação, ao instante vivido com alma.</p>
 
     <p><b>Sou um observador da vida</b></p>
   </div>
 </section>
-
-
-
 <!-- FIM SOBRE MIM + IMAGEM DE FUNDO HTML+CSS -->
+
  
     <hr class="divider" />
 
@@ -1390,6 +1434,7 @@
     });
 </script>
 
+
   
   
   
@@ -1498,39 +1543,6 @@
     
 <!-- INICIO DO CONTEÚDO DA GALERIA 1 -->
  
-
-<!-- FLEXBOX5 -->
-<section class="video-comentario">
-
-  
-  
-  <div class="video-container">
-    <video autoplay muted loop>
-      <source src="1.mp4" type="video/mp4" />
-    </video>
-  </div>
-
-  <div class="video-box">
-    <div class="video-container">
-      <video autoplay muted loop>
-        <source src="3.mp4" type="video/mp4" />
-      </video>
-    </div>
-  </div>
-
-  <div class="video-box">
-    <div class="video-container">
-      <video autoplay muted loop>
-        <source src="5.mp4" type="video/mp4" />
-      </video>
-    </div>
-  </div>
-
-
-</section>
-
-<!--FIM FLEXBOX5 -->
-
 
 <!-- FIM DO CONTEÚDO DA GALERIA 1 -->
 
@@ -1712,34 +1724,7 @@
 <!-- FIM FLEXBOX3 -->
 
 
-<!-- inicio carrosel mangal das garças -->
-<!-- INÍCIO DO CARROSSEL -->
-<div class="meu-carrossel-wrapper">
-  <div class="meu-carrossel">
-    <div class="meu-card-container">
-      <img src="https://lh3.googleusercontent.com/d/1eSaC1R0Yozix-K9SSxYA58LGu2Aovd2R=w1000" alt="Imagem 1">
-    </div>
-    <div class="meu-card-container">
-      <img src="https://lh3.googleusercontent.com/d/1AH_jsLFxzcFwptWSYitlLtXvtEqTBWfb=w1000" alt="Imagem 2">
-    </div>
-    <div class="meu-card-container">
-      <img src="https://lh3.googleusercontent.com/d/1fsuMHAezkISTgs8lrMUEp3b8_HzmvAbU=w1000" alt="Imagem 3">
-    </div>
-    <div class="meu-card-container">
-      <img src="https://lh3.googleusercontent.com/d/1TPaXfSBCteTUsIrenlMPy7dyJD1DF2_d=w1000" alt="Imagem 4">
-    </div>
-    <div class="meu-card-container">
-      <img src="https://lh3.googleusercontent.com/d/1giqciEHeQNKmyMVoIXsrwBtLDvCAl5qH=w1000" alt="Imagem 5">
-    </div>
-  </div>
-  <!-- Controles -->
-  <div class="meu-controle">
-    <button id="prev" onclick="moverCarrossel(-1)">&#10094;</button>
-    <button id="next" onclick="moverCarrossel(1)">&#10095;</button>
-  </div>
-</div>
 
-<!-- FIM DO CARROSSEL -->
 
 <style>
   .meu-carrossel-wrapper {
@@ -1953,11 +1938,7 @@
 </h2>
 
 </section>
-
-
-
 <div id="typed-text"></div>
-
 
 
     <hr class="divider" />
@@ -2151,13 +2132,10 @@
 <!-- FontAwesome Script -->
 <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 
-
-      
-    
-
     </script>
     
-    
   </body>
+
+  
 </html>
 
