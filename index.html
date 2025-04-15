@@ -143,6 +143,11 @@ nav.hidden {
 </style>
 
 <script>
+// Mostra a navbar logo ao carregar a página
+window.addEventListener("load", () => {
+  navbar.classList.add("show");
+});
+  
   function scrollToSection(id) {
     const element = document.getElementById(id);
     if (!element) return;
