@@ -968,7 +968,7 @@ html {
   height: 100%;
   background-image: 
     linear-gradient(to bottom, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 10%),
-    url('https://lh3.googleusercontent.com/d/1ycy414uFW6tNlMoNzVChPhe6JkGOxa-Y=w1000');
+    url('https://lh3.googleusercontent.com/d/1ycy414uFW6tNlMoNzVChPhe6JkGOxa-Y=w2000');
   background-size: contain; /* Aqui ajusta para não cortar a imagem */
   background-position: center center; /* Centraliza a imagem */
   background-repeat: no-repeat;
@@ -996,7 +996,7 @@ html {
   <div class="background-image"></div>
 
   <img
-    src="https://lh3.googleusercontent.com/d/1ETy848krfPZw6lPsd0tC54gA76DDKKoz=w1000"
+    src="https://lh3.googleusercontent.com/d/1ETy848krfPZw6lPsd0tC54gA76DDKKoz=w2000"
     alt="Isaias Oliveira Santos"
   />
 
@@ -1029,11 +1029,14 @@ html {
     </h2>
 
 <!-- TESTE FLEXBOX PRIMEIRO -->
-<section>
+<section style="position: relative; min-height: 160vh;">
+  <!-- Foto de fundo com bordas arredondadas e sombreado abaixo -->
+  <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-image: url('https://lh3.googleusercontent.com/d/1dnDG1UbV2kg9hm9AqJS5jriAfgq9ZEs1=w3000'); background-size: contain; background-repeat: no-repeat; background-position: center 320px; border-radius: 30px; z-index: -1; box-shadow: 0px 25px 30px rgba(0, 0, 0, 0.3);"></div>
+
   <div class="video-comentario">
-    <div class="video-container">
+    <div class="video-container" style="overflow: hidden; border-radius: 20px; box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);">
       <!-- Substituindo o vídeo por uma imagem -->
-      <img src="https://lh3.googleusercontent.com/d/1rGt3cfoDAGFKnLdrX4p0QyhoY9awePGX=w1000" alt="Peixe" style="width: 100%; height: auto;" />
+      <img src="https://lh3.googleusercontent.com/d/1rGt3cfoDAGFKnLdrX4p0QyhoY9awePGX=w1000" alt="Peixe" style="width: 100%; height: auto; display: block;" />
     </div>
 
     <div class="video-container">
@@ -1045,12 +1048,20 @@ html {
     <div class="comentario">
       <h2>Caminhada na Floresta</h2>
       <p>Respire fundo.</p>
-      <p>Sinta a alma do lugar. Muitos vídeos mostram paisagens, mas poucos fazem você perceber o vento, o silêncio, a luz tocando a pele.</p>
-      <p>No coração pulsante de Belém, o Parque do Utinga é um santuário amazônico onde o silêncio da alma é preenchido pelos sons da natureza. Um santuário onde a natureza se impõe com delicadeza — e tudo convida à contemplação. Correr ao amanhecer, pedalar entre sombras, caminhar em silêncio. Entre passos e pausas, a respiração ecoa pela mata — como se a floresta respirasse junto.</p>
-      <p>Parque do Utinga – Belém, Pará</p>
+      <p>No coração de Belém, o Parque do Utinga é um santuário amazônico onde o silêncio da alma é preenchido pelos 
+        sons da natureza. Um santuário onde a natureza se impõe com delicadeza — e tudo convida à contemplação. </p>
+      <p>Correr ao amanhecer, pedalar entre sombras, caminhar em silêncio — entre pausas e passos, a floresta parece respirar junto. 
+        A poucos minutos dali, o Mangal das Garças revela outro ritmo: águas calmas, garças imóveis e o tempo que parece andar 
+        descalço.</p>
+      <p>Nas trilhas montanhosas de Minas Gerais, o vento é mais frio, o céu mais perto. Cada passo entre as pedras é um encontro 
+        com o essencial — e o silêncio, ali, também tem voz.</p>
     </div>
   </div>
 </section>
+
+
+
+
 
 
     
@@ -1677,7 +1688,7 @@ html {
     left: 20px;
     right: 20px;
     bottom: 20px;
-    background-image: url('https://lh3.googleusercontent.com/d/1R8Y44LSmXBvAe3PVRsbGMs8L7ZABptNq=w1000');
+    background-image: url('https://lh3.googleusercontent.com/d/1R8Y44LSmXBvAe3PVRsbGMs8L7ZABptNq=w2000');
     background-size: cover;
     background-position: center;
     z-index: 0;
@@ -2157,3 +2168,4 @@ html {
 
   
 </html>
+
