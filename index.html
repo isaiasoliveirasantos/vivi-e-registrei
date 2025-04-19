@@ -1068,8 +1068,14 @@ html {
 
 <!-- TESTE FLEXBOX PRIMEIRO -->
 <section style="position: relative; min-height: 160vh;">
-  <!-- Foto de fundo com bordas arredondadas e sombreado abaixo -->
-  <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-image: url('https://lh3.googleusercontent.com/d/1dnDG1UbV2kg9hm9AqJS5jriAfgq9ZEs1=w3000'); background-size: contain; background-repeat: no-repeat; background-position: center 320px; border-radius: 30px; z-index: -1; box-shadow: 0px 25px 30px rgba(0, 0, 0, 0.3);"></div>
+  <!-- Imagem de fundo como <img> com sombra aplicada -->
+  <div style="overflow: visible; border-radius: 30px; margin-bottom: 40px;">
+    <img 
+      src="https://lh3.googleusercontent.com/d/1dnDG1UbV2kg9hm9AqJS5jriAfgq9ZEs1=w3000" 
+      alt="Foto de fundo"
+      style="width: 100%; height: auto; display: block; border-radius: 30px; box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.5);"
+    />
+  </div>
 
   <div class="video-comentario">
     <div class="video-container" style="overflow: hidden; border-radius: 20px; box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);">
@@ -1096,6 +1102,7 @@ html {
     </div>
   </div>
 </section>
+
 
 
 
