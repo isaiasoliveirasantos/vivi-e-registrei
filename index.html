@@ -29,21 +29,44 @@
   </div>
 </nav>
 
+<!-- HAMBÚRGUER PARA MOBILE -->
+<div class="mobile-nav-toggle" id="mobile-toggle">
+  <div class="bar"></div>
+  <div class="bar"></div>
+  <div class="bar"></div>
+</div>
+
+<div class="mobile-nav" id="mobile-nav">
+  <a href="#" onclick="scrollToTop(); closeMobileNav(); return false;">Início</a>
+  <a href="sobre" onclick="scrollToPosition(1194); closeMobileNav(); return false;">Sobre</a>
+  <div class="mobile-submenu">
+    <span>Portfólio</span>
+    <ul>
+      <li><a href="#" onclick="scrollToSection('horizonte'); closeMobileNav(); return false;">Onde o horizonte encontra a alma</a></li>
+      <li><a href="#" onclick="scrollToSection('cidade'); closeMobileNav(); return false;">Paz no intervalo do caos</a></li>
+      <li><a href="#" onclick="scrollToSection('almas'); closeMobileNav(); return false;">Almas silenciosas em movimento</a></li>
+      <li><a href="#" onclick="scrollToSection('detalhes'); closeMobileNav(); return false;">Detalhes que Falam</a></li>
+      <li><a href="#" onclick="scrollToSection('luz'); closeMobileNav(); return false;">Luz & Silêncio</a></li>
+    </ul>
+  </div>
+  <a href="#contato" onclick="closeMobileNav()">Contato</a>
+</div>
+
 <style>
   /* BARRA DE NAVEGAÇÃO */
   nav {
     position: fixed;
-    top: 0.3125rem; /* 5px */
+    top: 0.3125rem;
     left: 50%;
-    transform: translate(-50%, 0.625rem) scale(0.7); /* 10px */
-    width: calc(30% - 2.5rem); /* 40px */
-    max-width: 62.5rem; /* 1000px */
+    transform: translate(-50%, 0.625rem) scale(0.7);
+    width: 26rem;
+    max-width: 62.5rem;
     background: rgba(255, 255, 255, 0.6);
     backdrop-filter: blur(10px);
-    padding: 0.3125rem 0; /* 5px */
-    border-radius: 1.25rem; /* 20px */
+    padding: 0.3125rem 0;
+    border-radius: 1.25rem;
     border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-    box-shadow: 0 0.3125rem 0.75rem rgba(0, 0, 0, 0.05); /* 5px 12px */
+    box-shadow: 0 0.3125rem 0.75rem rgba(0, 0, 0, 0.05);
     z-index: 999;
     transition: transform 0.4s ease, opacity 0.4s ease;
     opacity: 0;
@@ -58,7 +81,7 @@
 
   nav.hidden {
     opacity: 0;
-    transform: translate(-50%, -1.5625rem) scale(0.6); /* 25px */
+    transform: translate(-50%, -1.5625rem) scale(0.6);
     pointer-events: none;
   }
 
@@ -66,19 +89,19 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 1.375rem; /* 22px */
+    gap: 1.375rem;
     background: none;
   }
 
   nav a {
     font-family: SF Pro Text, SF Pro Icons, Helvetica Neue, Helvetica, Arial, sans-serif;
-    font-size: 0.78125rem; /* 12.5px */
+    font-size: 0.78125rem;
     font-weight: 500;
     color: rgba(0, 0, 0, 0.7);
     transition: background 0.3s ease, color 0.3s ease;
     text-decoration: none;
-    padding: 0.3125rem 1.4625rem; /* 5px 23.4px */
-    border-radius: 0.9375rem; /* 15px */
+    padding: 0.3125rem 1.4625rem;
+    border-radius: 0.9375rem;
   }
 
   nav a:hover {
@@ -106,31 +129,31 @@
     left: 0;
     background: rgba(255, 255, 255, 1);
     backdrop-filter: blur(20px);
-    box-shadow: 0 0.5rem 0.9375rem rgba(0, 0, 0, 0.1); /* 8px 15px */
+    box-shadow: 0 0.5rem 0.9375rem rgba(0, 0, 0, 0.1);
     list-style: none;
     padding: 0;
-    border-radius: 0 0 1.25rem 1.25rem; /* 20px */
-    min-width: 11.25rem; /* 180px */
+    border-radius: 0 0 1.25rem 1.25rem;
+    min-width: 11.25rem;
     z-index: 998;
     margin-top: 0;
     transition: max-height 0.4s ease, padding 0.4s ease;
   }
 
   .portfolio:hover .submenu {
-    max-height: 31.25rem; /* 500px */
-    padding: 0.3125rem 0; /* 5px */
+    max-height: 31.25rem;
+    padding: 0.3125rem 0;
   }
 
   .submenu li {
-    padding: 0.3125rem 1.25rem; /* 5px 20px */
+    padding: 0.3125rem 1.25rem;
   }
 
   .submenu a {
     color: rgba(0, 0, 0, 0.7);
     font-weight: normal;
-    padding: 0.3125rem 1rem; /* 5px 16px */
+    padding: 0.3125rem 1rem;
     text-decoration: none;
-    border-radius: 0.75rem; /* 12px */
+    border-radius: 0.75rem;
     display: block;
     transition: background 0.3s ease, color 0.3s ease;
   }
@@ -139,15 +162,77 @@
     background: rgba(0, 0, 0, 0.1);
     color: rgba(0, 0, 0, 1);
   }
+
+  /* HAMBÚRGUER */
+  .mobile-nav-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    width: 2rem;
+    height: 2rem;
+    z-index: 1000;
+    cursor: pointer;
+  }
+  .mobile-nav-toggle .bar {
+    width: 90%;
+    height: 3px;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+  }
+
+  .mobile-nav {
+    display: none;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(12px);
+    width: 100%;
+    height: 100%;
+    padding: 4rem 2rem;
+    z-index: 999;
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  }
+
+  .mobile-nav a,
+  .mobile-submenu span {
+    font-family: SF Pro Text, Helvetica, sans-serif;
+    color: rgba(0, 0, 0, 0.8);
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    text-decoration: none;
+    display: block;
+  }
+
+  .mobile-submenu ul {
+    margin-top: 0.5rem;
+    padding-left: 1rem;
+  }
+
+  .mobile-submenu li {
+    margin-bottom: 0.5rem;
+  }
+
+  @media (max-width: 768px) {
+    .mobile-nav-toggle {
+      display: flex;
+    }
+    .nav-links {
+      display: none !important;
+    }
+  }
 </style>
 
 <script>
-
-// Mostra a navbar logo ao carregar a página
-window.addEventListener("load", () => {
-  navbar.classList.add("show");
-});
-
+  window.addEventListener("load", () => {
+    navbar.classList.add("show");
+  });
 
   function scrollToSection(id) {
     const element = document.getElementById(id);
@@ -164,41 +249,57 @@ window.addEventListener("load", () => {
     });
   }
 
-  let lastScrollTop = 0;
-const navbar = document.getElementById("navbar");
-let hideTimeout = null;
-let isHiding = false;
-
-const delayToHide = 300;
-const delayToShow = 0;
-
-window.addEventListener("scroll", function () {
-  const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-
-  if (currentScroll > lastScrollTop) {
-    // ROLANDO PARA BAIXO
-    if (!isHiding) {
-      clearTimeout(hideTimeout);
-      hideTimeout = setTimeout(() => {
-        navbar.classList.remove("show");
-        navbar.classList.add("hidden");
-        isHiding = false;
-      }, delayToHide);
-      isHiding = true;
-    }
-  } else {
-    // ROLANDO PARA CIMA
-    clearTimeout(hideTimeout);
-    navbar.classList.remove("hidden");
-    navbar.classList.add("show");
-    isHiding = false;
+  function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
-}, false);
-</script>
+  function scrollToPosition(position) {
+    window.scrollTo({ top: position, behavior: 'smooth' });
+  }
 
+  function closeMobileNav() {
+    document.getElementById('mobile-nav').style.display = 'none';
+  }
+
+  let lastScrollTop = 0;
+  const navbar = document.getElementById("navbar");
+  let hideTimeout = null;
+  let isHiding = false;
+
+  const delayToHide = 300;
+  const delayToShow = 0;
+
+  window.addEventListener("scroll", function () {
+    const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+
+    if (currentScroll > lastScrollTop) {
+      if (!isHiding) {
+        clearTimeout(hideTimeout);
+        hideTimeout = setTimeout(() => {
+          navbar.classList.remove("show");
+          navbar.classList.add("hidden");
+          isHiding = false;
+        }, delayToHide);
+        isHiding = true;
+      }
+    } else {
+      clearTimeout(hideTimeout);
+      navbar.classList.remove("hidden");
+      navbar.classList.add("show");
+      isHiding = false;
+    }
+
+    lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+  }, false);
+
+  document.getElementById('mobile-toggle').addEventListener('click', () => {
+    const nav = document.getElementById('mobile-nav');
+    const isOpen = nav.style.display === 'flex';
+    nav.style.display = isOpen ? 'none' : 'flex';
+  });
+</script>
 <!-- FIM BARRA DE NAVEGAÇÃO -->
+
 
   
 
@@ -222,7 +323,7 @@ body {
       }
 
 
-/*CSS DO TITULO PRINCIPAL*/
+/*inicio CSS DO TITULO PRINCIPAL*/
  .main-title {
         text-align: center;
         font-size: 2.05em; /* Define o tamanho da fonte */
@@ -231,7 +332,29 @@ body {
         color: #333;
       }
 
-/* CSS Subtítulo Principal */
+      .main-title {
+    text-align: center;
+    font-size: 2.05em; /* Define o tamanho da fonte */
+    font-weight: 500; /* Define o peso da fonte */
+    margin: 60px 0 15px; /* Define a margem */
+    color: #333;
+  }
+
+  /* Ajuste para dispositivos móveis */
+  @media (max-width: 768px) {
+    .main-title {
+      font-size: 1.8em; /* Diminui o tamanho da fonte em dispositivos móveis */
+    }
+  }
+
+  @media (max-width: 480px) {
+    .main-title {
+      font-size: 1.5em; /* Diminui ainda mais em telas menores */
+    }
+  }
+/*fim CSS DO TITULO PRINCIPAL*/
+
+/* inicio CSS Subtítulo Principal */
 .subtitle {
   font-size: 12px; /* Fonte menor para se assemelhar a um comentário */
   color: #565656; /* Cor suave para dar o aspecto de um comentário discreto */
@@ -309,6 +432,19 @@ body {
   .line-break {
     display: block;
   }
+
+  /* Ajuste para dispositivos móveis */
+  @media (max-width: 768px) {
+    #typed-text {
+      font-size: 0.7em; /* Diminui o tamanho da fonte em dispositivos móveis */
+    }
+  }
+
+  @media (max-width: 480px) {
+    #typed-text {
+      font-size: 0.7em; /* Diminui ainda mais em telas menores */
+    }
+  }
 </style>
 
 <div class="typed-text-container">
@@ -352,6 +488,7 @@ body {
   });
 </script>
 <!-- FIM SUBTITULO + ANIMAÇÃO -->
+
 
 
 
