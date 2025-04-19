@@ -6,7 +6,7 @@
     <title>Vivi. Registrei. Agora, você vê</title>
     
     <link rel="icon" type="image/png" href="https://lh3.googleusercontent.com/d/11lWzq0SBER6-uziZDw5zU_nAAGwc5zik=w1000">
-    <meta name="viewport" content="width=1024, initial-scale=1"> <!-- ISSO TRAVA A PAGINA SEMPRE WEB PARA MOBILE -->
+    
 <!-- INÍCIO BARRA DE NAVEGAÇÃO -->
 <nav id="navbar">
   <div class="nav-links">
@@ -32,62 +32,60 @@
 <style>
   /* BARRA DE NAVEGAÇÃO */
   nav {
-  position: fixed;
-  top: 5px;
-  left: 50%;
-  transform: translate(-50%, 10px) scale(0.7); /* Inicia pequeno e abaixo */
-  width: calc(30% - 40px);
-  max-width: 1000px;
-  background: rgba(255, 255, 255, 0.6);
-  backdrop-filter: blur(10px);
-  padding: 5px 0;
-  border-radius: 20px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.05);
-  z-index: 999;
-  transition: transform 0.4s ease, opacity 0.4s ease;
-  opacity: 0;
-  pointer-events: none;
-}
+    position: fixed;
+    top: 0.3125rem; /* 5px */
+    left: 50%;
+    transform: translate(-50%, 0.625rem) scale(0.7); /* 10px */
+    width: calc(30% - 2.5rem); /* 40px */
+    max-width: 62.5rem; /* 1000px */
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(10px);
+    padding: 0.3125rem 0; /* 5px */
+    border-radius: 1.25rem; /* 20px */
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0 0.3125rem 0.75rem rgba(0, 0, 0, 0.05); /* 5px 12px */
+    z-index: 999;
+    transition: transform 0.4s ease, opacity 0.4s ease;
+    opacity: 0;
+    pointer-events: none;
+  }
 
-nav.show {
-  transform: translate(-50%, 0px) scale(1); /* Sobe e cresce lateralmente */
-  opacity: 1;
-  pointer-events: auto;
-}
+  nav.show {
+    transform: translate(-50%, 0rem) scale(1);
+    opacity: 1;
+    pointer-events: auto;
+  }
 
-nav.hidden {
-  opacity: 0;
-  transform: translate(-50%, -25px) scale(0.6); /* Sobe e encolhe lateralmente */
-  pointer-events: none;
-}
-
+  nav.hidden {
+    opacity: 0;
+    transform: translate(-50%, -1.5625rem) scale(0.6); /* 25px */
+    pointer-events: none;
+  }
 
   .nav-links {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 22px;
+    gap: 1.375rem; /* 22px */
     background: none;
   }
 
   nav a {
     font-family: SF Pro Text, SF Pro Icons, Helvetica Neue, Helvetica, Arial, sans-serif;
-    font-size: 12.5px;
+    font-size: 0.78125rem; /* 12.5px */
     font-weight: 500;
-    color: rgba(0, 0, 0, 0.7); /* preto mais suave */
+    color: rgba(0, 0, 0, 0.7);
     transition: background 0.3s ease, color 0.3s ease;
     text-decoration: none;
-    padding: 5px 23.4px;
-    border-radius: 15px;
+    padding: 0.3125rem 1.4625rem; /* 5px 23.4px */
+    border-radius: 0.9375rem; /* 15px */
   }
 
   nav a:hover {
     background: rgba(0, 0, 0, 0.05);
-    color: rgba(0, 0, 0, 1); /* preto 100% */
+    color: rgba(0, 0, 0, 1);
   }
 
-  /* Estilos específicos para o Portfólio */
   .portfolio {
     position: relative;
     display: flex;
@@ -108,38 +106,38 @@ nav.hidden {
     left: 0;
     background: rgba(255, 255, 255, 1);
     backdrop-filter: blur(20px);
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0.5rem 0.9375rem rgba(0, 0, 0, 0.1); /* 8px 15px */
     list-style: none;
     padding: 0;
-    border-radius: 0 0 20px 20px;
-    min-width: 180px;
+    border-radius: 0 0 1.25rem 1.25rem; /* 20px */
+    min-width: 11.25rem; /* 180px */
     z-index: 998;
     margin-top: 0;
     transition: max-height 0.4s ease, padding 0.4s ease;
   }
 
   .portfolio:hover .submenu {
-    max-height: 500px;
-    padding: 5px 0;
+    max-height: 31.25rem; /* 500px */
+    padding: 0.3125rem 0; /* 5px */
   }
 
   .submenu li {
-    padding: 5px 20px;
+    padding: 0.3125rem 1.25rem; /* 5px 20px */
   }
 
   .submenu a {
-    color: rgba(0, 0, 0, 0.7); /* preto mais suave */
+    color: rgba(0, 0, 0, 0.7);
     font-weight: normal;
-    padding: 5px 16px;
+    padding: 0.3125rem 1rem; /* 5px 16px */
     text-decoration: none;
-    border-radius: 12px;
+    border-radius: 0.75rem; /* 12px */
     display: block;
     transition: background 0.3s ease, color 0.3s ease;
   }
 
   .submenu a:hover {
     background: rgba(0, 0, 0, 0.1);
-    color: rgba(0, 0, 0, 1); /* preto total no hover */
+    color: rgba(0, 0, 0, 1);
   }
 </style>
 
@@ -285,10 +283,10 @@ body {
       color: #565656; /* Começa com a cor original do texto (preto) */
     }
     50% {
-      color: #99360f; /* Azul no meio da animação */
+      color: #99360f; /* Cor no meio da animação */
     }
     100% {
-      color: #565656; /* Retorna à cor original (preto) */
+      color: #565656; /* Retorna à cor original */
     }
   }
 
@@ -298,11 +296,19 @@ body {
     align-items: center;
     height: 7vh;
   }
-  
 
+  .highlight {
+    color: #99360f; /* Cor que o texto vai mudar ao passar o mouse */
+  }
 
+  .word {
+    display: inline-block;
+    transition: color 0.3s ease; /* Transição suave ao passar o mouse */
+  }
 
-  
+  .line-break {
+    display: block;
+  }
 </style>
 
 <div class="typed-text-container">
@@ -311,9 +317,43 @@ body {
 
 <script>
   const text = "Capturo momentos únicos e os transformo em fotografias que carregam um silêncio, uma paisagem, uma história.\nExiste vida lá fora. A natureza, o sol, as águas e os animais pedem nossa conexão. Respirar e viver é o que nos torna parte dela.";
-  document.getElementById("typed-text").innerHTML = text.replace(/\n/g, "<br>");
+
+  // Função para dividir o texto em palavras e aplicar a tag <span> em cada uma
+  function splitTextIntoWords(text) {
+    const lines = text.split('\n'); // Divide o texto em linhas
+    return lines.map(line => {
+      return line.split(/\s+/).map(word => {
+        return `<span class="word">${word}</span>`; // Envolve cada palavra com <span>
+      }).join(' ') + `<span class="line-break"></span>`; // Adiciona uma quebra de linha
+    }).join(''); // Junta as linhas novamente
+  }
+
+  const typedText = document.getElementById("typed-text");
+  typedText.innerHTML = splitTextIntoWords(text);
+
+  // Ativa a animação e garante que o texto fique visível após a inserção
+  setTimeout(() => {
+    typedText.style.opacity = "1"; // Garantir que o texto fique visível
+    typedText.style.transform = "translateY(0)";
+    typedText.style.animation = "slideIn 3s ease-out forwards"; // Ativa a animação de entrada
+  }, 50);
+
+  // Adiciona o efeito de hover nas palavras
+  typedText.addEventListener('mousemove', function(event) {
+    const words = document.querySelectorAll('.word'); // Seleciona todas as palavras
+    words.forEach(word => {
+      word.classList.remove('highlight'); // Remove a classe highlight de todas as palavras
+    });
+
+    const target = event.target;
+    if (target && target.classList.contains('word')) {
+      target.classList.add('highlight'); // Adiciona a classe highlight à palavra sob o mouse
+    }
+  });
 </script>
 <!-- FIM SUBTITULO + ANIMAÇÃO -->
+
+
 
 <!--INICIO GALERIA 1-->
 <section id="galeria" class="gallery fade show">
@@ -944,9 +984,7 @@ html {
   
 }
 
-.Titulo2Horizonte strong {
-  font-weight: normal; /* Remove o negrito do strong */
-}
+
 </style>
 
 
@@ -1053,7 +1091,7 @@ html {
       <p>Correr ao amanhecer, pedalar entre sombras, caminhar em silêncio — entre pausas e passos, a floresta parece respirar junto. 
         A poucos minutos dali, o Mangal das Garças revela outro ritmo: águas calmas, garças imóveis e o tempo que parece andar 
         descalço.</p>
-      <p>Nas trilhas montanhosas de Minas Gerais, o vento é mais frio, o céu mais perto. Cada passo entre as pedras é um encontro 
+      <p>Nas trilhas montanhosas de Minas Gerais, no Pico de Itacolomi próximo a Ouro Preto, o vento é mais frio, o céu mais perto. Cada passo entre as pedras é um encontro 
         com o essencial — e o silêncio, ali, também tem voz.</p>
     </div>
   </div>
@@ -1411,7 +1449,7 @@ html {
     /* Foto de fundo */
     .bloco-flex {
       position: relative;
-      background-image: url('https://lh3.googleusercontent.com/d/1M3af42EN5nDtUtfpm-5FHje3YI7L7H1t=w2000');
+      background-image: url('https://lh3.googleusercontent.com/d/1M3af42EN5nDtUtfpm-5FHje3YI7L7H1t=w3000');
       background-size: cover;
       background-position: center top;
       background-repeat: no-repeat;
@@ -1464,9 +1502,9 @@ html {
 </script>
 
 
+<!-- INICIO GRID - FOTOS CIDADE -->  
   
   
-  
 
 
 
@@ -1475,9 +1513,8 @@ html {
 
 
 
+<!-- FIM GRID - FOTOS CIDADE -->
 
-
-<hr class="divider" />
 
 
 
@@ -1709,7 +1746,7 @@ html {
     max-width: 100%; /* A faixa pode ocupar até 100% da largura do container */
     width: 500px; /* Ajuste manual da largura da faixa. Substitua 500px pelo valor desejado */
     height: 70%; /* ajuste conforme o tamanho da faixa desejada */
-    background: rgba(255, 255, 255, 0.5); /* barra translúcida */
+    background: rgba(255, 255, 255, 0.3); /* barra translúcida */
     backdrop-filter: blur(4px); /* Efeito vidro */
     -webkit-backdrop-filter: blur(4px); /* Compatibilidade Safari */
     border-radius: 20px;
@@ -1923,28 +1960,63 @@ html {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
   </section>
 
 </section>
     <hr class="divider" />
     <section id="luz">
-    <h2 class="Titulo2Horizonte">
-      <strong>Luz & Silêncio</strong>
-    </h2>
 
+ <!-- INICIO TESTE TITULO COM FOTO - LUZ & SILENCIO -->
+
+ <div class="bloco-com-imagem">
+  <img src="https://lh3.googleusercontent.com/d/1pfr1GzJ0NTa3DgSP9G-55qJoTQ25jwr3=w2000" alt="Fundo Luz & Silêncio" class="imagem-de-fundo">
+  <h2 class="Titulo2Horizontecomfundo">
+    <strong>Luz & Silêncio</strong>
+  </h2>
+</div>
+
+
+<style> 
+.bloco-com-imagem {
+  position: relative;
+  width: 100%;
+  overflow: visible; /* permite que a sombra ultrapasse */
+  border-radius: 30px;
+  margin-bottom: 40px; /* espaço extra abaixo da imagem */
+}
+
+.imagem-de-fundo {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 30px;
+  box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.5); /* sombra externa para baixo */
+}
+
+
+.Titulo2Horizontecomfundo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  padding: 20px;
+  color: white;
+  font-size: 2.5rem;
+  text-align: center;
+  z-index: 1;
+}
+
+</style>
+
+
+
+
+<!-- FIM TESTE TITULO COM FOTO - LUZ & SILENCIO -->
+
+    
+
+    
     <!-- FLEXBOX3 -->
     <section class="foto-comentario">
       <div class="foto-container">
