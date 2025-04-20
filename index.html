@@ -1154,7 +1154,7 @@ html {
       height: 100%;
       background-image: 
         linear-gradient(to bottom, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 10%),
-        url('https://lh3.googleusercontent.com/d/1ycy414uFW6tNlMoNzVChPhe6JkGOxa-Y=w2000');
+        url('https://lh3.googleusercontent.com/d/1ycy414uFW6tNlMoNzVChPhe6JkGOxa-Y=w3000');
       background-size: contain;
       background-position: center center;
       background-repeat: no-repeat;
@@ -1189,77 +1189,55 @@ html {
 
 #sobre > img {
   width: 100%; /* Define a largura da imagem de forma proporcional */
-  max-width: 100px; /* Tamanho máximo da imagem */
+  max-width: 120px; /* Tamanho máximo da imagem */
   height: auto; /* Mantém a proporção da imagem */
   flex-shrink: 0; /* Impede que a imagem diminua ainda mais */
-  margin-top: 120px; /* Ajuste o valor para descer a imagem (20px é apenas um exemplo, você pode aumentar ou diminuir conforme necessário) */
+  margin-top: 200px; /* Ajuste o valor para descer a imagem (20px é apenas um exemplo, você pode aumentar ou diminuir conforme necessário) */
 }
 
 #sobre .about-text {
     width: 70%; /* Define a largura do texto */
     font-size: 0.1rem; /* Diminui o tamanho do texto no mobile */
     line-height: 1.3;  /* Ajusta o espaçamento entre as linhas */
-    margin-top: 0; /* Remove margem superior */
+    margin-top: 150px; /* faz o texto descer */
     flex-grow: 1; /* Faz com que o texto ocupe o espaço restante */
   }
 
 #sobre .about-text h2 {
-  font-size: 1.2rem; /* Ajusta o tamanho do título */
+  font-size: 0.9rem; /* Ajusta o tamanho do título */
   text-align: left; /* Alinha o título à esquerda */
 }
 
 #sobre .about-text p {
-  font-size: 1rem; /* Ajusta o tamanho da fonte nos parágrafos */
-  line-height: 1.6;  /* Ajusta o espaçamento entre as linhas */
+  font-size: 0.7rem; /* Ajusta o tamanho da fonte nos parágrafos */
+  line-height: 1.5;  /* Ajusta o espaçamento entre as linhas */
 }
 }
 
 /* AJUSTES PARA TELA MUITO PEQUENA */
 @media (max-width: 520px) {
 #sobre > img {
-  width: 40%; /* Ajuste da largura da imagem para telas muito pequenas */
-  max-width: 120px; /* Ajuste para o tamanho máximo da imagem */
+  width: 30%; /* Ajuste da largura da imagem para telas muito pequenas */
+  max-width: 110px; /* Ajuste para o tamanho máximo da imagem */
+  margin-top: 160px; /* Ajuste o valor para descer a imagem
 }
 
 #sobre .about-text {
-  width: 55%; /* Ajuste para a largura do texto para telas menores */
-  font-size: 0.9rem; /* Ajusta o tamanho do texto */
+  width: 50%; /* Ajuste para a largura do texto para telas menores */
+  font-size: 0.2rem; /* Ajusta o tamanho do texto */
 }
 
 #sobre .about-text h2 {
-  font-size: 1rem; /* Ajuste do tamanho do título em telas menores */
+  font-size: 0.6rem; /* Ajuste do tamanho do título em telas menores */
 }
 
 #sobre .about-text p {
-  font-size: 0.9rem; /* Ajuste do tamanho da fonte nos parágrafos */
+  font-size: 0.56rem; /* Ajuste do tamanho da fonte nos parágrafos */
+  margin-top: -5px; /* faz o texto descer */
 }
 }
 
-/* AJUSTES PARA TELA MUITO, MUITO PEQUENA (menor que 380px) */
-@media (max-width: 380px) {
-#sobre {
-  flex-direction: row; /* Garante que o layout seja sempre lado a lado */
-  gap: 0.5rem; /* Menor espaço entre foto e texto */
-}
 
-#sobre > img {
-  width: 45%; /* Ajusta a largura da imagem para telas muito pequenas */
-  max-width: 100px; /* Limita o tamanho da foto */
-}
-
-#sobre .about-text {
-  width: 50%; /* Ajuste para a largura do texto em telas muito pequenas */
-  font-size: 0.8rem; /* Ajuste do tamanho do texto */
-}
-
-#sobre .about-text h2 {
-  font-size: 0.9rem; /* Ajuste do tamanho do título */
-}
-
-#sobre .about-text p {
-  font-size: 0.8rem; /* Ajuste do tamanho da fonte nos parágrafos */
-}
-}
 </style>
 
   <script>
@@ -1319,7 +1297,7 @@ html {
   <div class="video-comentario">
     <div class="video-container" style="overflow: hidden; border-radius: 20px; box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);">
       <!-- Substituindo o vídeo por uma imagem -->
-      <img src="https://lh3.googleusercontent.com/d/1rGt3cfoDAGFKnLdrX4p0QyhoY9awePGX=w1000" alt="Peixe" style="width: 100%; height: auto; display: block;" />
+      <img src="https://lh3.googleusercontent.com/d/1rGt3cfoDAGFKnLdrX4p0QyhoY9awePGX=w2000" alt="Peixe" style="width: 100%; height: auto; display: block;" />
     </div>
 
     <div class="video-container">
