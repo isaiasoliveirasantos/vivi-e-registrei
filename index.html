@@ -1861,6 +1861,30 @@ html {
     grid-row: 3 / 6;
     grid-column: 5 / 7;
   }
+  
+/* Responsividade para mobile */
+@media (max-width: 768px) {
+  .galeria-grid {
+    width: 90%; /* Ajusta a grid para 90% da largura da tela */
+  }
+  .galeria {
+    width: 100%; /* Ajusta a grid para 100% da largura da tela */
+    max-width: 100%; /* Garante que o máximo da grid seja 100% da tela */
+    gap: 0.5rem; /* Ajusta o espaço entre as imagens */
+  }
+}
+
+@media (max-width: 480px) {
+  .galeria-grid {
+    width: 95%; /* Ajusta a grid para 95% da largura da tela */
+  }
+  .galeria {
+    width: 100%; /* Ajusta a grid para 100% da largura da tela */
+    max-width: 100%; /* Garante que o máximo da grid seja 100% da tela */
+    gap: 0.3rem; /* Ajusta o espaço entre as imagens para ficar mais fino */
+  }
+}
+
 </style>
 
 <!-- FIM GRID - FOTOS CIDADE -->
