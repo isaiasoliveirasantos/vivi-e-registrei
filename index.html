@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vivi. Registrei. Agora, você vê</title>
     
-    <link rel="icon" type="image/png" href="https://lh3.googleusercontent.com/d/11lWzq0SBER6-uziZDw5zU_nAAGwc5zik=w1000">
+    <link rel="icon" href="Logotipo 2.png" type="image/png" sizes="48x48">
 
     
 <!-- INÍCIO BARRA DE NAVEGAÇÃO -->
@@ -333,18 +333,10 @@ body {
         color: #333;
       }
 
-      .main-title {
-    text-align: center;
-    font-size: 2.05em; /* Define o tamanho da fonte */
-    font-weight: 500; /* Define o peso da fonte */
-    margin: 60px 0 15px; /* Define a margem */
-    color: #333;
-  }
-
   /* Ajuste para dispositivos móveis */
   @media (max-width: 768px) {
     .main-title {
-      font-size: 1.8em; /* Diminui o tamanho da fonte em dispositivos móveis */
+      font-size: 1.8rv; /* Diminui o tamanho da fonte em dispositivos móveis */
     }
   }
 
@@ -357,7 +349,7 @@ body {
 
 /* inicio CSS Subtítulo Principal */
 .subtitle {
-  font-size: 12px; /* Fonte menor para se assemelhar a um comentário */
+  font-size: 12vw; /* Fonte menor para se assemelhar a um comentário */
   color: #565656; /* Cor suave para dar o aspecto de um comentário discreto */
   text-align: center;
   margin-top: 8px;
@@ -1166,6 +1158,13 @@ html {
       z-index: 2;
     }
 
+
+.about-text.about-glass h2 { /* TAMANHO DO TITULO H2 */
+  font-size: 2vw; /* Responsivo com base na largura da tela */
+  line-height: 1.3;
+}
+
+
     /* Responsividade para mobile */
     @media (max-width: 768px) {
       #sobre {
@@ -1266,7 +1265,7 @@ html {
     alt="Isaias Oliveira Santos"
   />
 
-  <div class="about-text">
+  <div class="about-text about-glass">
     <h2>
       <strong>Onde o Silêncio Mora</strong> <br />
       O mundo que respiro quando ninguém está olhando
