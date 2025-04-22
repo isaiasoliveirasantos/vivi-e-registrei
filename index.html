@@ -714,90 +714,132 @@ Existe vida lá fora. A natureza, o sol, as águas e os animais pedem nossa cone
   </div>
 </section>
 
-<style> 
-.campo-meio {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  height: 50vw;
-  background-color: #ebebeb;
-  position: relative;
-  overflow: hidden;
-}
-
-.titulos-laterais {
-  width: 60vw;
-  padding-right: 5vw;
-  position: absolute;
-  top: -60px;
-  right: 0;
-  font-size: 3vw;
-  font-family: 'Poppins', sans-serif;
-  line-height: 1;
-  color: #282828;
-}
-
-/* Estilo padrão apagado */
-.destaque-visual {
-  display: inline-block;
-  border-radius: 1000px;
-  padding: 6px 18px;
-  color: rgba(40, 40, 40, 0.2);
-  transition: all 0.3s ease;
-  font-size: 1em;
-  font-weight: 0;
-  background-color: transparent;
-  border: 2px solid transparent;
+<style>
+  .campo-meio {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 50vw;
+    background-color: #ebebeb;
+    position: relative;
+    overflow: hidden;
+  }
   
-}
-
-/* Quando passa o mouse */
-.destaque-visual:hover {
-  background-color: #d7ec77;
-  border-color: #d7ec77;
-  color: #282828;
-  font-size: 1.13em;
-  font-weight: 600; /* negrito mais forte */
-}
-
-.vivi2 {  
-  margin: 0;
-  font-size: 2vw;
-  top: 5vh;
-  left: 11vh;
-  font-weight: 400;
-  font-family: 'Poppins', sans-serif;
-  color: #282828;
-  position: relative;
-  z-index: 1;
-  max-width: 45vw;
-}
-
-.minhaexperiencia {  
-  margin: 0;
-  font-size: 1vw;
-  padding-left: 5vw;
-  padding-top: 8vw;
-  font-family: 'Poppins', sans-serif;
-  color: #282828;
-  position: relative;
-  z-index: 1;
-}
-
-.animated-titles h1 {
-  display: block; /* Alterado de flex para block */
-  margin: 0; /* Remove margem extra */
-  opacity: 0;
-  transform: translateY(20px) scale(0.95);
-  transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-/* Para diminuir o espaçamento entre as frases */
-.animated-titles h1 + h1 {
-  margin-top: 10px; /* Reduz o espaçamento entre as frases */
-}
-
-</style>
+  .titulos-laterais {
+    width: 60vw;
+    padding-right: 5vw;
+    position: absolute;
+    top: -60px;
+    right: 0;
+    font-size: 3vw;
+    font-family: 'Poppins', sans-serif;
+    line-height: 1;
+    color: #282828;
+  }
+  
+  .destaque-visual {
+    position: relative;
+    display: inline-block;
+    border-radius: 1000px;
+    padding: 6px 18px;
+    font-size: 1em;
+    transition: all 0.8s ease;
+    background-color: transparent;
+    color: rgba(40, 40, 40, 0.2);
+    border: 2px solid transparent;
+    overflow: hidden;
+  }
+  
+  .destaque-visual.ativa {
+    color: #282828;
+    font-size: 1.13em;
+    font-weight: 600;
+    background-color: transparent;
+    border-color: transparent;
+    position: relative;
+  }
+  
+  /* Onda nas bordas */
+  .destaque-visual.ativa::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #d7ec77;
+    border-radius: 1000px;
+    z-index: -1;
+    animation: waveBorder 2s infinite linear;
+  }
+  
+  /* Efeito de onda nas bordas */
+  @keyframes waveBorder {
+    0% {
+      transform: scaleX(1) scaleY(1);
+    }
+    25% {
+      transform: scaleX(1.05) scaleY(1.1);
+    }
+    50% {
+      transform: scaleX(1.1) scaleY(1.2);
+    }
+    75% {
+      transform: scaleX(1.05) scaleY(1.1);
+    }
+    100% {
+      transform: scaleX(1) scaleY(1);
+    }
+  }
+  
+  /* Quando passa o mouse */
+  .destaque-visual:hover {
+    background-color: #d7ec77;
+    border-color: #d7ec77;
+    color: #282828;
+    font-size: 1.13em;
+    font-weight: 600;
+  }
+  
+  .vivi2 {
+    margin: 0;
+    font-size: 2vw;
+    top: 5vh;
+    left: 11vh;
+    font-weight: 400;
+    font-family: 'Poppins', sans-serif;
+    color: #282828;
+    position: relative;
+    z-index: 1;
+    max-width: 45vw;
+  }
+  
+  .minhaexperiencia {
+    margin: 0;
+    font-size: 1vw;
+    padding-left: 5vw;
+    padding-top: 8vw;
+    font-family: 'Poppins', sans-serif;
+    color: #282828;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .animated-titles h1 {
+    display: block;
+    margin: 0;
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  
+  /* Para diminuir o espaçamento entre as frases */
+  .animated-titles h1 + h1 {
+    margin-top: 10px;
+  }
+  </style>
+  
+  
 
 <script>
   const frases = document.querySelectorAll('.animated-titles h1');
@@ -807,6 +849,8 @@ Existe vida lá fora. A natureza, o sol, as águas e os animais pedem nossa cone
     frase.style.transform = 'translateY(0) scale(1)';
   });
 </script>
+
+
 
 <!--FIM - CAMPO DAS APRESENTAÇÃO DAS OPÇÕES -->
 
