@@ -302,382 +302,535 @@
 <!-- FIM BARRA DE NAVEGAÇÃO -->
 
 
-  
+<!--INICIO - CAMPO INICIAL -->
 
-<!--Titulo e Subtítulo HTML E CSS-->     
-<style>
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
 
-/*CSS DO TITULO*/
-body {
-        font-family: Raleway, sans-serif;
-        margin: 0;
-        padding: 0;
-        background-color: #fafafa;
-        color: #555555;
-      }
+<section>
+  <div class="campo-inicial">
 
-      header h1 {
-        font-family: "Helvetica Neue", sans-serif;
-        font-weight: 300;
-        font-size: 1.8rem; /* Título principal no topo do site */
-        margin: 0;
-      }
+    <!-- Imagem como fundo decorativo -->
+    <div class="fundo-imagem"></div>
 
+    <h3 class="zaau">ZAAU°</h3>
+    <h2 class="ola">Olá,</h2>
+    <h2 class="tempo">Tempo.</h2>
 
-/*inicio CSS DO TITULO PRINCIPAL*/
- .main-title {
-        text-align: center;
-        font-size: 2.05em; /* Define o tamanho da fonte */
-        font-weight: 500; /* Define o peso da fonte */
-        margin: 60px 0 15px; /* Define a margem */
-        color: #333;
-      }
+  </div>
+</section>
 
-  /* Ajuste para dispositivos móveis */
-  @media (max-width: 768px) {
-    .main-title {
-      font-size: 1.8rv; /* Diminui o tamanho da fonte em dispositivos móveis */
-    }
+<style> 
+  html, body {
+    margin: 0;
+    padding: 0;
   }
 
-  @media (max-width: 480px) {
-    .main-title {
-      font-size: 1.5em; /* Diminui ainda mais em telas menores */
-    }
+  .campo-inicial {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 45vw;
+    background-color: #ebebeb;
+    position: relative;
+    overflow: hidden;
   }
-/*fim CSS DO TITULO PRINCIPAL*/
 
-/* inicio CSS Subtítulo Principal */
-.subtitle {
-  font-size: 12vw; /* Fonte menor para se assemelhar a um comentário */
-  color: #565656; /* Cor suave para dar o aspecto de um comentário discreto */
-  text-align: center;
-  margin-top: 8px;
-  font-weight: 300; /* Peso da fonte bem leve */
-  font-style: italic; /* Estilo itálico para o toque de comentário */
-  font-family: SF Pro Text, SF Pro Icons, Helvetica Neue, Helvetica, Arial, sans-serif;
-  letter-spacing: 0.5px; /* Espaçamento entre letras suave */
-  line-height: 0.9; /* Mantém o espaçamento para boa legibilidade */
-}
-</style>
+  .fundo-imagem {
+    position: absolute;
+    left: 55%;
+    top: -7vw;
+    transform: translateX(-50%);
+    width: 75vw;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    background-image: url('https://lh3.googleusercontent.com/d/1t0RgEN-UUVw0IkfnLOVjBACxAALSsk34=w3000');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 1;
+    pointer-events: none;
+    z-index: 0;
+  }
 
-<h1 id="home" class="main-title">Vivi. Registrei. Agora, você vê</h1>
-
-<!-- INICIO SUBTITULO + ANIMAÇÃO -->
-<style>
-  #typed-text {
-    font-family: 'Roboto', sans-serif;
+  .ola, .tempo {
+    margin: 0;
+    font-size: 8vw;
+    font-weight: 300;
     text-align: center;
-    font-size: 0.97em;
-    color: #565656; /* Começa com a cor original do texto */
-    margin-top: 8px;
-    font-weight: 320;
-    font-style: italic;
-    letter-spacing: 0.5px;
-    line-height: 1.6;
-    display: inline-block;
-    opacity: 0; /* Começa invisível */
-    transform: translateY(20px); /* Começa 20px abaixo da posição */
-    animation: slideIn 3s ease-out forwards, colorSweep 1s ease-in-out forwards;
+    font-family: 'Poppins', sans-serif;
+    position: relative;
+    z-index: 1;
   }
 
-  /* Animação de subir o texto e clarear */
-  @keyframes slideIn {
-    0% {
-      opacity: 0;
-      transform: translateY(30px); /* Começa abaixo */
-    }
-    100% {
-      opacity: 1; /* Vai ficando visível */
-      transform: translateY(0); /* Vai subindo até a posição original */
-    }
+  .ola {
+    padding-right: 45vw;
+    padding-top: 5vw;
   }
 
-  /* Animação de cor do texto */
-  @keyframes colorSweep {
-    0% {
-      color: #565656; /* Começa com a cor original do texto (preto) */
-    }
-    50% {
-      color: #99360f; /* Cor no meio da animação */
-    }
-    100% {
-      color: #565656; /* Retorna à cor original */
-    }
+  .tempo {
+    padding-left: 40vw;
   }
 
-  .typed-text-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 7vh;
-  }
-
-  .highlight {
-    color: #99360f; /* Cor que o texto vai mudar ao passar o mouse */
-  }
-
-  .word {
-    display: inline-block;
-    transition: color 0.3s ease; /* Transição suave ao passar o mouse */
-  }
-
-  .line-break {
-    display: block;
-  }
-
-  /* Ajuste para dispositivos móveis */
-  @media (max-width: 768px) {
-    #typed-text {
-      font-size: 0.7em; /* Diminui o tamanho da fonte em dispositivos móveis */
-    }
-  }
-
-  @media (max-width: 480px) {
-    #typed-text {
-      font-size: 0.7em; /* Diminui ainda mais em telas menores */
-    }
+  .zaau {  
+    margin: 0;
+    font-size: 1.3vw;
+    padding-left: 4vw;
+    padding-top: 3vw;
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: 0.5vw;
+    color: #282828;
+    position: relative;
+    z-index: 1;
   }
 </style>
 
-<div class="typed-text-container">
-  <div id="typed-text"></div>
-</div>
-
-<script>
-  const text = "Capturo momentos únicos e os transformo em fotografias que carregam um silêncio, uma paisagem, uma história.\nExiste vida lá fora. A natureza, o sol, as águas e os animais pedem nossa conexão. Respirar e viver é o que nos torna parte dela.";
-
-  // Função para dividir o texto em palavras e aplicar a tag <span> em cada uma
-  function splitTextIntoWords(text) {
-    const lines = text.split('\n'); // Divide o texto em linhas
-    return lines.map(line => {
-      return line.split(/\s+/).map(word => {
-        return `<span class="word">${word}</span>`; // Envolve cada palavra com <span>
-      }).join(' ') + `<span class="line-break"></span>`; // Adiciona uma quebra de linha
-    }).join(''); // Junta as linhas novamente
-  }
-
-  const typedText = document.getElementById("typed-text");
-  typedText.innerHTML = splitTextIntoWords(text);
-
-  // Ativa a animação e garante que o texto fique visível após a inserção
-  setTimeout(() => {
-    typedText.style.opacity = "1"; // Garantir que o texto fique visível
-    typedText.style.transform = "translateY(0)";
-    typedText.style.animation = "slideIn 3s ease-out forwards"; // Ativa a animação de entrada
-  }, 50);
-
-  // Adiciona o efeito de hover nas palavras
-  typedText.addEventListener('mousemove', function(event) {
-    const words = document.querySelectorAll('.word'); // Seleciona todas as palavras
-    words.forEach(word => {
-      word.classList.remove('highlight'); // Remove a classe highlight de todas as palavras
-    });
-
-    const target = event.target;
-    if (target && target.classList.contains('word')) {
-      target.classList.add('highlight'); // Adiciona a classe highlight à palavra sob o mouse
-    }
-  });
-</script>
-<!-- FIM SUBTITULO + ANIMAÇÃO -->
-
-
+<!--FIM - CAMPO INICIAL -->
 
 
 <!--INICIO GALERIA 1-->
 <section id="galeria" class="gallery fade show">
-    <figure onclick="openModal(
-        'https://lh3.googleusercontent.com/d/1RgONJDqYym0w3rvHkuXYx1FN8yPTSgyO=w2000',
-        'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3675.077397821107!2d-43.22410432388767!3d-22.98359407921186!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x997fd908d5b00f%3A0x5e5cfd6c2801a7c3!2sPraia%20do%20Leblon!5e0!3m2!1spt-BR!2sbr!4v1712398753000!5m2!1spt-BR!2sbr',
-        '89vh',
-        'Rio de Janeiro - Leblon'
-      )" class="gallery-item">
-      <img src="https://lh3.googleusercontent.com/d/1RgONJDqYym0w3rvHkuXYx1FN8yPTSgyO=w2000" alt="Rio de Janeiro - Leblon" />
-      <figcaption>Rio de Janeiro - Leblon</figcaption>
-    </figure>
-  
-    <figure onclick="openModal(
-        'https://lh3.googleusercontent.com/d/1vAIop-LwrkL0uJ19dEg5gdw8QN4Dp3ch=w1000',
-        'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1678.276779114176!2d-43.422279!3d-20.4737467!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xa38b002295d8c7%3A0x1fba9b3405e26323!2sCachoeira%20do%20Sibr%C3%A3o!5e0!3m2!1spt-BR!2sbr!4v1712400256563!5m2!1spt-BR!2sbr',
-        '87vh',
-        'Cachoeira Sibrao - Mariana - MG'
-      )">
-      <img src="https://lh3.googleusercontent.com/d/1vAIop-LwrkL0uJ19dEg5gdw8QN4Dp3ch=w1000" alt="Cachoeira Sibrao - Mariana - Minas Gerais" />
-      <figcaption>Cachoeira Sibrao - Mariana - Minas Gerais</figcaption>
-    </figure>
-  
-    <figure onclick="openModal(
-        'https://lh3.googleusercontent.com/d/1Rq1cor1yy74qLsBnGwwDpN-5duNMCyxc=w1000',
-        'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3974.065251631001!2d-48.4457018!3d-1.4256853!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x92a48b14df0b4c1d%3A0x19808db05d7d17b0!2sParque%20Estadual%20do%20Utinga%20Camillo%20Vianna!5e0!3m2!1spt-BR!2sbr!4v1712400434653!5m2!1spt-BR!2sbr',
-        '87vh',
-        'Parque do Utinga - Belém - PA'
-      )">
-      <img src="https://lh3.googleusercontent.com/d/1Rq1cor1yy74qLsBnGwwDpN-5duNMCyxc=w1000" alt="Parque do Utinga - Belém - Pará" />
-      <figcaption>Parque do Utinga - Belém - Pará</figcaption>
-    </figure>
-  </section>
-  
-  <div id="imageModal" style="
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
+  <figure onclick="openModal(
+      'https://lh3.googleusercontent.com/d/1RgONJDqYym0w3rvHkuXYx1FN8yPTSgyO=w2000',
+      'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3675.077397821107!2d-43.22410432388767!3d-22.98359407921186!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x997fd908d5b00f%3A0x5e5cfd6c2801a7c3!2sPraia%20do%20Leblon!5e0!3m2!1spt-BR!2sbr!4v1712398753000!5m2!1spt-BR!2sbr',
+      '89vh',
+      'Rio de Janeiro - Leblon'
+    )" class="gallery-item">
+    <img src="https://lh3.googleusercontent.com/d/1RgONJDqYym0w3rvHkuXYx1FN8yPTSgyO=w2000" alt="Rio de Janeiro - Leblon" />
+    <figcaption>Rio de Janeiro - Leblon</figcaption>
+  </figure>
+
+  <figure onclick="openModal(
+      'https://lh3.googleusercontent.com/d/1vAIop-LwrkL0uJ19dEg5gdw8QN4Dp3ch=w1000',
+      'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1678.276779114176!2d-43.422279!3d-20.4737467!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xa38b002295d8c7%3A0x1fba9b3405e26323!2sCachoeira%20do%20Sibr%C3%A3o!5e0!3m2!1spt-BR!2sbr!4v1712400256563!5m2!1spt-BR!2sbr',
+      '87vh',
+      'Cachoeira Sibrao - Mariana - MG'
+    )">
+    <img src="https://lh3.googleusercontent.com/d/1vAIop-LwrkL0uJ19dEg5gdw8QN4Dp3ch=w1000" alt="Cachoeira Sibrao - Mariana - Minas Gerais" />
+    <figcaption>Cachoeira Sibrao - Mariana - Minas Gerais</figcaption>
+  </figure>
+
+  <figure onclick="openModal(
+      'https://lh3.googleusercontent.com/d/1Rq1cor1yy74qLsBnGwwDpN-5duNMCyxc=w1000',
+      'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3974.065251631001!2d-48.4457018!3d-1.4256853!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x92a48b14df0b4c1d%3A0x19808db05d7d17b0!2sParque%20Estadual%20do%20Utinga%20Camillo%20Vianna!5e0!3m2!1spt-BR!2sbr!4v1712400434653!5m2!1spt-BR!2sbr',
+      '87vh',
+      'Parque do Utinga - Belém - PA'
+    )">
+    <img src="https://lh3.googleusercontent.com/d/1Rq1cor1yy74qLsBnGwwDpN-5duNMCyxc=w1000" alt="Parque do Utinga - Belém - Pará" />
+    <figcaption>Parque do Utinga - Belém - Pará</figcaption>
+  </figure>
+</section>
+
+<div id="imageModal" style="
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  justify-content: center;
+  align-items: flex-start;
+  overflow-y: auto;
+  z-index: 1000;
+  padding: 40px 20px;
+  transition: opacity 0.3s ease;
+  box-sizing: border-box;
+">
+  <div id="modalContent" style="
+    background: white;
+    border-radius: 16px;
+    max-width: 1400px;
     width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.4);
-    justify-content: center;
-    align-items: flex-start;
     overflow-y: auto;
-    z-index: 1000;
-    padding: 40px 20px;
-    transition: opacity 0.3s ease;
-    box-sizing: border-box;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: fadeIn 0.4s ease;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    position: relative;
   ">
-    <div id="modalContent" style="
-      background: white;
-      border-radius: 16px;
-      max-width: 1400px;
-      width: 100%;
-      overflow-y: auto;
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      animation: fadeIn 0.4s ease;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
-      position: relative;
-    ">
-      <!-- Conteúdo do modal será inserido via JS -->
+    <!-- Conteúdo do modal será inserido via JS -->
+  </div>
+</div>
+
+<style>
+  /* INICIO BORDA ATRAS DAS TRES FOTOS */
+  #galeria.gallery {
+    position: relative;
+    margin-top: -50px;
+  }
+
+  #galeria.gallery::before {
+    content: '';
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    right: 30px;
+    bottom: 30px;
+    background-color: rgb(248, 248, 248);
+    border-radius: 20px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.17);
+    z-index: -1;
+  }
+  /* FIM BORDA ATRAS DAS TRES FOTOS */
+
+  /* Aplica animação padrão */
+  #galeria figure img {
+    transform: scale(0.95);
+    filter: blur(4px) saturate(90%);
+    transition: transform 2s ease-in-out, filter 2s ease-in-out;
+    animation: floatZoom 6s ease-in-out infinite;
+    will-change: transform, filter;
+  }
+
+  /* Animações individuais para cada imagem */
+  #galeria figure:nth-child(1) img {
+    animation: floatZoom 6s ease-in-out infinite;
+    animation-delay: 0s;
+  }
+
+  #galeria figure:nth-child(2) img {
+    animation: floatZoom 6s ease-in-out infinite;
+    animation-delay: 2s;
+  }
+
+  #galeria figure:nth-child(3) img {
+    animation: floatZoom 6s ease-in-out infinite;
+    animation-delay: 4s;
+  }
+
+  @keyframes floatZoom {
+    0%, 100% {
+      transform: scale(0.95);
+      filter: blur(4px) saturate(90%);
+    }
+    50% {
+      transform: scale(1.01);
+      filter: blur(0px) saturate(100%);
+    }
+  }
+
+  /* EFEITO DE APARECER E SUMIR AO ROLAR */
+  #galeria figure {
+    opacity: 0;
+    transform: translateY(60px);
+    transition: opacity 1s ease, transform 1s ease;
+  }
+
+  #galeria figure.visible {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+
+  /* Ajuste para mobile */
+  @media only screen and (max-width: 768px) {
+    #galeria.gallery::before {
+      top: 10px;
+      left: 10px;
+      right: 10px;
+      bottom: 10px;
+    }
+  }
+</style>
+
+<script>
+  // Verificar se o IntersectionObserver é suportado
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        } else {
+          entry.target.classList.remove('visible');
+        }
+      });
+    }, {
+      threshold: 0.3 // Ajuste do threshold para começar a animar mais cedo
+    });
+
+    document.querySelectorAll('#galeria figure').forEach(figure => {
+      observer.observe(figure);
+    });
+  } else {
+    console.error('IntersectionObserver não é suportado neste navegador.');
+  }
+
+  function openModal(imageSrc, mapEmbedUrl, imageHeight = 'auto', imageTitle = '') {
+    const modal = document.getElementById("imageModal");
+    const content = document.getElementById("modalContent");
+
+    content.innerHTML = `
+      <span onclick="closeModal()" style="
+        position: absolute;
+        top: 12px;
+        right: 20px;
+        font-size: 1.8rem;
+        color: #666;
+        cursor: pointer;
+        z-index: 1001;
+        transition: color 0.2s ease;
+      " onmouseover="this.style.color='#333'" onmouseout="this.style.color='#666'">
+        &times;
+      </span>
+
+      <div style="
+        font-size: 0.95rem;
+        font-weight: normal;
+        margin-bottom: 10px;
+        text-align: center;
+        color: #444;
+      ">
+        ${imageTitle}
+      </div>
+
+      <img 
+        src="${imageSrc}" 
+        alt="${imageTitle}" 
+        class="modal-image"
+        style="height: ${imageHeight};"
+      >
+      <iframe 
+        src="${mapEmbedUrl}" 
+        style="width: 82%; height: 300px; border: 0; border-radius: 12px;" 
+        allowfullscreen 
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+      ></iframe>
+    `;
+
+    modal.style.display = "flex";
+  }
+
+  function closeModal() {
+    const modal = document.getElementById("imageModal");
+    modal.style.display = "none";
+    document.getElementById("modalContent").innerHTML = '';
+  }
+</script>
+<!--FIM GALERIA 1 -->
+
+<!--Título Vivi e Registrei -->
+<h2 class="viviregistrei">Vivi. Registrei. <br>Agora, você vê.</h2>
+
+<style>
+  .viviregistrei {  
+  margin: 0;
+  font-size: 4.2vw;
+  padding-left: 6vw;
+  padding-top: 3vw;
+  font-family: 'Poppins', sans-serif;
+  letter-spacing: 0vw;
+  color: #282828;
+  position: relative;
+  z-index: 1;
+}
+</style>
+
+<!--Inicio - Texto Inicial -->
+<div class="textoinicial2"><h3 class="textoinicial">
+Capturo momentos únicos e os transformo em fotografias que carregam um silêncio, uma paisagem, uma história.
+</h3>
+<p class="textoinicial">
+Existe vida lá fora. A natureza, o sol, as águas e os animais pedem nossa conexão. Respirar e viver é o que nos torna parte dela.
+</p></div>
+
+<script>
+  // Seleciona o elemento do texto
+  const texto = document.querySelectorAll('.textoinicial');
+  
+  // Divide o texto em palavras e envolve cada uma com um <span>
+  texto.forEach(element => {
+    element.innerHTML = element.innerHTML.split(' ').map(word => `<span class="highlight">${word}</span>`).join(' ');
+  });
+</script>
+
+<style>
+
+  .textoinicial2 {
+    display: flex;
+    flex-flow: column;
+    gap: 0,5px;
+    padding:10px;
+    padding-bottom: 8vw;
+    }
+
+  .textoinicial {
+  margin: 0;
+  font-size: 1.7vw;
+  padding-left: 5.2vw;
+  padding-top: 3vw;
+  
+  font-weight: 400;
+  font-family: 'Poppins', sans-serif;
+  letter-spacing: 0vw;
+  color: #282828;
+  position: relative;
+  z-index: 1;
+  width: 55%;
+  max-width: 1200px;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  word-spacing: -1vw;
+  line-height: 1.3; /* Espaçamento entre linhas */
+}
+
+  .highlight {
+    position: relative;
+    display: inline-block;
+    border-radius: 25px; /* Borda ovalada desde o início */
+    padding: 2px 8px; /* Ajuste o preenchimento */
+    transition: border 0.5s ease-in-out; /* Transição só no border */
+}
+
+.highlight:hover {
+    border: 2px solid #d7ec77; /* Borda amarela esverdeada */
+}
+  p {
+    margin-top: 1em; /* Adiciona espaço entre os parágrafos */
+  }
+</style>
+
+<!--Fim - Texto Inicial -->
+
+
+<!--INICIO - CAMPO DAS APRESENTAÇÃO DAS OPÇÕES -->
+<section>
+  <div class="campo-meio">
+    <h3 class="minhaexperiencia">⬤ MINHA EXPERIÊNCIA.</h3>
+    <h3 class="vivi2">Vivi. Registrei. <br> Agora, você vê.</h3>
+
+    <div class="titulos-laterais animated-titles">
+      <h1><span class="destaque-visual">Onde o horizonte encontra a alma</span></h1>
+      <h1><span class="destaque-visual">Paz no intervalo do caos</span></h1>
+      <h1><span class="destaque-visual">Almas silenciosas em movimento</span></h1>
+      <h1><span class="destaque-visual">Detalhes que Falam</span></h1>
+      <h1><span class="destaque-visual">Neant Absissal</span></h1>
     </div>
   </div>
-  
-  <style>
-    
-/*INICIO BORDA ATRAS DAS TRES FOTOS*/
-    #galeria.gallery {
+</section>
+
+<style> 
+.campo-meio {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 50vw;
+  background-color: #ebebeb;
   position: relative;
+  overflow: hidden;
 }
 
-#galeria.gallery::before {
-  content: '';
+.titulos-laterais {
+  width: 60vw;
+  padding-right: 5vw;
+  padding-top: 2vw;
   position: absolute;
-  top: 30px; /* Ajuste vertical */
-  left: 30px; /* Ajuste horizontal */
-  right: 30px; /* Ajuste horizontal */
-  bottom: 30px; /* Ajuste vertical */
-  background-color: rgb(248, 248, 248);
-  border-radius: 20px; /* Borda arredondada */
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1); /* Sombrinha atrás para efeito balão */
-  z-index: -1; /* Coloca atrás das fotos */
-}
-/*FIM BORDA ATRAS DAS TRES FOTOS*/
-    
-    /* Aplica animação padrão */
-#galeria figure img {
-  transform: scale(0.95);
-  filter: blur(4px) saturate(90%); /* Começa com saturação de 10% e desfocado */
-  transition: transform 2s ease-in-out, filter 2s ease-in-out;
-  animation: floatZoom 6s ease-in-out infinite;
-  will-change: transform, filter;
+  top: 0;
+  right: 0;
+  font-size: 3vw;
+  font-family: 'Poppins', sans-serif;
+  line-height: 1;
+  color: #282828;
 }
 
-/* Animações individuais para cada imagem */
-#galeria figure:nth-child(1) img {
-  animation: floatZoom 6s ease-in-out infinite;
-  animation-delay: 0s;
+/* Estilo padrão apagado */
+.destaque-visual {
+  display: inline-block;
+  border-radius: 1000px;
+  padding: 6px 18px;
+  color: rgba(40, 40, 40, 0.2);
+  transition: all 0.3s ease;
+  font-size: 1em;
+  font-weight: 0;
+  background-color: transparent;
+  border: 2px solid transparent;
 }
 
-#galeria figure:nth-child(2) img {
-  animation: floatZoom 6s ease-in-out infinite;
-  animation-delay: 2s;
+/* Quando passa o mouse */
+.destaque-visual:hover {
+  background-color: #d7ec77;
+  border-color: #d7ec77;
+  color: #282828;
+  font-size: 1.2em;
+  font-weight: 600; /* negrito mais forte */
 }
 
-#galeria figure:nth-child(3) img {
-  animation: floatZoom 6s ease-in-out infinite;
-  animation-delay: 4s;
+.vivi2 {  
+  margin: 0;
+  font-size: 2vw;
+  top: 5vh;
+  left: 11vh;
+  font-weight: 400;
+  font-family: 'Poppins', sans-serif;
+  color: #282828;
+  position: relative;
+  z-index: 1;
+  max-width: 45vw;
 }
 
-@keyframes floatZoom {
-  0%, 100% {
-    transform: scale(0.95); /* Tamanho "pequeno" (normal) */
-    filter: blur(4px) saturate(90%); /* Desfocado e com cor reduzida (10%) */
-  }
-  50% {
-    transform: scale(1.01); /* Tamanho "grande" (crescido) */
-    filter: blur(0px) saturate(100%); /* Focado e com cor completa (100%) */
-  }
-}
-/* Ajuste para mobile */
-
-@media only screen and (max-width: 768px) {
-  #galeria.gallery::before {
-    top: 10px;
-    left: 10px;
-    right: 10px;
-    bottom: 10px;
-  }
+.minhaexperiencia {  
+  margin: 0;
+  font-size: 1vw;
+  padding-left: 5vw;
+  padding-top: 8vw;
+  font-family: 'Poppins', sans-serif;
+  color: #282828;
+  position: relative;
+  z-index: 1;
 }
 
+.animated-titles h1 {
+  display: block; /* Alterado de flex para block */
+  margin: 0; /* Remove margem extra */
+  opacity: 0;
+  transform: translateY(20px) scale(0.95);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
 
-  </style>
-  
-  <script>
-    function openModal(imageSrc, mapEmbedUrl, imageHeight = 'auto', imageTitle = '') {
-      const modal = document.getElementById("imageModal");
-      const content = document.getElementById("modalContent");
-  
-      content.innerHTML = `
-        <span onclick="closeModal()" style="
-          position: absolute;
-          top: 12px;
-          right: 20px;
-          font-size: 1.8rem;
-          color: #666;
-          cursor: pointer;
-          z-index: 1001;
-          transition: color 0.2s ease;
-        " onmouseover="this.style.color='#333'" onmouseout="this.style.color='#666'">
-          &times;
-        </span>
-  
-        <div style="
-          font-size: 0.95rem;
-          font-weight: normal;
-          margin-bottom: 10px;
-          text-align: center;
-          color: #444;
-        ">
-          ${imageTitle}
-        </div>
-  
-        <img 
-          src="${imageSrc}" 
-          alt="${imageTitle}" 
-          class="modal-image"
-          style="height: ${imageHeight};"
-        >
-        <iframe 
-          src="${mapEmbedUrl}" 
-          style="width: 82%; height: 300px; border: 0; border-radius: 12px;" 
-          allowfullscreen 
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
-        ></iframe>
-      `;
-  
-      modal.style.display = "flex";
-    }
-  
-    function closeModal() {
-      const modal = document.getElementById("imageModal");
-      modal.style.display = "none";
-      document.getElementById("modalContent").innerHTML = '';
-    }
-    
-  </script>
+/* Para diminuir o espaçamento entre as frases */
+.animated-titles h1 + h1 {
+  margin-top: 10px; /* Reduz o espaçamento entre as frases */
+}
+
+</style>
+
+<script>
+  const frases = document.querySelectorAll('.animated-titles h1');
+  frases.forEach((frase) => {
+    // Agora não tem delay por índice
+    frase.style.opacity = '1';
+    frase.style.transform = 'translateY(0) scale(1)';
+  });
+</script>
+
+<!--FIM - CAMPO DAS APRESENTAÇÃO DAS OPÇÕES -->
 
 
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--OUTROS CSS'S 1 -->
 <!-- INICIO CSS DA GALERIA 1 DO PRIMEIRO ABERTURA + GALERIA -->
 <style>
     .onde-o-horizonte-encontra-a-alma {
@@ -732,11 +885,10 @@ body {
         grid-template-columns: 1fr;
       }
     }
-    /* FIM CSS DA GALERIA 1 DO PRIMEIRO ABERTURA + GALERIA*/
     </style>
-<!--FIM GALERIA 1-->
+<!--FIM CSS DA GALERIA 1 DO PRIMEIRO ABERTURA + GALERIA -->
 
-
+<!--OUTROS CSS'S 2 -->
 <style>
 /* CSS DO FLEXBOX PRINCIPAL     */
 .video-comentario {
