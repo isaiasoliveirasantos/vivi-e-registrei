@@ -318,6 +318,9 @@
     <h2 class="ola">Olá,</h2>
     <h2 class="tempo">Tempo.</h2>
 
+    <!-- Frase de direitos autorais -->
+    <p class="copyright">Todas as fotos são de minha autoria e protegidas por direitos autorais.</p>
+
   </div>
 </section>
 
@@ -336,17 +339,15 @@
     position: relative;
     overflow: hidden;
   }
-
+  
   .fundo-imagem {
     position: absolute;
-    left: 55%;
-    top: -7vw;
-    transform: translateX(-50%);
-    width: 75vw;
-    height: auto;
-    aspect-ratio: 4 / 3;
-    background-image: url('https://lh3.googleusercontent.com/d/1t0RgEN-UUVw0IkfnLOVjBACxAALSsk34=w3000');
-    background-size: contain;
+    top: 50.5%;
+    transform: translateY(-50%);
+    width: 100%;
+    height: 100%;
+    background-image: url('https://lh3.googleusercontent.com/d/16v8JvNRxA5UUVzRoLtxdHwbLb6h3kkTJ=w3000');
+    background-size: 100%;
     background-repeat: no-repeat;
     background-position: center;
     opacity: 1;
@@ -384,9 +385,22 @@
     position: relative;
     z-index: 1;
   }
+
+  /* Estilo para a frase de direitos autorais */
+  .copyright {
+    position: absolute;
+    bottom: 10px;
+    left: 4vw;
+    font-size: 0.7vw;
+    font-family: 'Poppins', sans-serif;
+    color: #ffffffde;
+    z-index: 2;
+  }
 </style>
 
 <!--FIM - CAMPO INICIAL -->
+
+
 
 
 <!--INICIO GALERIA 1-->
@@ -697,15 +711,13 @@ Existe vida lá fora. A natureza, o sol, as águas e os animais pedem nossa cone
 <!--Fim - Texto Inicial -->
 
 
-<!--INICIO - CAMPO DAS APRESENTAÇÃO DAS OPÇÕES -->
+<!-- INÍCIO - CAMPO DAS APRESENTAÇÃO DAS OPÇÕES -->
 <section>
   <div class="campo-meio">
     <h3 class="minhaexperiencia">⬤ MINHA EXPERIÊNCIA.</h3>
     <h3 class="vivi2">Vivi. Registrei. <br> Agora, você vê.</h3>
 
     <div class="titulos-laterais animated-titles">
-      <h1><span class="destaque-visual"></span></h1>
-      <h1><span class="destaque-visual"></span></h1>
       <h1><span class="destaque-visual">Onde o horizonte encontra a alma</span></h1>
       <h1><span class="destaque-visual">Paz no intervalo do caos</span></h1>
       <h1><span class="destaque-visual">Almas silenciosas em movimento</span></h1>
@@ -717,91 +729,45 @@ Existe vida lá fora. A natureza, o sol, as águas e os animais pedem nossa cone
 
 <style>
   .campo-meio {
-    margin: 0;
-    padding: 0;
     width: 100%;
     height: 50vw;
     background-color: #ebebeb;
     position: relative;
     overflow: hidden;
   }
-  
+
   .titulos-laterais {
     width: 60vw;
     padding-right: 5vw;
     position: absolute;
-    top: -60px;
+    top: 80px; /* DESCIDO! Estava -60px */
     right: 0;
     font-size: 3vw;
     font-family: 'Poppins', sans-serif;
     line-height: 1;
     color: #282828;
   }
-  
+
   .destaque-visual {
-    position: relative;
     display: inline-block;
-    border-radius: 1000px;
-    padding: 6px 18px;
-    font-size: 1em;
-    transition: all 0.8s ease;
-    background-color: transparent;
-    color: rgba(40, 40, 40, 0.2);
-    border: 2px solid transparent;
-    overflow: hidden;
-  }
-  
-  .destaque-visual.ativa {
+    transition: color 0.4s ease, transform 0.4s ease, text-shadow 0.4s ease;
     color: #282828;
-    font-size: 1.13em;
-    font-weight: 600;
-    background-color: transparent;
-    border-color: transparent;
-    position: relative;
+    cursor: pointer;
   }
-  
-  /* Onda nas bordas */
-  .destaque-visual.ativa::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #d7ec77;
-    border-radius: 1000px;
-    z-index: -1;
-    animation: waveBorder 2s infinite linear;
-  }
-  
-  /* Efeito de onda nas bordas */
-  @keyframes waveBorder {
-    0% {
-      transform: scaleX(1) scaleY(1);
-    }
-    25% {
-      transform: scaleX(1.05) scaleY(1.1);
-    }
-    50% {
-      transform: scaleX(1.1) scaleY(1.2);
-    }
-    75% {
-      transform: scaleX(1.05) scaleY(1.1);
-    }
-    100% {
-      transform: scaleX(1) scaleY(1);
-    }
-  }
-  
-  /* Quando passa o mouse */
+
   .destaque-visual:hover {
-    background-color: #d7ec77;
-    border-color: #d7ec77;
-    color: #282828;
-    font-size: 1.13em;
-    font-weight: 600;
-  }
-  
+  color: #6e742c; /* Amarelo esverdeado */
+  transform: translateY(-3px);
+  text-shadow: 0 0 10px rgba(118, 97, 43, 0.842), 0 0 10px rgba(255, 255, 255, 0.552); /* Adicionando o preto junto com o amarelo */
+}
+
+/* Adicionando o rastro sutil quando o mouse passa */
+.destaque-visual.rastro {
+  color: #dfd66f; /* Amarelo esverdeado */
+  text-shadow: 0 0 5px rgb(255, 255, 255), 0 0 15px rgba(232, 232, 232, 0.582), 0 0 20px rgba(139, 139, 139, 0.3); /* Efeito de rastro com preto suave */
+  transition: text-shadow 1s ease-out; /* Transição suave para o rastro */
+}
+
   .vivi2 {
     margin: 0;
     font-size: 2vw;
@@ -814,7 +780,7 @@ Existe vida lá fora. A natureza, o sol, as águas e os animais pedem nossa cone
     z-index: 1;
     max-width: 45vw;
   }
-  
+
   .minhaexperiencia {
     margin: 0;
     font-size: 1vw;
@@ -825,32 +791,43 @@ Existe vida lá fora. A natureza, o sol, as águas e os animais pedem nossa cone
     position: relative;
     z-index: 1;
   }
-  
+
   .animated-titles h1 {
     display: block;
     margin: 0;
-    opacity: 0;
-    transform: translateY(20px) scale(0.95);
-    transition: opacity 0.8s ease, transform 0.8s ease;
+    transition: transform 0.3s ease;
   }
-  
-  /* Para diminuir o espaçamento entre as frases */
-  .animated-titles h1 + h1 {
-    margin-top: 10px;
-  }
-  </style>
-  
-  
 
+  .animated-titles h1 + h1 {
+    margin-top: 12px;
+  }
+</style>
+
+<!-- SCRIPT JS para adicionar rastro suave nos títulos -->
 <script>
-  const frases = document.querySelectorAll('.animated-titles h1');
-  frases.forEach((frase) => {
-    // Agora não tem delay por índice
-    frase.style.opacity = '1';
-    frase.style.transform = 'translateY(0) scale(1)';
+  const titulos = document.querySelectorAll('.animated-titles .destaque-visual');
+
+  titulos.forEach((titulo) => {
+    titulo.addEventListener('mouseenter', () => {
+      titulo.classList.add('rastro'); // Aplica o rastro no título atual
+
+      // Quando o mouse sai, retira o rastro de todos os outros títulos
+      titulos.forEach((outro) => {
+        if (outro !== titulo) {
+          outro.classList.remove('rastro');
+        }
+      });
+    });
+
+    titulo.addEventListener('mouseleave', () => {
+      titulo.classList.remove('rastro'); // Retira o rastro do título que o mouse saiu
+    });
   });
 </script>
-<!--FIM - CAMPO DAS APRESENTAÇÃO DAS OPÇÕES -->
+
+<!-- FIM - CAMPO DAS APRESENTAÇÃO DAS OPÇÕES -->
+
+
 
 
 
@@ -887,6 +864,7 @@ Existe vida lá fora. A natureza, o sol, as águas e os animais pedem nossa cone
       z-index: 0;
       will-change: transform;
       transition: transform 0.5s linear;
+      
     }
 
     .about {
@@ -999,10 +977,15 @@ Existe vida lá fora. A natureza, o sol, as águas e os animais pedem nossa cone
     />
 
     <div class="about-text about-glass">
-      <p>Eu sou <b>Isaias Oliveira.</b></p> 
+      <p>Eu sou <b class="brilho-arcoiris">Isaias Oliveira.</b></p>
 
-      <p>Não capturo apenas o que vejo — procuro o que se sente. <br><i>A luz que nasce, o vento que toca, 
-      a vastidão que serena a alma, o pôr do sol que aquieta</i> — e o instante onde tudo cessa para que algo novo comece.</p>
+      <p>
+        Não capturo apenas o que vejo — procuro o que se sente. <br>
+        <i>
+          <span style="color: #8b8b8b;">A luz que nasce, o vento que toca, 
+          a vastidão que serena a alma, o pôr do sol que aquieta</span>
+        </i> — e o instante onde tudo cessa para que algo novo comece.
+      </p>
 
       <p><b>Cada imagem é uma metáfora do existir.</b></p>
       <p>Componho fragmentos do tempo que acompanham o ciclo da vida e convidam à pausa, à contemplação, ao instante vivido com alma.</p>
@@ -1011,6 +994,25 @@ Existe vida lá fora. A natureza, o sol, as águas e os animais pedem nossa cone
     </div>
   </div>
 </section>
+
+<style>
+  .brilho-arcoiris {
+  background: linear-gradient(90deg, black, rgb(124, 101, 32), black);
+  background-size: 400%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: deslizaCorInvertido 5s linear infinite;
+}
+
+@keyframes deslizaCorInvertido {
+  0% {
+    background-position: 100% 40%;
+  }
+  100% {
+    background-position: 0% 40%;
+  }
+}
+  </style>
 <!-- FIM SOBRE MIM + IMAGEM DE FUNDO HTML+CSS -->
 
 
@@ -1424,7 +1426,7 @@ footer {
   }
   50% {
     transform: translateY(-10px) scale(1.1);
-    color: #a3c15c; /* Cor amarelada-esverdeada */
+    color: #c1ba5c; /* Cor amarelada-esverdeada */
   }
 }
 
@@ -3060,6 +3062,8 @@ window.onload = function() {
     
   </body>
 
+
+  
   
 </html>
 
