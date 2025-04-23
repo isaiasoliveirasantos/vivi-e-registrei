@@ -949,9 +949,8 @@ Existe vida lá fora. A natureza, o sol, as águas e os animais pedem nossa cone
     }
 
     .about-text p {
-      text-align: justify;
       font-size: 1.7vw;
-      line-height: 2.5rem;
+      line-height: 2.6rem;
       font-weight: 300;
       margin-bottom: 1.2rem;
       color: #2a2a2a;
@@ -1002,7 +1001,7 @@ Existe vida lá fora. A natureza, o sol, as águas e os animais pedem nossa cone
     <div class="about-text about-glass">
       <p>Eu sou <b>Isaias Oliveira.</b></p> 
 
-      <p>Não capturo apenas o que vejo — procuro o que se sente. <i>A luz que nasce, o vento que toca, 
+      <p>Não capturo apenas o que vejo — procuro o que se sente. <br><i>A luz que nasce, o vento que toca, 
       a vastidão que serena a alma, o pôr do sol que aquieta</i> — e o instante onde tudo cessa para que algo novo comece.</p>
 
       <p><b>Cada imagem é uma metáfora do existir.</b></p>
@@ -1190,18 +1189,20 @@ html {
 
 .comentario {
   max-width: 600px;
-  font-family: 'Helvetica Neue', sans-serif;
+ font-family: 'Poppins', sans-serif;
   color: #222;
 }
 
 .comentario h2 {
+  font-family: 'Poppins', sans-serif;
   font-size: 1.8rem;
   font-weight: 600;
   margin-bottom: 1rem;
 }
 
 .comentario p {
-  font-size: 1rem;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1vw;
   line-height: 1.6;
   margin-bottom: 1rem;
 }
@@ -1375,19 +1376,81 @@ footer {
 }
 
 .Titulo2Horizonte {
-  font-size: 36px; /* Tamanho da fonte */
-  text-align: center; /* Alinha o texto */
-  margin: 0; /* Remove margens automáticas */
-  padding: 0px 0; /* Adiciona espaçamento acima e abaixo */
-  max-width: 10000px; /* Define a largura máxima do título */
-  width: 100%; /* Faz o título ocupar toda a largura disponível */
-  line-height: 1.1; /* Define o espaçamento entre as linhas */
-  color: #333; /* Cor do texto */
-  font-weight: normal; /* Remove o negrito */
+  font-size: 4vw;
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+  margin: 0;
+  padding: 0px 0;
+  max-width: 10000px;
+  width: 100%;
+  line-height: 1.1;
+  color: #333;
+  font-weight: normal;
+  display: inline-block;
+}
+
+.Titulo2Horizonte strong {
+  display: inline-block;
+  position: relative;
+}
+
+.Titulo2Horizonte strong span {
+  display: inline-block;
+  animation: onda 3s infinite ease-in-out;
+  position: relative;
+}
+
+.Titulo2Horizonte strong span:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.Titulo2Horizonte strong span:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+.Titulo2Horizonte strong span:nth-child(3) {
+  animation-delay: 0.2s;
+}
+
+/* Continue o delay para as próximas letras, como exemplo */
+.Titulo2Horizonte strong span:nth-child(4) {
+  animation-delay: 0.3s;
+}
+
+@keyframes onda {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+    color: #333; /* Cor normal */
+  }
+  50% {
+    transform: translateY(-10px) scale(1.1);
+    color: #a3c15c; /* Cor amarelada-esverdeada */
+  }
 }
 
 
 </style>
+
+<script>
+window.onload = function() {
+  // Seleciona todos os elementos com a classe 'Titulo2Horizonte'
+  const titulos = document.querySelectorAll('.Titulo2Horizonte strong');
+
+  // Para cada título, aplica o processo de envolver cada letra (e espaço) com <span>
+  titulos.forEach(titulo => {
+    titulo.innerHTML = titulo.textContent
+      .split('') // Divide cada caractere, incluindo espaços
+      .map((char, index) => {
+        if (char === ' ') {
+          return `<span style="display: inline-block; opacity: 0;">&nbsp;</span>`; // Espaço com estilo invisível
+        }
+        return `<span style="animation-delay: ${index * 0.1}s">${char}</span>`;
+      })
+      .join('');
+  });
+};
+
+  </script>
 
 
   </head>
@@ -1825,7 +1888,7 @@ footer {
       var scrollPosition = window.scrollY;
 
       // Posição inicial única para os dois elementos
-      var positionInitial = 1700; // Caso a animação parar, devido novas coisas acima, aumentar esse valor
+      var positionInitial = 2100; // Caso a animação parar, devido novas coisas acima, aumentar esse valor
       var speed = 0.3;
       
       // Deslocamento manual para o gradiente
@@ -2559,13 +2622,58 @@ footer {
   left: 50%;
   transform: translate(-50%, -50%);
   margin: 0;
-  padding: 20px;
   color: white;
-  font-size: 2.5rem;
   text-align: center;
-  z-index: 1;
+  font-size: 4vw;
+  font-family: 'Poppins', sans-serif;
+  padding: 0px 0;
+  max-width: 10000px;
+  width: 100%;
+  line-height: 1.1;
+  font-weight: normal;
+  display: inline-block;
 }
+
+.Titulo2Horizontecomfundo strong span {
+  display: inline-block;
+  color: white;
+  animation: ondaFundo 2s ease-in-out infinite;
+  animation-delay: calc(var(--i) * 0.1s);
+}
+
+@keyframes ondaFundo {
+  0%, 100% {
+    transform: translateY(0);
+    color: white;
+  }
+  50% {
+    transform: translateY(-8px);
+    color: #e8d44d; /* tom pôr do sol (amarelo esverdeado) */
+  }
+}
+
+
+
 </style>
+
+
+<script>
+  document.querySelectorAll('.Titulo2Horizontecomfundo strong').forEach(titulo => {
+    const texto = titulo.textContent;
+    titulo.textContent = '';
+
+    [...texto].forEach((letra, i) => {
+      const span = document.createElement('span');
+      span.textContent = letra;
+      span.style.setProperty('--i', i);
+      titulo.appendChild(span);
+    });
+  });
+</script>
+
+
+
+
 
 <!-- FIM TESTE TITULO COM FOTO - LUZ & SILENCIO -->
 
