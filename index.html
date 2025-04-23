@@ -849,10 +849,171 @@ Existe vida lá fora. A natureza, o sol, as águas e os animais pedem nossa cone
     frase.style.transform = 'translateY(0) scale(1)';
   });
 </script>
-
-
-
 <!--FIM - CAMPO DAS APRESENTAÇÃO DAS OPÇÕES -->
+
+
+
+
+<!-- INICIO SOBRE MIM + IMAGEM DE FUNDO HTML+CSS -->
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+
+<section 
+  id="sobre" 
+  class="about fade show" 
+  style="position: relative; 
+    z-index: 0; 
+    padding: 4rem 0; 
+    overflow: hidden; 
+    min-height: 360vh; 
+    left: 0;
+    right: 0;"
+>
+  <style>
+    .background-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-image: 
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 10%),
+        url('https://lh3.googleusercontent.com/d/144BNAminw-IEM3m9hDEUL5L7mqKiBsv2=w3000');
+      background-size: 105%;
+      background-position: top center;
+      background-repeat: no-repeat;
+      z-index: 0;
+      will-change: transform;
+      transition: transform 0.5s linear;
+    }
+
+    .about {
+      display: block;
+      text-align: center;
+      padding: 60px;
+      margin: auto;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .about-header {
+      background: rgba(255, 255, 255, 0.1);  /* Fundo semitransparente */
+      backdrop-filter: blur(5px); /* Efeito de desfoque no fundo */
+      -webkit-backdrop-filter: blur(5px);
+      padding: 40px 10px; /* Espaço interno */
+      border-radius: 20px;
+      max-width: 900px; /* Largura máxima */
+      margin: auto; /* Centraliza */
+      position: relative;
+      z-index: 2; 
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);  /* Sombra suave */
+      padding-right: 36vw;
+       
+    }
+
+    .about-header h2 {
+      font-size: 3.8vw;
+      line-height: 1.2; /* Altura da linha */
+      font-weight: 300; /* Fonte fina */
+      text-align: left;
+      padding-left: 1.5vw; 
+      color: #ffffff;
+      margin: 0; /* Remove margem */
+    }
+
+    .about-content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 50px;
+      text-align: left;
+      margin-top: 58vw;
+      position: relative;
+      z-index: 2;
+    }
+
+    .about-content img {
+      width: 280px;
+      max-width: 100%;
+      border-radius: 150px;
+      object-fit: cover;
+    }
+
+    .about-text {
+      max-width: 800px;
+      width: 100%;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .about-text p {
+      text-align: justify;
+      font-size: 1.7vw;
+      line-height: 2.5rem;
+      font-weight: 300;
+      margin-bottom: 1.2rem;
+      color: #2a2a2a;
+    }
+
+    .about-text b, strong {
+      font-weight: 600;
+    }
+
+    .fade {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .fade.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+
+  <script>
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+      const bg = document.querySelector('.background-image');
+      const offset = scrollY * -0.05;
+      if (bg) bg.style.transform = `translateY(${offset}px)`;
+    });
+  </script>
+
+  <div class="background-image"></div>
+
+  <!-- TÍTULO COM FUNDO BRANCO/VIDRO -->
+  <div class="about-header">
+    <h2 class="ondeosilenciomora">
+      <strong>Onde o Silêncio Mora</strong><br />
+      O mundo que respiro quando ninguém está olhando
+    </h2>
+  </div>
+
+  <!-- FOTO + TEXTO MAIS ABAIXO -->
+  <div class="about-content">
+    <img
+      src="https://lh3.googleusercontent.com/d/1ETy848krfPZw6lPsd0tC54gA76DDKKoz=w2000"
+      alt="Isaias Oliveira Santos"
+    />
+
+    <div class="about-text about-glass">
+      <p>Eu sou <b>Isaias Oliveira.</b></p> 
+
+      <p>Não capturo apenas o que vejo — procuro o que se sente. <i>A luz que nasce, o vento que toca, 
+      a vastidão que serena a alma, o pôr do sol que aquieta</i> — e o instante onde tudo cessa para que algo novo comece.</p>
+
+      <p><b>Cada imagem é uma metáfora do existir.</b></p>
+      <p>Componho fragmentos do tempo que acompanham o ciclo da vida e convidam à pausa, à contemplação, ao instante vivido com alma.</p>
+
+      <p><b>Sou um observador da vida</b></p>
+    </div>
+  </div>
+</section>
+<!-- FIM SOBRE MIM + IMAGEM DE FUNDO HTML+CSS -->
+
+
 
 
 
@@ -949,8 +1110,6 @@ Existe vida lá fora. A natureza, o sol, as águas e os animais pedem nossa cone
 .video-comentario .video-box {
   flex: 1 1 300px;
   max-width: 305px;
-  
-  
 }
 
 .video-comentario .comentario {
@@ -1008,7 +1167,6 @@ html {
       }
 
 /*CSS DO 3 FLEXBOX*/
-
       .foto-comentario {
   display: flex;
   flex-direction: row;
@@ -1063,223 +1221,130 @@ html {
   }
 }
       
+.gallery {
+  display: grid;
+  grid-template-columns: 2.2fr 1fr 0.7fr;
+  gap: 20px;
+  padding: 50px;
+  max-width: 100%;
+  margin: auto;
+}
 
+.gallery figure {
+  margin: 0;
+  cursor: pointer;
+}
 
-      .gallery {
-        display: grid;
-        grid-template-columns: 2.2fr 1fr 0.7fr;
-        gap: 20px;
-        padding: 50px; /* Tamanho Espaçamento interno da galeria */
-        max-width: 100%;
-        margin: auto;
-      }
-      .gallery figure {
-        margin: 0;
-        cursor: pointer;
-      }
-      .gallery img {
-        width: 100%;
-        height: auto;
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-        transition: transform 0.3s ease;
-      }
-      .gallery img:hover {
-        transform: scale(1.02);
-      }
-      .gallery figcaption {
-        margin-top: 8px;
-        font-size: 0.95rem; /* Tamanho da legenda das fotos */
-        color: #777;
-      }
+.gallery img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+}
 
-      /* AQUI ESTÃO AS ALTERAÇÕES QUE DEVEM SER ADICIONADAS */
-      
-    .about {
-      padding: 60px;
-      max-width: 1500px;
-      margin: auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 40px;
-      flex-wrap: wrap;
-      text-align: left;
-    }
+.gallery img:hover {
+  transform: scale(1.02);
+}
 
-    .about img {
-      width: 325px; 
-      max-width: 100%;
-      border-radius: 150px;
-      object-fit: cover;  /* Garantir que a imagem não distorça */
-    }
+.gallery figcaption {
+  margin-top: 8px;
+  font-size: 0.95rem;
+  color: #777;
+}
 
-    .about-text {
-      max-width: 1000px;
-      width: 100%;  /* Ajustar a largura do texto */
-      box-sizing: border-box;  /* Certifique-se de que a largura do texto não ultrapasse as margens */
-    }
-
-    @media (max-width: 768px) {
-      .about {
-        flex-direction: column;
-        text-align: center;
-      }
-
-      .about img {
-        width: 250px;  /* Ajustar o tamanho da imagem para telas pequenas */
-      }
-
-      .about-text {
-        max-width: 100%;  /* Aumenta a largura do texto para ocupar todo o espaço */
-        padding: 0 10px;  /* Adiciona padding para melhorar a estética em telas pequenas */
-      }
-    }
-
-    /* Restante do código CSS */
-
-    .about {
+.contact {
   padding: 60px;
   max-width: 1200px;
   margin: auto;
   display: flex;
   align-items: center;
-  justify-content: center; /* <-- agora os itens ficam centralizados */
-  gap: 50px; /* espaço menor entre foto e texto */
+  justify-content: center;
+  gap: 40px;
   flex-wrap: wrap;
   text-align: left;
 }
 
-      .contact {
-        padding: 60px;
-        max-width: 1200px;
-        margin: auto;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 40px;
-        flex-wrap: wrap;
-        text-align: left;
-      }
-      .about img {
-        width: 280px; /* Tamanho da foto de perfil */
-        max-width: 100%;
-        border-radius: 150px;
-      }
-      .about-text {
-        max-width: 800px; /* Garante que o texto da seção "Sobre" não ultrapasse */
-      }
-      h2 {
-        font-size: 2.3rem;/* Ajuste o tamanho do título principal */
-        line-height: 1.3;
-        font-weight: 100;
-        color: #222;
-        font-family: "montserrat", sans-serif;
-      }
-      strong {
-        font-weight: 600;
-      }
-      .about h2 {
-        margin-bottom: 10px; /* Altura do "Sobre Mim" */
-      }
-      .about h3 {
-        font-weight: normal;
-        font-size: 2rem; /* Ajuste o subtítulo da seção "Sobre Mim" */
-        margin-top: 0;
-        color: #777;
-      }
-      footer {
-        text-align: center;
-        padding: 20px;
-        background-color: #f2f2f2;
-        font-size: 0.9rem;
-        color: #777;
-      }
-      .fade {
-        opacity: 0;
-        transform: translateY(20px);
-        transition: opacity 0.6s ease, transform 0.6s ease;
-      }
-      .fade.show {
-        opacity: 1;
-        transform: translateY(0);
-      }
-      .modal {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        background: rgba(0, 0, 0, 0.7);
-        justify-content: center;
-        align-items: center;
-        z-index: 1000;
-      }
-      .modal-content {
-        background: white;
-        padding: 20px;
-        border-radius: 10px;
-        max-width: 90vw;
-        max-height: 90vh;
-        overflow: auto;
-        display: flex;
-        gap: 20px;
-        flex-wrap: wrap;
-        justify-content: space-between;
-      }
-      .modal-content img {
-        max-width: 60%;
-        height: auto;
-        border-radius: 10px;
-      }
-      .modal-content iframe {
-        width: 35%;
-        height: 300px;
-        border: none;
-      }
-      .close-modal {
-        position: absolute;
-        top: 20px;
-        right: 30px;
-        font-size: 30px;
-        color: white;
-        cursor: pointer;
-      }
-      p {
-        text-align: justify;
-        font-size: 17px; /* Tamanho dos parágrafos */
-        line-height: 30px;
-      }
-      @media (max-width: 768px) {
-        nav {
-          top: 10px;
-          width: 100%;
-          text-align: center;
-        }
-        .nav-links {
-          flex-direction: column;
-          gap: 10px;
-        }
-        .gallery {
-          grid-template-columns: 1fr;
-          padding: 20px;
-        }
-        .about {
-          flex-direction: column;
-          text-align: center;
-        }
-        .modal-content {
-          flex-direction: column;
-        }
-        .modal-content iframe {
-          width: 100%;
-        }
-      }
-      
-     
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #f2f2f2;
+  font-size: 0.9rem;
+  color: #777;
+}
 
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.7);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
 
+.modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 90vw;
+  max-height: 90vh;
+  overflow: auto;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.modal-content img {
+  max-width: 60%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.modal-content iframe {
+  width: 35%;
+  height: 300px;
+  border: none;
+}
+
+.close-modal {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 30px;
+  color: white;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  nav {
+    top: 10px;
+    width: 100%;
+    text-align: center;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .gallery {
+    grid-template-columns: 1fr;
+    padding: 20px;
+  }
+
+  .modal-content {
+    flex-direction: column;
+  }
+
+  .modal-content iframe {
+    width: 100%;
+  }
+}
 
       /*AJUSTE DO 1 VIDEO*/
       .video-section {
@@ -1308,8 +1373,6 @@ html {
   display: block;
 }
 
-
-
 .Titulo2Horizonte {
   font-size: 36px; /* Tamanho da fonte */
   text-align: center; /* Alinha o texto */
@@ -1320,7 +1383,6 @@ html {
   line-height: 1.1; /* Define o espaçamento entre as linhas */
   color: #333; /* Cor do texto */
   font-weight: normal; /* Remove o negrito */
-  
 }
 
 
@@ -1330,157 +1392,7 @@ html {
   </head>
   <body>
 
-<!-- INICIO SOBRE MIM + IMAGEM DE FUNDO HTML+CSS -->
-<section id="sobre" class="about fade show" style="position: relative; z-index: 0; padding: 4rem 2rem; overflow: hidden; min-height: 180vh;">
-  <style>
-    .background-image {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-image: 
-        linear-gradient(to bottom, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 10%),
-        url('https://lh3.googleusercontent.com/d/1ycy414uFW6tNlMoNzVChPhe6JkGOxa-Y=w3000');
-      background-size: contain;
-      background-position: center center;
-      background-repeat: no-repeat;
-      z-index: 0;
-      will-change: transform;
-      transition: transform 0.5s linear;
-    }
 
-    #sobre > img,
-    #sobre .about-text {
-      position: relative;
-      z-index: 2;
-    }
-
-
-.about-text.about-glass h2 { /* TAMANHO DO TITULO H2 */
-  font-size: 2vw; /* Responsivo com base na largura da tela */
-  line-height: 1.3;
-}
-
-
-    /* Responsividade para mobile */
-    @media (max-width: 768px) {
-      #sobre {
-        display: flex;
-        flex-direction: row; /* Foto e texto lado a lado */
-        align-items: flex-start;
-        justify-content: flex-start;
-        gap: 2%; /* Espaço entre foto e texto em percentual */
-        padding: 2rem;
-        flex-wrap: nowrap;
-      }
-
-      #sobre > img {
-        width: 20%; /* Ajusta a largura da imagem para 40% da tela */
-        max-width: 150px;
-        height: auto;
-        flex-shrink: 0;
-        margin-top: 10%; /* Ajuste para descer a imagem */
-        margin-top: 65vh; /* Ajuste para descer a imagem proporcionalmente à altura da tela */
-      }
-
-      #sobre .about-text {
-        width: 55%; /* Ajusta a largura do texto para 55% da tela */
-        font-size: 2vw; /* Ajusta o tamanho da fonte proporcionalmente */
-        line-height: 1.4;
-        margin-top: 10%;
-        flex-grow: 1;
-        margin-top: 57vh; /* Ajuste para descer a imagem proporcionalmente à altura da tela */
-      }
-
-      #sobre .about-text h2 {
-        font-size: 2.4vw; /* Ajusta o tamanho do título proporcionalmente */
-        text-align: left;
-      }
-
-      #sobre .about-text p {
-        font-size: 1.5vw; /* Ajusta o tamanho da fonte nos parágrafos proporcionalmente */
-        line-height: 1.5;
-      }
-    }
-
-    @media (max-width: 480px) {
-      #sobre {
-        display: flex;
-        flex-direction: row; /* Foto e texto lado a lado */
-        align-items: flex-start;
-        justify-content: flex-start;
-        gap: 2%; /* Espaço entre foto e texto em percentual */
-        padding: 2rem;
-        flex-wrap: nowrap;
-      }
-
-      #sobre > img {
-        width: 20%; /* Ajusta a largura da imagem para 50% da tela */
-        max-width: 120px;
-        height: auto;
-        flex-shrink: 0;
-        margin-top: 100%; /* Ajuste para descer a imagem */
-        margin-top: 68vh; /* Ajuste para descer a imagem proporcionalmente à altura da tela */
-      }
-
-      #sobre .about-text {
-        width: 45%; /* Ajusta a largura do texto para 45% da tela */
-        font-size: 2vw; /* Ajusta o tamanho da fonte proporcionalmente */
-        line-height: 1.4;
-        margin-top: 10%;
-        flex-grow: 1;
-        margin-top: 65vh; /* Ajuste para descer a imagem proporcionalmente à altura da tela */
-      }
-
-      #sobre .about-text h2 {
-        font-size: 2.1vw; /* Ajusta o tamanho do título proporcionalmente */
-        text-align: left;
-      }
-
-      #sobre .about-text p {
-        font-size: 1.7vw; /* Ajusta o tamanho da fonte nos parágrafos proporcionalmente */
-        line-height: 1;
-      }
-    }
-
-
-</style>
-
-  <script>
-    window.addEventListener('scroll', () => {
-      const scrollY = window.scrollY;
-      const bg = document.querySelector('.background-image');
-      const offset = scrollY * -0.05;
-      bg.style.transform = `translateY(${offset}px)`;
-    });
-  </script>
-
-  <div class="background-image"></div>
-
-  <img
-    src="https://lh3.googleusercontent.com/d/1ETy848krfPZw6lPsd0tC54gA76DDKKoz=w2000"
-    alt="Isaias Oliveira Santos"
-  />
-
-  <div class="about-text about-glass">
-    <h2>
-      <strong>Onde o Silêncio Mora</strong> <br />
-      O mundo que respiro quando ninguém está olhando
-    </h2>
-
-    <p>Eu sou <b>Isaias Oliveira.</b></p> 
-
-    <p>Não capturo apenas o que vejo —  procuro o que se sente. <i> A luz que nasce, o vento que toca, 
-      a vastidão que serena a alma, o pôr do sol que aquieta</i> — e o instante onde tudo cessa para que algo novo comece.</p>
-      
-    <p><b>Cada imagem é uma metáfora do existir.</b></p>
-    <p>Componho fragmentos do tempo que acompanham o ciclo da vida e convidam à pausa, à contemplação, ao instante vivido com alma.</p>
-
-    <p><b>Sou um observador da vida</b></p>
-  </div>
-</section>
-<!-- FIM SOBRE MIM + IMAGEM DE FUNDO HTML+CSS -->
 
 
  
