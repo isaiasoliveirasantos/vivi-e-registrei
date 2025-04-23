@@ -315,8 +315,8 @@
     <div class="fundo-imagem"></div>
 
     <h3 class="zaau">ZAAU°</h3>
-    <h2 class="ola">Olá,</h2>
-    <h2 class="tempo">Tempo.</h2>
+    <h2 class="ola">Ol<span class="brilho-interno">a</span>,</h2>
+<h2 class="tempo">Temp<span class="brilho-interno">o</span>.</h2>
 
     <!-- Frase de direitos autorais -->
     <p class="copyright">Todas as fotos são de minha autoria e protegidas por direitos autorais.</p>
@@ -396,6 +396,35 @@
     color: #ffffffde;
     z-index: 2;
   }
+  
+  .brilho-interno {
+  display: inline-block;
+  background: linear-gradient(
+    to left, /* Alterado para "to left" para inverter a direção */
+    #c8bd27bb, /* Amarelo alaranjado à direita */
+    #c06f18da 10%, /* Brilho suave à direita */
+    #000000 70%, /* Preto à esquerda */
+    #000000 /* Preto puro à esquerda */
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: brilhoFluido 2s ease-in-out infinite alternate;
+}
+
+@keyframes brilhoFluido {
+  0% {
+    background-position: 100% 0; /* Começando com brilho na direita */
+  }
+  50% {
+    background-position: 50% 0; /* A cor se mistura e fica mais suave à medida que balança */
+  }
+  100% {
+    background-position: 0% 0; /* Brilho suave desvanecendo para o preto à esquerda */
+  }
+}
+
+  
 </style>
 
 <!--FIM - CAMPO INICIAL -->
@@ -1420,11 +1449,11 @@ footer {
 }
 
 @keyframes onda {
-  0%, 100% {
+  0%, 60% {
     transform: translateY(0) scale(1);
     color: #333; /* Cor normal */
   }
-  50% {
+  30% {
     transform: translateY(-10px) scale(1.1);
     color: #c1ba5c; /* Cor amarelada-esverdeada */
   }
