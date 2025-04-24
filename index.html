@@ -313,10 +313,11 @@
 
     <!-- Imagem como fundo decorativo -->
     <div class="fundo-imagem"></div>
+    <div class="sombra-baixo"></div>
 
     <h3 class="zaau">ZAAU°</h3>
-    <h2 class="ola">Ol<span class="brilho-interno">á,</span></h2>
-<h2 class="tempo">Temp<span class="brilho-interno">o.</span></h2>
+    <h2 class="ola">Ol<span class="brilho-interno">á</span>,</h2>
+<h2 class="tempo">Temp<span class="brilho-interno">o</span>.</h2>
 
     <!-- Frase de direitos autorais -->
     <p class="copyright">Todas as fotos são de minha autoria e protegidas por direitos autorais.</p>
@@ -354,6 +355,42 @@
     pointer-events: none;
     z-index: 0;
   }
+
+  /* INICIO COMPLETAR FOTO DE FUNDO AO ANIMAR */
+
+.fundo-imagem::before,
+.fundo-imagem::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  z-index: 1;
+  background-image: inherit;
+  background-size: cover;
+  background-repeat: no-repeat;
+  filter: blur(4px); /* blur mais leve */
+}
+
+/* LATERAL ESQUERDA */
+.fundo-imagem::before {
+  top: 0;
+  left: -5px;
+  width: 10px;
+  height: 100%;
+  background-position: left;
+  transform: scaleX(-1);
+}
+
+/* LATERAL DIREITA */
+.fundo-imagem::after {
+  top: 0;
+  right: -5px;
+  width: 10px;
+  height: 100%;
+  background-position: right;
+}
+
+/* FIM COMPLETAR FOTO DE FUNDO AO ANIMAR */
+  
 
   .ola, .tempo {
     margin: 0;
@@ -426,6 +463,33 @@
 
   
 </style>
+
+<script>
+  const fundo = document.querySelector(".fundo-imagem");
+  let targetY = 0;
+  let currentY = 0;
+  let time = 0;
+
+  function animate() {
+    // Parallax com inércia mais suave
+    currentY += (targetY - currentY) * 0.05; // Diminui o valor para desacelerar mais suavemente
+
+    // Oscilação leve enquanto parado (tremidinha)
+    time += 0.01;
+    const offsetX = Math.sin(time * 3) * 2; // horizontal leve (pode remover se quiser só vertical)
+    const offsetY = Math.cos(time) * 6; // vertical leve
+
+    fundo.style.transform = `translate(calc(${offsetX}px), calc(-50% + ${currentY + offsetY}px))`;
+
+    requestAnimationFrame(animate);
+  }
+
+  window.addEventListener("scroll", () => {
+    targetY = window.scrollY * 0.1;
+  });
+
+  animate();
+</script>
 
 <!--FIM - CAMPO INICIAL -->
 
@@ -797,6 +861,10 @@ Existe vida lá fora. A natureza, o sol, as águas e os animais pedem nossa cone
   transition: text-shadow 1s ease-out; /* Transição suave para o rastro */
 }
 
+.animated-titles h1 {
+  cursor: pointer;
+}
+
   .vivi2 {
     margin: 0;
     font-size: 2vw;
@@ -834,22 +902,17 @@ Existe vida lá fora. A natureza, o sol, as águas e os animais pedem nossa cone
 
 <!-- SCRIPT JS para adicionar rastro suave nos títulos -->
 <script>
-  const titulos = document.querySelectorAll('.animated-titles .destaque-visual');
+  const linhas = document.querySelectorAll('.animated-titles h1');
 
-  titulos.forEach((titulo) => {
-    titulo.addEventListener('mouseenter', () => {
-      titulo.classList.add('rastro'); // Aplica o rastro no título atual
+  linhas.forEach((linha) => {
+    const span = linha.querySelector('.destaque-visual');
 
-      // Quando o mouse sai, retira o rastro de todos os outros títulos
-      titulos.forEach((outro) => {
-        if (outro !== titulo) {
-          outro.classList.remove('rastro');
-        }
-      });
+    linha.addEventListener('mouseenter', () => {
+      span.classList.add('rastro');
     });
 
-    titulo.addEventListener('mouseleave', () => {
-      titulo.classList.remove('rastro'); // Retira o rastro do título que o mouse saiu
+    linha.addEventListener('mouseleave', () => {
+      span.classList.remove('rastro');
     });
   });
 </script>
@@ -1989,7 +2052,27 @@ window.onload = function() {
   </div>
 </section>
 
-<style>
+<style> 
+  /* Inicio animação escurecer e perder a cor das outras fotos ao passar o mouse */
+.galeria.hover-active img {
+  filter: grayscale(30%) brightness(100%);
+  opacity: 0.5;
+  transition: all 0.4s ease;
+}
+
+.galeria.hover-active .img1:hover img,
+.galeria.hover-active .img2:hover img,
+.galeria.hover-active .img3:hover img,
+.galeria.hover-active .img4:hover img,
+.galeria.hover-active .img5:hover img,
+.galeria.hover-active .img6:hover img {
+  filter: none;
+  opacity: 1;
+  z-index: 2;
+}
+/* fim animação escurecer e perder a cor das outras fotos ao passar o mouse */
+
+
   .galeria-grid {
     max-width: 70rem;
     margin: 0 auto;
@@ -2099,6 +2182,23 @@ window.onload = function() {
 }
 
 </style>
+
+<!-- esse script é do Css de escurecer e perder a cor das outras fotos ao passar o mouse - serve para os próximos grid que tem também--> 
+<script>
+  const galeria = document.querySelector('.galeria');
+  const imagens = galeria.querySelectorAll('div');
+
+  imagens.forEach((img) => {
+    img.addEventListener('mouseenter', () => {
+      galeria.classList.add('hover-active');
+    });
+
+    img.addEventListener('mouseleave', () => {
+      galeria.classList.remove('hover-active');
+    });
+  });
+</script>
+
 
 <!-- FIM DA 1° GRID DE 6 FOTOS - FOTOS CIDADE -->  
 
@@ -2451,6 +2551,20 @@ window.onload = function() {
 </section>
 
 <style>
+  /* Inicio animação escurecer e perder a cor das outras fotos ao passar o mouse - serve para a grid da Luz e o script está na grid da cidade */
+.galeria:hover img {
+  filter: grayscale(30%) brightness(100%);
+  opacity: 0.5;
+  transition: filter 0.4s ease, opacity 0.4s ease;
+}
+
+.galeria img:hover {
+  filter: grayscale(0%) brightness(1);
+  opacity: 1;
+  z-index: 1;
+}
+  /* fIM animação escurecer e perder a cor das outras fotos ao passar o mouse */
+
 .galeria-grid {
   max-width: 70rem;
   margin: 0 auto;
