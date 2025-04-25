@@ -467,17 +467,25 @@
 <script>
   const fundo = document.querySelector(".fundo-imagem");
   let targetY = 0;
-  let currentY = 0;
+  let currentY = 300; // Começa abaixo (positivo) para depois subir
   let time = 0;
 
-  function animate() {
-    // Parallax com inércia mais suave
-    currentY += (targetY - currentY) * 0.05; // Diminui o valor para desacelerar mais suavemente
+  // Subida inicial
+  let tempoInicial = 0;
+  const duracaoSubida = 120; // frames (~1s)
 
-    // Oscilação leve enquanto parado (tremidinha)
+  function animate() {
+    if (tempoInicial < duracaoSubida) {
+      currentY += (0 - currentY) * 0.04; // Sobe até 0 suavemente
+      tempoInicial++;
+    } else {
+      currentY += (targetY - currentY) * 0.05; // Parallax depois da subida
+    }
+
+    // Tremidinha sutil
     time += 0.01;
-    const offsetX = Math.sin(time * 3) * 2; // horizontal leve (pode remover se quiser só vertical)
-    const offsetY = Math.cos(time) * 6; // vertical leve
+    const offsetX = Math.sin(time * 3) * 2;
+    const offsetY = Math.cos(time) * 6;
 
     fundo.style.transform = `translate(calc(${offsetX}px), calc(-50% + ${currentY + offsetY}px))`;
 
@@ -2776,7 +2784,6 @@ window.onload = function() {
 
 .imagem-de-fundo {
   width: 100%;
-  height: 55vh; /* altura reduzida (pode ajustar para 40vh, 60vh, etc.) */
   object-fit: cover; /* mantém a imagem "cortada" com bom enquadramento */
   display: block;
 }
