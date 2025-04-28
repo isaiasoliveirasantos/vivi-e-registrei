@@ -392,38 +392,54 @@
 /* FIM COMPLETAR FOTO DE FUNDO AO ANIMAR */
   
 
-  .ola, .tempo {
-    margin: 0;
-    font-size: 8vw;
-    font-weight: 300;
-    text-align: center;
-    font-family: 'Poppins', sans-serif;
-    position: relative;
-    z-index: 1;
+@keyframes corAnimada {
+  0% {
+    color: #ebebeb; /* Cor inicial */
   }
-
-  .ola {
-    padding-right: 45vw;
-    padding-top: 5vw;
+  50% {
+    color: #f5f5f5; /* Cor intermediária (amarelo) */
   }
-
-  .tempo {
-    padding-left: 40vw;
+  100% {
+    color: #ebebeb; /* Cor final */
   }
+}
 
-  .zaau {  
-    margin: 0;
-    font-size: 1.3vw;
-    padding-left: 4vw;
-    padding-top: 3vw;
-    font-family: 'Poppins', sans-serif;
-    letter-spacing: 0.5vw;
-    color: #282828;
-    position: relative;
-    z-index: 1;
-  }
+.ola, .tempo { 
+  margin: 0;
+  font-size: 8vw;
+  font-weight: 300;
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  position: relative;
+  z-index: 1;
+  color: #ebebeb;
+  text-shadow: -6px 2px 4px #88888874; /* sombra aplicada ao texto normal */
+  animation: corAnimada 4s infinite; /* Animação que dura 4 segundos e repete infinitamente */
+}
 
-  /* Estilo para a frase de direitos autorais */
+.ola {
+  padding-right: 45vw;
+  padding-top: 5vw;
+}
+
+.tempo {
+  padding-left: 40vw;
+}
+
+.zaau {  
+  margin: 0;
+  font-size: 1.3vw;
+  padding-left: 4vw;
+  padding-top: 3vw;
+  font-family: 'Poppins', sans-serif;
+  letter-spacing: 0.5vw;
+  position: relative;
+  z-index: 1;
+  color: #ebebeb;
+  text-shadow: -2px 1px 2px #888888dc; /* sombra aplicada ao texto normal */
+  animation: corAnimada 4s infinite; /* Animação que dura 4 segundos e repete infinitamente */
+}
+
   .copyright {
     position: absolute;
     bottom: 10px;
@@ -433,35 +449,7 @@
     color: #ffffffde;
     z-index: 2;
   }
-  
-  .brilho-interno {
-  display: inline-block;
-  background: linear-gradient(
-    to left, /* Alterado para "to left" para inverter a direção */
-    #c8bd27bb, /* Amarelo alaranjado à direita */
-    #c06f18da 10%, /* Brilho suave à direita */
-    #000000 70%, /* Preto à esquerda */
-    #000000 /* Preto puro à esquerda */
-  );
-  background-size: 200% 100%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: brilhoFluido 2s ease-in-out infinite alternate;
-}
-
-@keyframes brilhoFluido {
-  0% {
-    background-position: 100% 0; /* Começando com brilho na direita */
-  }
-  50% {
-    background-position: 50% 0; /* A cor se mistura e fica mais suave à medida que balança */
-  }
-  100% {
-    background-position: 0% 0; /* Brilho suave desvanecendo para o preto à esquerda */
-  }
-}
-
-  
+    
 </style>
 
 <script>
