@@ -577,10 +577,32 @@
   }
   
   /* INICIO BORDA ATRAS DAS TRES FOTOS */
-  #galeria.gallery {
-    position: relative;
-    margin-top: -50px;
-  }
+ /* Animação de movimento e diminuição ao rolar */
+/* Galeria no tamanho original (sem escala inicial) */
+/* Galeria no tamanho original (sem escala inicial) */
+/* Galeria no tamanho original (sem escala inicial) */
+#galeria.gallery {
+  position: relative;
+  margin-top: -50px; /* Posição inicial */
+  transition: transform 1s ease, top 1s ease; /* Transição para escala e movimento */
+}
+
+
+#galeria.gallery.minimized {
+  width: 30%; /* Tamanho reduzido */
+  left: 10px; /* Mover para o lado esquerdo */
+  top: 50%; /* Mover para baixo */
+  transform: translateY(-50%); /* Centraliza verticalmente */
+  margin-top: 0; /* Ajusta o espaço acima */
+}
+
+
+
+
+
+
+
+
 
   #galeria.gallery::before {
     content: '';
@@ -657,25 +679,65 @@
 
 <script>
   // Verificar se o IntersectionObserver é suportado
-  if ('IntersectionObserver' in window) {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        } else {
-          entry.target.classList.remove('visible');
-        }
+  document.addEventListener('DOMContentLoaded', function () {
+    const frases = document.querySelectorAll('.frase');
+
+    if (frases.length > 0) {
+      frases.forEach((frase, index) => {
+        setTimeout(() => {
+          frase.classList.add('aparecer');
+        }, index * 500);
       });
-    }, {
-      threshold: 0.3 // Ajuste do threshold para começar a animar mais cedo
+    }
+
+    // Função que verifica a rolagem da página
+    window.addEventListener("scroll", function () {
+      const gallery = document.querySelector("#galeria.gallery");
+      const rect = gallery.getBoundingClientRect(); // Obtém a posição da galeria na tela
+
+      // Valores fixos para o tamanho mínimo e movimento vertical máximo
+      const minScale = 0.9;  // Tamanho mínimo da galeria
+      const maxMoveDown = 30;  // Posição final do movimento vertical (máximo)
+
+      // Variáveis para controlar o estado da animação
+      let scaleValue = 1;
+      let moveDown = 0;
+
+      if (rect.top < 130) {
+        // Calcula a escala de acordo com a posição de rolagem, mas sem ultrapassar minScale
+        scaleValue = Math.max(minScale, 1 - Math.abs(rect.top) / 600); // Ajuste do tamanho da galeria
+        gallery.style.transform = `scale(${scaleValue})`;
+
+        // Limita o movimento vertical para que não ultrapasse maxMoveDown
+        moveDown = Math.min(maxMoveDown, Math.abs(rect.top)); // Garante que o movimento não ultrapasse 100px
+        gallery.style.top = `${moveDown}px`;  // Move a galeria para baixo com a rolagem
+      } else {
+        gallery.style.transform = `scale(1)`; // Restaura o tamanho original quando está visível na parte superior
+        gallery.style.top = '0px';
+      }
     });
 
-    document.querySelectorAll('#galeria figure').forEach(figure => {
-      observer.observe(figure);
-    });
-  } else {
-    console.error('IntersectionObserver não é suportado neste navegador.');
-  }
+    // Verificar se o IntersectionObserver é suportado
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          } else {
+            entry.target.classList.remove('visible');
+          }
+        });
+      }, {
+        threshold: 0.3 // Ajuste do threshold para começar a animar mais cedo
+      });
+
+      document.querySelectorAll('#galeria figure').forEach(figure => {
+        observer.observe(figure);
+      });
+    } else {
+      console.error('IntersectionObserver não é suportado neste navegador.');
+    }
+  });
 
   function openModal(imageSrc, mapEmbedUrl, imageHeight = 'auto', imageTitle = '') {
     const modal = document.getElementById("imageModal");
@@ -729,6 +791,7 @@
     document.getElementById("modalContent").innerHTML = '';
   }
 </script>
+
 <!--FIM GALERIA 1 -->
 
 <!--Título Vivi e Registrei -->
@@ -770,45 +833,45 @@
 </div>
 
 <style>
-  .textoinicial2 {
-    display: flex;
-    flex-flow: column;
-    gap: 0.5px;
-    padding: 1vw;
-    padding-bottom: 8vw;
-  }
-
-  .textoinicial {
-    margin: 0;
-    font-size: 1.7vw;
-    padding-left: 5.2vw;
-    padding-top: 3vw;
-    font-weight: 400;
-    font-family: 'Poppins', sans-serif;
-    color: #282828;
-    position: relative;
-    z-index: 1;
-    width: 55%;
-    max-width: 1200px;
-    overflow-x: hidden;
-    overflow-y: hidden;
-    line-height: 1.3;
-    word-spacing: normal;
-  }
-
   .frase {
-    display: inline-block;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.6s ease, transform 0.6s ease, border 0.4s ease;
-    border-radius: 25px;
-    padding: 2px 1px;
-  }
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease, border 0.4s ease;
+  border-radius: 25px;
+  padding: 2px 1px;
+}
 
-  .frase.aparecer {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.frase.aparecer {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.textoinicial2 {
+  display: flex;
+  flex-flow: column;
+  gap: 0.5px;
+  padding: 1vw;
+  padding-bottom: 8vw;
+}
+
+.textoinicial {
+  margin: 0;
+  font-size: 1.6vw;
+  padding-left: 5.2vw;
+  padding-top: 3vw;
+  font-weight: 400;
+  font-family: 'Poppins', sans-serif;
+  color: #282828;
+  position: relative;
+  z-index: 1;
+  width: 55%;
+  max-width: 1200px;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  line-height: 1.3;
+  word-spacing: normal;
+}
 
   .frase:hover {
     border: 2px solid #d7ec77;
@@ -876,14 +939,14 @@
   }
 
   .destaque-visual:hover {
-  color: #6e742c; /* Amarelo esverdeado */
+  color: #86712b; /* Amarelo esverdeado */
   transform: translateY(-3px);
   text-shadow: 0 0 10px rgba(118, 97, 43, 0.842), 0 0 10px rgba(255, 255, 255, 0.552); /* Adicionando o preto junto com o amarelo */
 }
 
 /* Adicionando o rastro sutil quando o mouse passa */
 .destaque-visual.rastro {
-  color: #dfd66f; /* Amarelo esverdeado */
+  color: #ac9a25; /* Amarelo esverdeado */
   text-shadow: 0 0 5px rgb(255, 255, 255), 0 0 15px rgba(232, 232, 232, 0.582), 0 0 20px rgba(139, 139, 139, 0.3); /* Efeito de rastro com preto suave */
   transition: text-shadow 1s ease-out; /* Transição suave para o rastro */
 }
@@ -995,29 +1058,28 @@
     }
 
     .about-header {
-      background: rgba(255, 255, 255, 0.1);  /* Fundo semitransparente */
-      backdrop-filter: blur(5px); /* Efeito de desfoque no fundo */
-      -webkit-backdrop-filter: blur(5px);
-      padding: 40px 10px; /* Espaço interno */
-      border-radius: 20px;
-      max-width: 900px; /* Largura máxima */
-      margin: auto; /* Centraliza */
+      background: rgba(255, 255, 255, 0.1); /* Fundo semitransparente */
+      backdrop-filter: blur(0.26vw); /* 5px -> 0.26vw (aproximado) */
+      -webkit-backdrop-filter: blur(0.26vw);
+      padding: 2vw 2vw;
+      border-radius: 1.4vw;
+      max-width: 58vw;
+      margin: 5vw auto 0 auto; /* ADICIONADO: 5vw de espaço no topo */
       position: relative;
       z-index: 2; 
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);  /* Sombra suave */
+      box-shadow: 0 0.21vw 1.04vw rgba(0, 0, 0, 0.1);
       padding-right: 36vw;
-       
-    }
+}
 
-    .about-header h2 {
+.about-header h2 {
       font-size: 3.8vw;
-      line-height: 1.2; /* Altura da linha */
-      font-weight: 300; /* Fonte fina */
+      line-height: 1.2;
+      font-weight: 300;
       text-align: left;
-      padding-left: 1.5vw; 
+      padding-left: 0.5vw; 
       color: #ffffff;
-      margin: 0; /* Remove margem */
-    }
+      margin: 0;
+}
 
     .about-content {
       display: flex;
@@ -1043,11 +1105,12 @@
       width: 100%;
       box-sizing: border-box;
       font-family: 'Poppins', sans-serif;
+
     }
 
     .about-text p {
-      font-size: 1.7vw;
-      line-height: 2.6rem;
+      font-size: 1.5vw;
+      line-height: 2.3rem;
       font-weight: 300;
       margin-bottom: 1.2rem;
       color: #2a2a2a;
@@ -1101,7 +1164,7 @@
       <p>
         Não capturo apenas o que vejo — procuro o que se sente. <br>
         <i>
-          <span style="color: #8b8b8b;">A luz que nasce, o vento que toca, 
+          <span style="color: #867132;">A luz que nasce, o vento que toca, 
           a vastidão que serena a alma, o pôr do sol que aquieta</span>
         </i> — e o instante onde tudo cessa para que algo novo comece.
       </p>
@@ -1501,7 +1564,7 @@ footer {
   font-family: 'Poppins', sans-serif;
   text-align: center;
   margin: 0;
-  padding: 0px 0;
+  padding: 0;
   max-width: 10000px;
   width: 100%;
   line-height: 1.1;
@@ -1517,7 +1580,9 @@ footer {
 
 .Titulo2Horizonte strong span {
   display: inline-block;
-  animation: onda 3s infinite ease-in-out;
+  opacity: 0.8;
+  color: #000000;
+  animation: fadeChic 6s infinite ease-in-out;
   position: relative;
 }
 
@@ -1533,19 +1598,25 @@ footer {
   animation-delay: 0.2s;
 }
 
-/* Continue o delay para as próximas letras, como exemplo */
 .Titulo2Horizonte strong span:nth-child(4) {
   animation-delay: 0.3s;
 }
 
-@keyframes onda {
-  0%, 60% {
-    transform: translateY(0) scale(1);
-    color: #333; /* Cor normal */
+@keyframes fadeChic {
+  0% {
+    opacity: 0.8;
+    color: #000000;  /* Cor inicial (cinza escuro) */
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
   }
-  30% {
-    transform: translateY(-10px) scale(1.1);
-    color: #c1ba5c; /* Cor amarelada-esverdeada */
+  50% {
+    opacity: 1;
+    color: #94841d;  /* Cor suave (verde-azulado claro) */
+    text-shadow: 0 0 15px rgba(198, 191, 161, 0.5); /* Sombra suave em tom de verde */
+  }
+  100% {
+    opacity: 0.8;
+    color: #000000;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Retorno à sombra suave */
   }
 }
 
@@ -2237,94 +2308,7 @@ window.onload = function() {
 
  
 
-<!-- INICIO DA ABERTURA 1 -->
-<!-- BOTÃO ESTILIZADO E AFASTADO -->
-<div style="margin-left: 60px; margin-top: -10px; margin-bottom: 16px;">
-  <button
-    id="toggleBtnCustom"
-    style="
-      width: 13rem;
-      padding: 0.5rem 1.5rem;
-      background-color: #669cd2;
-      color: white;
-      border: none;
-      border-radius: 1rem;
-      box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
-      transition: background-color 0.3s ease;
-      cursor: pointer;
-      font-size: 1rem;
-    "
-  >
-    + Abrir Galeria
-  </button>
-</div>
 
-<!-- CONTEÚDO OCULTO -->
-<div
-  id="contentBoxCustom"
-  style="
-    overflow: hidden;
-    transition: all 0.7s ease-in-out;
-    max-height: 0px;
-    opacity: 0;
-    margin-left: 60px;
-    margin-right: 24px;
-  "
->
-  <div style="
-    background-color: #d3d3d3;
-    color: #3a3a3a;
-    padding: 20px;
-    border-radius: 1rem;
-    box-shadow: 0 10px 15px -3px rgba(0,0,0,0.2);
-    font-size: 1rem;
-    line-height: 1.6;
-  ">
-
-
-
-    
-<!-- INICIO DO CONTEÚDO DA GALERIA 1 -->
- 
-
-<!-- FIM DO CONTEÚDO DA GALERIA 1 -->
-
-
-    
-  </div>
-</div>
-
-<!-- SCRIPT -->
-<script>
-  const btnCustom = document.getElementById('toggleBtnCustom');
-  const boxCustom = document.getElementById('contentBoxCustom');
-  let isOpen = false;
-
-  // Armazena as cores originais
-  const defaultColor = "#83b1df";
-  const hoverColor = "#6c9fd3";
-
-  // Define os efeitos de hover via JS para manter a cor personalizada
-  btnCustom.addEventListener('mouseenter', () => {
-    btnCustom.style.backgroundColor = hoverColor;
-  });
-
-  btnCustom.addEventListener('mouseleave', () => {
-    btnCustom.style.backgroundColor = defaultColor;
-  });
-
-  // Alterna o conteúdo e mantém a cor correta
-  btnCustom.addEventListener('click', () => {
-    isOpen = !isOpen;
-    boxCustom.style.maxHeight = isOpen ? boxCustom.scrollHeight + "px" : "0px";
-    boxCustom.style.opacity = isOpen ? "1" : "0";
-    btnCustom.textContent = isOpen ? "− Fechar Galeria" : "+ Abrir Galeria";
-    btnCustom.style.backgroundColor = defaultColor; // Garante que a cor continue correta após clique
-  });
-</script>
-
-
-<!-- FECHAMENTO DA ABERTURA 1 -->
 
 
     
@@ -2518,7 +2502,75 @@ window.onload = function() {
 
 
 
-<!-- INICIO DA 3° GRID DE 6 FOTOS - ANIMAIS  -->
+
+
+
+
+
+
+
+<!-- INICIO DA ABERTURA 2 -->
+
+<!-- BOTÃO ESTILIZADO E AFASTADO - BLOCO 2 -->
+<div style="margin-left: 60px; margin-top: -10px; margin-bottom: 16px;">
+
+
+<!-- fim carrosel mangal das garças -->
+
+
+
+<!-- INICIO DA ABERTURA 2 -->
+
+<!-- BOTÃO ESTILIZADO E AFASTADO - BLOCO 2 -->
+<div style="margin-left: 60px; margin-top: -10px; margin-bottom: 16px;">
+  <button
+    id="toggleBtnCustom2"
+    style="
+      width: 13rem;
+      padding: 0.5rem 1.5rem;
+      background-color: #d2ae66;
+      color: white;
+      border: none;
+      border-radius: 1rem;
+      box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+      transition: background-color 0.3s ease;
+      cursor: pointer;
+      font-size: 1rem;
+    "
+  >
+    + Abrir Galeria
+  </button>
+</div>
+
+<!-- CONTEÚDO OCULTO - BLOCO 2 -->
+
+
+
+
+
+<div
+  id="contentBoxCustom2"
+  style="
+    overflow: hidden;
+    transition: all 0.7s ease-in-out;
+    max-height: 0px;
+    opacity: 0;
+    margin-left: 60px;
+    margin-right: 24px;
+  "
+>
+  <div style="
+    background-color: #ebebeb;
+    color: #ffffff;
+    padding: 20px;
+    border-radius: 1rem;
+    box-shadow: 0 10px 15px -3px rgba(255, 255, 255, 0.2);
+    font-size: 1rem;
+    line-height: 1.6;
+  ">
+  
+
+    <!-- INICIO DA 3° GRID DE 6 FOTOS - ANIMAIS  -->
 
 <section>
   <section class="galeria-grid">
@@ -2629,73 +2681,7 @@ window.onload = function() {
   }
 }
 </style>
-
-
-
-
-
 <!-- FIM DA 3° GRID DE 6 FOTOS - ANIMAIS -->  
-
-
-
-
-
-
-<!-- INICIO DA ABERTURA 2 -->
-
-<!-- BOTÃO ESTILIZADO E AFASTADO - BLOCO 2 -->
-<div style="margin-left: 60px; margin-top: -10px; margin-bottom: 16px;">
-
-
-<!-- fim carrosel mangal das garças -->
-
-
-
-<!-- INICIO DA ABERTURA 2 -->
-
-<!-- BOTÃO ESTILIZADO E AFASTADO - BLOCO 2 -->
-<div style="margin-left: 60px; margin-top: -10px; margin-bottom: 16px;">
-  <button
-    id="toggleBtnCustom2"
-    style="
-      width: 13rem;
-      padding: 0.5rem 1.5rem;
-      background-color: #6ca0d3;
-      color: white;
-      border: none;
-      border-radius: 1rem;
-      box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
-      transition: background-color 0.3s ease;
-      cursor: pointer;
-      font-size: 1rem;
-    "
-  >
-    + Abrir Galeria
-  </button>
-</div>
-
-<!-- CONTEÚDO OCULTO - BLOCO 2 -->
-<div
-  id="contentBoxCustom2"
-  style="
-    overflow: hidden;
-    transition: all 0.7s ease-in-out;
-    max-height: 0px;
-    opacity: 0;
-    margin-left: 60px;
-    margin-right: 24px;
-  "
->
-  <div style="
-    background-color: #c4c4c4;
-    color: #3a3a3a;
-    padding: 20px;
-    border-radius: 1rem;
-    box-shadow: 0 10px 15px -3px rgba(0,0,0,0.2);
-    font-size: 1rem;
-    line-height: 1.6;
-  ">
-    Aqui vai o conteúdo da <strong>segunda galeria</strong> ou seção extra.
   </div>
 </div>
 
@@ -2705,8 +2691,8 @@ window.onload = function() {
   const boxCustom2 = document.getElementById('contentBoxCustom2');
   let isOpen2 = false;
 
-  const defaultColor2 = "#83b1df";
-  const hoverColor2 = "#6c9fd3";
+  const defaultColor2 = "#d2ae66";
+  const hoverColor2 = "#d2ae66";
 
   btnCustom2.addEventListener('click', () => {
     isOpen2 = !isOpen2;
@@ -2775,9 +2761,11 @@ window.onload = function() {
  <!-- INICIO TESTE TITULO COM FOTO - LUZ & SILENCIO -->
 
  <div class="bloco-com-imagem">
-  <img src="https://lh3.googleusercontent.com/d/1pfr1GzJ0NTa3DgSP9G-55qJoTQ25jwr3=w2000" alt="Fundo Luz & Silêncio" class="imagem-de-fundo">
+  <img src="https://lh3.googleusercontent.com/d/1U6UQLd6jcFcudwanoNB6q1AXjZdeD3DX=w2000" alt="Fundo Luz & Silêncio" class="imagem-de-fundo">
   <h2 class="Titulo2Horizontecomfundo">
-    <strong>Luz & Silêncio</strong>
+    <strong>
+      <span>Luz</span><span>&nbsp;&</span><span>&nbsp;Silencio</span>
+    </strong>
   </h2>
 </div>
 
@@ -2786,17 +2774,27 @@ window.onload = function() {
 .bloco-com-imagem {
   position: relative;
   width: 100%;
-  overflow: visible; /* permite que a sombra ultrapasse */
-  margin-bottom: 40px; /* espaço extra abaixo da imagem */
-
+  overflow: visible;
+  margin-bottom: 2.08vw; /* 40px -> 2.08vw */
 }
 
 .imagem-de-fundo {
   width: 100%;
-  object-fit: cover; /* mantém a imagem "cortada" com bom enquadramento */
+  object-fit: cover;
   display: block;
 }
 
+/* Gradiente por cima da imagem */
+.bloco-com-imagem::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 30%; /* altura do gradiente, ajustável */
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+  pointer-events: none; /* para não bloquear cliques */
+}
 
 
 .Titulo2Horizontecomfundo {
@@ -2817,21 +2815,50 @@ window.onload = function() {
   display: inline-block;
 }
 
-.Titulo2Horizontecomfundo strong span {
+.Titulo2Horizontecomfundo strong {
   display: inline-block;
-  color: rgb(0, 0, 0);
-  animation: ondaFundo 3s ease-in-out infinite;
-  animation-delay: calc(var(--i) * 0.05s);
+  position: relative;
 }
 
-@keyframes ondaFundo {
-  0%, 100% {
-    transform: translateY(0);
-    color: rgb(0, 0, 0);
+.Titulo2Horizontecomfundo strong span {
+  display: inline-block;
+  opacity: 0.8;
+  color: #ffffff;
+  animation: fadeChicComFundo 6s infinite ease-in-out;
+  position: relative;
+}
+
+.Titulo2Horizontecomfundo strong span:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.Titulo2Horizontecomfundo strong span:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+.Titulo2Horizontecomfundo strong span:nth-child(3) {
+  animation-delay: 0.2s;
+}
+
+.Titulo2Horizontecomfundo strong span:nth-child(4) {
+  animation-delay: 0.3s;
+}
+
+@keyframes fadeChicComFundo {
+  0% {
+    opacity: 0.8;
+    color: #ffffff;  /* Cor inicial (cinza escuro) */
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
   }
   50% {
-    transform: translateY(-4px);
-    color: hsl(49, 71%, 60%); /* tom pôr do sol (amarelo esverdeado) */
+    opacity: 1;
+    color: hsl(0, 0%, 100%);  /* Tom de pôr do sol (amarelo esverdeado) */
+    text-shadow: 0 0 15px rgba(195, 127, 0, 0.792); /* Sombra suave em tom de verde */
+  }
+  100% {
+    opacity: 0.8;
+    color: #ffffff;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Retorno à sombra suave */
   }
 }
 </style>
@@ -2857,7 +2884,55 @@ window.onload = function() {
 
 <!-- FIM TESTE TITULO COM FOTO - LUZ & SILENCIO -->
 
-<!-- INICIO DA 2° GRID DE 6 FOTOS - LUZ -->  
+<!-- INICIO DA ABERTURA 1 -->
+<!-- BOTÃO ESTILIZADO E AFASTADO -->
+<div style="margin-left: 124px; margin-top: -10px; margin-bottom: 16px;">
+  <button
+    id="toggleBtnCustom"
+    style="
+      width: 13rem;
+      padding: 0.5rem 1.5rem;
+      background-color: #d2ae66;
+      color: white;
+      border: none;
+      border-radius: 1rem;
+      box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+      transition: background-color 0.3s ease;
+      cursor: pointer;
+      font-size: 1rem;
+    "
+  >
+    + Abrir Galeria
+  </button>
+</div>
+
+<!-- CONTEÚDO OCULTO -->
+<div
+  id="contentBoxCustom"
+  style="
+    overflow: hidden;
+    transition: all 0.7s ease-in-out;
+    max-height: 0px;
+    opacity: 0;
+    margin-left: 60px;
+    margin-right: 24px;
+  "
+>
+  <div style="
+    background-color: #000000;
+    color: #000000;
+    padding: 20px;
+    border-radius: 1rem;
+    box-shadow: 0 10px 15px -3px rgba(0,0,0,0.2);
+    font-size: 1rem;
+    line-height: 1.6;
+  ">
+
+
+
+    
+<!-- INICIO DO CONTEÚDO DA GALERIA 1 -->
+ <!-- INICIO DA 2° GRID DE 6 FOTOS - LUZ -->  
 
 <section class="galeria-grid">
   <div class="galeria">
@@ -3020,6 +3095,53 @@ window.onload = function() {
 <!-- FIM DA 2° GRID DE 6 FOTOS - LUZ -->  
     
 
+<!-- FIM DO CONTEÚDO DA GALERIA 1 -->
+
+
+    
+  </div>
+</div>
+
+<!-- SCRIPT -->
+<script>
+  const btnCustom = document.getElementById('toggleBtnCustom');
+  const boxCustom = document.getElementById('contentBoxCustom');
+  let isOpen = false;
+
+  // Armazena as cores originais
+  const defaultColor = "#d2ae66";
+  const hoverColor = "#d2ae66";
+
+  // Define os efeitos de hover via JS para manter a cor personalizada
+  btnCustom.addEventListener('mouseenter', () => {
+    btnCustom.style.backgroundColor = hoverColor;
+  });
+
+  btnCustom.addEventListener('mouseleave', () => {
+    btnCustom.style.backgroundColor = defaultColor;
+  });
+
+  // Alterna o conteúdo e mantém a cor correta
+  btnCustom.addEventListener('click', () => {
+    isOpen = !isOpen;
+    boxCustom.style.maxHeight = isOpen ? boxCustom.scrollHeight + "px" : "0px";
+    boxCustom.style.opacity = isOpen ? "1" : "0";
+    btnCustom.textContent = isOpen ? "− Fechar Galeria" : "+ Abrir Galeria";
+    btnCustom.style.backgroundColor = defaultColor; // Garante que a cor continue correta após clique
+  });
+</script>
+
+
+<!-- FECHAMENTO DA ABERTURA 1 -->
+
+
+
+
+
+
+
+
+
 
 
 
@@ -3169,7 +3291,7 @@ window.onload = function() {
       </div>
       
     <!-- INICIO PARTE FINAL - CONTATO -->
-<section id="contato" style="width: 100%; background-color: #000; color: #fff; height: 100font-fvh; display: flex; flex-direction: column; justify-content: center; amily: 'Poppins', sans-serif; overflow-x: hidden; position: relative; z-index: 0;">
+<section id="contato" style="width: 100%; background-color: #000; color: #fff; height: 100vh; display: flex; flex-direction: column; justify-content: center; font-family: 'Poppins', sans-serif; overflow-x: hidden; position: relative; z-index: 0;">
   <div style="max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 40px; box-sizing: border-box;">
     
     <!-- LADO ESQUERDO -->
