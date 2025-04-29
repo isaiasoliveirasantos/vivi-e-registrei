@@ -318,6 +318,9 @@
     --cor-letranav: rgba(0, 0, 0, 0.7);
     --cor-base3fotos: rgb(248, 248, 248);
     --COR-paginageral: #ffffff;
+    --COR-letraGeral: #282828;
+    --COR-base2: #ebebeb;
+    --COR-dourado: rgb(124, 101, 32);
 }
 
 /* Modo escuro */
@@ -328,7 +331,10 @@
     --cor-letranav: rgba(196, 196, 196, 0.871);
     --cor-base3fotos: #2f2f2f;
     --COR-paginageral: #000000;
-  
+    --COR-letraSubtitulo:#ffffff;
+    --COR-letraGeral: #ececec;
+    --COR-base2: #313131;
+    --COR-dourado: rgb(202, 164, 50);
   }
 
 
@@ -487,38 +493,38 @@
   </section>
 
   <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const fundo = document.querySelector(".fundo-imagem");
-      let targetY = 0;
-      let currentY = 300;
-      let time = 0;
-    
-      let tempoInicial = 0;
-      const duracaoSubida = 120;
-    
-      function animate() {
-        if (tempoInicial < duracaoSubida) {
-          currentY += (0 - currentY) * 0.04;
-          tempoInicial++;
-        } else {
-          currentY += (targetY - currentY) * 0.05;
-        }
-    
-        time += 0.01;
-        const offsetX = Math.sin(time * 3) * 2;
-        const offsetY = Math.cos(time) * 6;
-    
-        fundo.style.transform = `translate(calc(${offsetX}px), calc(-50% + ${currentY + offsetY}px))`;
-    
-        requestAnimationFrame(animate);
-      }
-    
-      window.addEventListener("scroll", () => {
-        targetY = window.scrollY * 0.1;
-      });
-    
-      animate();
-    });
+   document.addEventListener("DOMContentLoaded", () => {
+  const fundo = document.querySelector(".fundo-imagem");
+  let targetY = 0;
+  let currentY = 300;
+  let time = 0;
+
+  let tempoInicial = 0;
+  const duracaoSubida = 120;
+
+  function animate() {
+    if (tempoInicial < duracaoSubida) {
+      currentY += (0 - currentY) * 0.04;
+      tempoInicial++;
+    } else {
+      currentY += (targetY - currentY) * 0.05;
+    }
+
+    time += 0.01;
+    const offsetX = Math.sin(time * 3) * 2;
+    const offsetY = Math.cos(time) * 6;
+
+    fundo.style.transform = `translate(calc(${offsetX}px), calc(-50% + ${currentY + offsetY}px))`;
+
+    requestAnimationFrame(animate);
+  }
+
+  window.addEventListener("scroll", () => {
+    targetY = window.scrollY * 0.1;
+  });
+
+  animate();
+});
     </script>
     
     <script>
@@ -527,34 +533,68 @@
         const htmlElement = document.documentElement;
         const fundoImagem = document.querySelector('.fundo-imagem');
     
-        function atualizarTema() {
-          const tema = htmlElement.getAttribute('data-theme');
-          if (tema === 'dark') {
-            button.textContent = '☾';
-            fundoImagem.style.backgroundImage = "url('https://lh3.googleusercontent.com/d/1KFbJc069cJ1QLHxfvtE_RJlDcQCJmDUd=w3000')";
-          } else {
-            button.textContent = '☼';
-            fundoImagem.style.backgroundImage = "url('https://lh3.googleusercontent.com/d/16v8JvNRxA5UUVzRoLtxdHwbLb6h3kkTJ=w3000')";
-          }
-        }
-        
-        // Definir tema salvo
-        if (localStorage.getItem('theme') === 'dark') {
-          htmlElement.setAttribute('data-theme', 'dark');
-        } else {
-          htmlElement.setAttribute('data-theme', 'light');
-        }
-        atualizarTema();
+        function trocarImagemComOrdemCerta(url, novoTema) {
+          // 1. Criar fade-out da imagem atual
+          fundoImagem.style.transition = 'opacity 1s ease'; // Ajustando para uma transição bem suave
+          fundoImagem.style.opacity = 0;  // Faz a imagem desaparecer
     
-        // Alternar tema ao clicar
+          // Após a transição, trocar a imagem
+          setTimeout(() => {
+            // 2. Mudar o tema com transição suave de cores
+            htmlElement.style.transition = 'background-color 1s ease'; // Suaviza a troca de cor de fundo
+            htmlElement.setAttribute('data-theme', novoTema);
+            localStorage.setItem('theme', novoTema);
+    
+            // 3. Trocar a imagem de fundo
+            fundoImagem.style.backgroundImage = `url('${url}')`;
+    
+            // 4. Criar animação para a nova imagem
+            fundoImagem.style.transition = 'opacity 10s ease'; // A transição da nova imagem será muito suave
+            fundoImagem.style.opacity = 1;  // Faz a nova imagem aparecer
+    
+            // 5. Ajuste da coloração do fundo da página
+            if (novoTema === 'dark') {
+              htmlElement.style.backgroundColor = '#121212'; // Cor de fundo escuro
+            } else {
+              htmlElement.style.backgroundColor = '#ffffff'; // Cor de fundo claro
+            }
+    
+          }, 1000); // Espera o tempo de fade-out da imagem atual
+        }
+    
+        function atualizarTemaComAnimacao() {
+          const temaAtual = htmlElement.getAttribute('data-theme');
+          const novoTema = temaAtual === 'dark' ? 'light' : 'dark';
+    
+          button.textContent = novoTema === 'dark' ? '☾' : '☼';
+    
+          const novaImagemUrl =
+            novoTema === 'dark'
+              ? "https://lh3.googleusercontent.com/d/1KFbJc069cJ1QLHxfvtE_RJlDcQCJmDUd=w3000"
+              : "https://lh3.googleusercontent.com/d/16v8JvNRxA5UUVzRoLtxdHwbLb6h3kkTJ=w3000";
+    
+          trocarImagemComOrdemCerta(novaImagemUrl, novoTema);
+        }
+    
+        // Tema inicial
+        const temaSalvo = localStorage.getItem('theme') === 'dark' ? 'dark' : 'light';
+        htmlElement.setAttribute('data-theme', temaSalvo);
+        button.textContent = temaSalvo === 'dark' ? '☾' : '☼';
+        fundoImagem.style.backgroundImage =
+          temaSalvo === 'dark'
+            ? "url('https://lh3.googleusercontent.com/d/1KFbJc069cJ1QLHxfvtE_RJlDcQCJmDUd=w3000')"
+            : "url('https://lh3.googleusercontent.com/d/16v8JvNRxA5UUVzRoLtxdHwbLb6h3kkTJ=w3000')";
+        // Ajuste de cor de fundo conforme o tema
+        htmlElement.style.backgroundColor = temaSalvo === 'dark' ? '#121212' : '#ffffff';
+    
+        // Ao clicar, alterna com animação
         button.addEventListener('click', () => {
-          const isDark = htmlElement.getAttribute('data-theme') === 'dark';
-          htmlElement.setAttribute('data-theme', isDark ? 'light' : 'dark');
-          localStorage.setItem('theme', isDark ? 'light' : 'dark');
-          atualizarTema();
+          atualizarTemaComAnimacao();
         });
       });
     </script>
+    
+    
     
 </body>
 <!-- FIM - CAMPO INICIAL -->
@@ -863,7 +903,7 @@
   font-weight: 400;
   font-family: 'Poppins', sans-serif;
   letter-spacing: 0vw;
-  color: #282828;
+  color: var(--COR-letraGeral);
   position: relative;
   z-index: 1;
 }
@@ -919,7 +959,7 @@
   padding-top: 3vw;
   font-weight: 400;
   font-family: 'Poppins', sans-serif;
-  color: #282828;
+  color: var(--COR-letraGeral);
   position: relative;
   z-index: 1;
   width: 55%;
@@ -971,7 +1011,7 @@
   .campo-meio {
     width: 100%;
     height: 50vw;
-    background-color: #ebebeb;
+    background-color:var(--COR-base2);
     position: relative;
     overflow: hidden;
   }
@@ -985,13 +1025,13 @@
     font-size: 3vw;
     font-family: 'Poppins', sans-serif;
     line-height: 1;
-    color: #282828;
+    color: var(--COR-letraGeral);
   }
 
   .destaque-visual {
     display: inline-block;
     transition: color 0.4s ease, transform 0.4s ease, text-shadow 0.4s ease;
-    color: #282828;
+    color: var(--COR-letraGeral);
     cursor: pointer;
   }
 
@@ -1019,7 +1059,7 @@
     left: 11vh;
     font-weight: 400;
     font-family: 'Poppins', sans-serif;
-    color: #282828;
+    color: var(--COR-letraGeral);
     position: relative;
     z-index: 1;
     max-width: 45vw;
@@ -1031,7 +1071,7 @@
     padding-left: 5vw;
     padding-top: 8vw;
     font-family: 'Poppins', sans-serif;
-    color: #282828;
+    color: var(--COR-letraGeral);
     position: relative;
     z-index: 1;
   }
@@ -1170,7 +1210,7 @@
       line-height: 2.3rem;
       font-weight: 300;
       margin-bottom: 1.2rem;
-      color: #2a2a2a;
+      color: var(--COR-letraGeral);
     }
 
     .about-text b, strong {
@@ -1236,7 +1276,7 @@
 
 <style>
   .brilho-arcoiris {
-  background: linear-gradient(90deg, black, rgb(124, 101, 32), black);
+  background: linear-gradient(90deg,var(--COR-letraGeral), var(--COR-dourado), var(--COR-letraGeral));
   background-size: 400%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -1652,7 +1692,7 @@ footer {
   max-width: 10000px;
   width: 100%;
   line-height: 1.1;
-  color: #333;
+  color: var(--COR-letraGeral);
   font-weight: normal;
   display: inline-block;
 
@@ -1666,7 +1706,7 @@ footer {
 .Titulo2Horizonte strong span {
   display: inline-block;
   opacity: 0.8;
-  color: #000000;
+  color: var(--COR-letraGeral);
   animation: fadeChic 6s infinite ease-in-out;
   position: relative;
 }
@@ -1690,7 +1730,7 @@ footer {
 @keyframes fadeChic {
   0% {
     opacity: 0.8;
-    color: #000000;  /* Cor inicial (cinza escuro) */
+    color:var(--COR-letraGeral);  /* Cor inicial (cinza escuro) */
     text-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
   }
   50% {
@@ -1700,7 +1740,7 @@ footer {
   }
   100% {
     opacity: 0.8;
-    color: #000000;
+    color: var(--COR-letraGeral);
     text-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Retorno à sombra suave */
   }
 }
