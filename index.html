@@ -7,7 +7,11 @@
     
     <link rel="icon" href="Logotipo 2.png" type="image/png" sizes="48x48">
 
-    
+<!-- COR PAGINA GERAL -->
+<style> html{ background-color: var(--COR-paginageral);}
+</style>
+
+
 <!-- INÍCIO BARRA DE NAVEGAÇÃO -->
 <nav id="navbar">
   <div class="nav-links">
@@ -62,7 +66,7 @@
     transform: translate(-50%, 0.625rem) scale(0.7);
     width: 26rem;
     max-width: 62.5rem;
-    background: rgba(255, 255, 255, 0.6);
+    background: var(--cor-nav);
     backdrop-filter: blur(10px);
     padding: 0.3125rem 0;
     border-radius: 1.25rem;
@@ -98,7 +102,7 @@
     font-family: SF Pro Text, SF Pro Icons, Helvetica Neue, Helvetica, Arial, sans-serif;
     font-size: 0.78125rem;
     font-weight: 500;
-    color: rgba(0, 0, 0, 0.7);
+    color: var(--cor-letranav);
     transition: background 0.3s ease, color 0.3s ease;
     text-decoration: none;
     padding: 0.3125rem 1.4625rem;
@@ -302,198 +306,223 @@
 <!-- FIM BARRA DE NAVEGAÇÃO -->
 
 
-<!--INICIO - CAMPO INICIAL -->
-
+<!-- INICIO - CAMPO INICIAL -->
 <head>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-</head>
+  <style>
+    /* Modo claro */
+:root {
+    --cor-base: #ebebeb;
+    --cor-letraTitulo: #4D4D4D;
+    --cor-nav: rgba(255, 255, 255, 0.6);
+    --cor-letranav: rgba(0, 0, 0, 0.7);
+    --cor-base3fotos: rgb(248, 248, 248);
+    --COR-paginageral: #ffffff;
+}
 
-<section>
-  <div class="campo-inicial">
-
-    <!-- Imagem como fundo decorativo -->
-    <div class="fundo-imagem"></div>
-    <div class="sombra-baixo"></div>
-
-    <h3 class="zaau">ZAAU°</h3>
-    <h2 class="ola">Ol<span class="brilho-interno">á</span>,</h2>
-<h2 class="tempo">Temp<span class="brilho-interno">o</span>.</h2>
-
-    <!-- Frase de direitos autorais -->
-    <p class="copyright">Todas as fotos são de minha autoria e protegidas por direitos autorais.</p>
-
-  </div>
-</section>
-
-<style> 
-  html, body {
-    margin: 0;
-    padding: 0;
-  }
-
-  .campo-inicial {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 45vw;
-    background-color: #ebebeb;
-    position: relative;
-    overflow: hidden;
-  }
+/* Modo escuro */
+[data-theme="dark"] {
+    --cor-base: #303030;
+    --cor-letraTitulo: #ebebeb;
+    --cor-nav: rgba(95, 94, 94, 0.655);
+    --cor-letranav: rgba(196, 196, 196, 0.871);
+    --cor-base3fotos: #3c3c3c;
+    --COR-paginageral: #303030;
   
-  .fundo-imagem {
-    position: absolute;
-    top: 50.5%;
-    transform: translateY(-50%);
-    width: 100%;
-    height: 100%;
-    background-image: url('https://lh3.googleusercontent.com/d/16v8JvNRxA5UUVzRoLtxdHwbLb6h3kkTJ=w3000');
-    background-size: 100%;
-    background-repeat: no-repeat;
-    background-position: center;
-    opacity: 1;
-    pointer-events: none;
-    z-index: 0;
   }
 
-  /* INICIO COMPLETAR FOTO DE FUNDO AO ANIMAR */
 
-.fundo-imagem::before,
-.fundo-imagem::after {
-  content: "";
-  position: absolute;
-  pointer-events: none;
-  z-index: 1;
-  background-image: inherit;
-  background-size: cover;
-  background-repeat: no-repeat;
-  filter: blur(4px); /* blur mais leve */
-}
 
-/* LATERAL ESQUERDA */
-.fundo-imagem::before {
-  top: 0;
-  left: -5px;
-  width: 10px;
-  height: 100%;
-  background-position: left;
-  transform: scaleX(-1);
-}
 
-/* LATERAL DIREITA */
-.fundo-imagem::after {
-  top: 0;
-  right: -5px;
-  width: 10px;
-  height: 100%;
-  background-position: right;
-}
 
-/* FIM COMPLETAR FOTO DE FUNDO AO ANIMAR */
-.ola, .tempo { 
-  margin: 0;
-  font-size: 8vw;
-  font-weight: 300;
-  text-align: center;
-  font-family: 'Poppins', sans-serif;
-  position: relative;
-  z-index: 1;
-  color: #4D4D4D ; /* Texto inicial em branco */
-  letter-spacing: 3px; /* Espaçamento entre as letras */
-  text-shadow: 
-    4px -3px 4px rgba(255, 229, 151, 0), /* Brilho no lado direito para cima */
-    -4px  2px 6px rgba(75, 75, 75, 0.289); /* Brilho no lado esquerdo para baixo */
-  animation: lightPass 3s infinite linear, colorChange 3s infinite linear;
-}
 
-@keyframes lightPass {
-  0% {
-    text-shadow: 
-      4px -3px 4px rgba(255, 229, 151, 0), /* Brilho no lado direito para cima */
-      -4px  2px 6px rgba(75, 75, 75, 0.142); /* Brilho no lado esquerdo para baixo */
-  }
-  50% {
-    text-shadow: 
-      6px -5px 8px rgba(255, 255, 255, 0.326), /* Aumenta o brilho no lado direito */
-      -6px  4px 8px rgba(75, 75, 75, 0.264); /* Aumenta o brilho no lado esquerdo */
-  }
-  100% {
-    text-shadow: 
-      4px -3px 4px rgba(255, 229, 151, 0), /* Brilho no lado direito para cima */
-      -4px  2px 6px rgba(75, 75, 75, 0.142); /* Brilho no lado esquerdo para baixo */
-  }
-}
 
-.ola {
-  padding-right: 45vw;
-  padding-top: 5vw;
-}
 
-.tempo {
-  padding-left: 40vw;
-}
 
-.zaau {  
-  margin: 0;
-  font-size: 1.3vw;
-  padding-left: 4vw;
-  padding-top: 3vw;
-  font-family: 'Poppins', sans-serif;
-  letter-spacing: 0.5vw;
-  position: relative;
-  z-index: 1;
-  color: #4D4D4D; /* Texto translúcido */
-}
 
-  .copyright {
-    position: absolute;
-    bottom: 10px;
-    left: 4vw;
-    font-size: 0.7vw;
-    font-family: 'Poppins', sans-serif;
-    color: #ffffffde;
-    z-index: 2;
-  }
-    
-</style>
 
-<script>
-  const fundo = document.querySelector(".fundo-imagem");
-  let targetY = 0;
-  let currentY = 300; // Começa abaixo (positivo) para depois subir
-  let time = 0;
 
-  // Subida inicial
-  let tempoInicial = 0;
-  const duracaoSubida = 120; // frames (~1s)
 
-  function animate() {
-    if (tempoInicial < duracaoSubida) {
-      currentY += (0 - currentY) * 0.04; // Sobe até 0 suavemente
-      tempoInicial++;
-    } else {
-      currentY += (targetY - currentY) * 0.05; // Parallax depois da subida
+
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      transition: background-color 0.3s, color 0.3s;
     }
 
-    // Tremidinha sutil
-    time += 0.01;
-    const offsetX = Math.sin(time * 3) * 2;
-    const offsetY = Math.cos(time) * 6;
+    .campo-inicial {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 45vw;
+      background-color: var(--cor-base);
+      position: relative;
+      overflow: hidden;
+    }
 
-    fundo.style.transform = `translate(calc(${offsetX}px), calc(-50% + ${currentY + offsetY}px))`;
+    .fundo-imagem {
+      position: absolute;
+      top: 50.5%;
+      transform: translateY(-50%);
+      width: 100%;
+      height: 100%;
+      background-image: url('https://lh3.googleusercontent.com/d/16v8JvNRxA5UUVzRoLtxdHwbLb6h3kkTJ=w3000');
+      background-size: 100%;
+      background-repeat: no-repeat;
+      background-position: center;
+      opacity: 1;
+      pointer-events: none;
+      z-index: 0;
+    }
 
-    requestAnimationFrame(animate);
-  }
+    .ola, .tempo { 
+      margin: 0;
+      font-size: 8vw;
+      font-weight: 300;
+      text-align: center;
+      font-family: 'Poppins', sans-serif;
+      position: relative;
+      z-index: 1;
+      color: var(--cor-letraTitulo);
+      letter-spacing: 3px;
+      text-shadow: 
+        4px -3px 4px rgba(255, 229, 151, 0), 
+        -4px  2px 6px rgba(75, 75, 75, 0.289);
+      animation: lightPass 3s infinite linear, colorChange 3s infinite linear;
+    }
 
-  window.addEventListener("scroll", () => {
-    targetY = window.scrollY * 0.1;
-  });
+    @keyframes lightPass {
+      0% {
+        text-shadow: 
+          4px -3px 4px rgba(255, 229, 151, 0),
+          -4px  2px 6px rgba(75, 75, 75, 0.142);
+      }
+      50% {
+        text-shadow: 
+          6px -5px 8px rgba(255, 255, 255, 0.326),
+          -6px  4px 8px rgba(75, 75, 75, 0.264);
+      }
+      100% {
+        text-shadow: 
+          4px -3px 4px rgba(255, 229, 151, 0),
+          -4px  2px 6px rgba(75, 75, 75, 0.142);
+      }
+    }
 
-  animate();
-</script>
+    .ola {
+      padding-right: 45vw;
+      padding-top: 5vw;
+    }
 
-<!--FIM - CAMPO INICIAL -->
+    .tempo {
+      padding-left: 40vw;
+    }
 
+    .zaau {  
+      margin: 0;
+      font-size: 1.3vw;
+      padding-left: 4vw;
+      padding-top: 3vw;
+      font-family: 'Poppins', sans-serif;
+      letter-spacing: 0.5vw;
+      position: relative;
+      z-index: 1;
+      color: var(--cor-letraTitulo);
+    }
+
+    .copyright {
+      position: absolute;
+      bottom: 10px;
+      left: 4vw;
+      font-size: 0.7vw;
+      font-family: 'Poppins', sans-serif;
+      color: #ffffffde;
+      z-index: 2;
+    }
+
+    /* Estilos do botão de alternância */
+    .toggle-theme {
+  position: absolute;
+  top: 2vw;
+  right: 2vw;
+  background: transparent;
+  border: none; /* Sem borda */
+  color: var(--cor-letraTitulo);
+  padding: 0;
+  font-size: 2vw; /* Ícone um pouco maior */
+  cursor: pointer;
+  transition: color 0.3s ease;
+  z-index: 3;
+}
+
+.toggle-theme:hover {
+  color: var(--cor-letraTitulo); /* Pode mudar se quiser um efeito no hover */
+}
+  </style>
+</head>
+
+<body>
+
+  <section>
+    <div class="campo-inicial">
+
+      <!-- Imagem como fundo decorativo -->
+      <div class="fundo-imagem"></div>
+      <div class="sombra-baixo"></div>
+
+      <h3 class="zaau">ZAAU°</h3>
+      <h2 class="ola">Ol<span class="brilho-interno">á</span>,</h2>
+      <h2 class="tempo">Temp<span class="brilho-interno">o</span>.</h2>
+
+      <!-- Frase de direitos autorais -->
+      <p class="copyright">Todas as fotos são de minha autoria e protegidas por direitos autorais.</p>
+
+      <!-- Botão para alternar o tema -->
+      <button id="toggle-theme" class="toggle-theme" aria-label="Alternar tema">
+        𖤓
+      </button>
+
+    </div>
+  </section>
+
+  <script>
+    const button = document.getElementById('toggle-theme');
+    const htmlElement = document.documentElement; // <html> onde o data-theme é alterado
+    
+    // Função para atualizar o ícone
+    function atualizarIcone() {
+      if (htmlElement.getAttribute('data-theme') === 'dark') {
+        button.textContent = '☾'; // Lua no modo escuro
+      } else {
+        button.textContent = ' 𖤓'; // Sol no modo claro
+      }
+    }
+    
+    // Checar tema salvo no localStorage ao carregar
+    if (localStorage.getItem('theme') === 'dark') {
+      htmlElement.setAttribute('data-theme', 'dark');
+    } else {
+      htmlElement.setAttribute('data-theme', 'light');
+    }
+    atualizarIcone(); // Atualiza ícone no início
+    
+    // Alternar tema ao clicar
+    button.addEventListener('click', () => {
+      if (htmlElement.getAttribute('data-theme') === 'dark') {
+        htmlElement.setAttribute('data-theme', 'light');
+        localStorage.setItem('theme', 'light');
+      } else {
+        htmlElement.setAttribute('data-theme', 'dark');
+        localStorage.setItem('theme', 'dark');
+      }
+      atualizarIcone(); // Atualiza o ícone sempre que mudar
+    });
+    </script>
+</body>
+
+
+<!-- FIM - CAMPO INICIAL -->
 
 
 
@@ -547,7 +576,7 @@
   box-sizing: border-box;
 ">
   <div id="modalContent" style="
-    background: white;
+    background: var(--cor-base3fotos);
     border-radius: 16px;
     max-width: 1400px;
     width: 100%;
@@ -557,7 +586,7 @@
     flex-direction: column;
     align-items: center;
     animation: fadeIn 0.4s ease;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
     position: relative;
   ">
     <!-- Conteúdo do modal será inserido via JS -->
@@ -604,7 +633,7 @@
     left: 30px;
     right: 30px;
     bottom: 30px;
-    background-color: rgb(248, 248, 248);
+    background-color: var(--cor-base3fotos);
     border-radius: 20px;
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.17);
     z-index: -1;
@@ -1645,24 +1674,44 @@ footer {
 </style>
 
 <script>
-window.onload = function() {
-  // Seleciona todos os elementos com a classe 'Titulo2Horizonte'
-  const titulos = document.querySelectorAll('.Titulo2Horizonte strong');
-
-  // Para cada título, aplica o processo de envolver cada letra (e espaço) com <span>
-  titulos.forEach(titulo => {
-    titulo.innerHTML = titulo.textContent
-      .split('') // Divide cada caractere, incluindo espaços
-      .map((char, index) => {
-        if (char === ' ') {
-          return `<span style="display: inline-block; opacity: 0;">&nbsp;</span>`; // Espaço com estilo invisível
+  window.onload = function() {
+    // Seleciona todos os elementos com a classe 'Titulo2Horizonte'
+    const titulos = document.querySelectorAll('.Titulo2Horizonte strong');
+  
+    // Para cada título, aplica o processo de envolver cada letra (e espaço) com <span>
+    titulos.forEach(titulo => {
+      titulo.innerHTML = titulo.textContent
+        .split('') // Divide cada caractere, incluindo espaços
+        .map((char, index) => {
+          if (char === ' ') {
+            return `<span style="display: inline-block; opacity: 0;">&nbsp;</span>`; // Espaço com estilo invisível
+          }
+          return `<span style="animation-delay: ${index * 0.1}s">${char}</span>`;
+        })
+        .join('');
+    });
+  
+    // Adiciona suavidade de aparecer e desaparecer ao rolar
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.transition = 'opacity 3s ease-out, transform 3s ease-out';
+          entry.target.style.opacity = 1;
+          entry.target.style.transform = 'translateY(0)';
+        } else {
+          entry.target.style.transition = 'opacity 2s ease-out, transform 2s ease-out';
+          entry.target.style.opacity = 0;
+          entry.target.style.transform = 'translateY(30px)';
         }
-        return `<span style="animation-delay: ${index * 0.1}s">${char}</span>`;
-      })
-      .join('');
-  });
-};
-
+      });
+    }, { threshold: 0.3 });
+  
+    titulos.forEach(titulo => {
+      titulo.style.opacity = 0;
+      titulo.style.transform = 'translateY(30px)';
+      observer.observe(titulo);
+    });
+  };
   </script>
 
 
