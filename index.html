@@ -322,12 +322,12 @@
 
 /* Modo escuro */
 [data-theme="dark"] {
-    --cor-base: #303030;
+    --cor-base: #0b0b12;
     --cor-letraTitulo: #ebebeb;
     --cor-nav: rgba(95, 94, 94, 0.655);
     --cor-letranav: rgba(196, 196, 196, 0.871);
-    --cor-base3fotos: #3c3c3c;
-    --COR-paginageral: #303030;
+    --cor-base3fotos: #2f2f2f;
+    --COR-paginageral: #000000;
   
   }
 
@@ -480,48 +480,83 @@
 
       <!-- Botão para alternar o tema -->
       <button id="toggle-theme" class="toggle-theme" aria-label="Alternar tema">
-        𖤓
+        ☼
       </button>
 
     </div>
   </section>
 
   <script>
-    const button = document.getElementById('toggle-theme');
-    const htmlElement = document.documentElement; // <html> onde o data-theme é alterado
+    document.addEventListener("DOMContentLoaded", () => {
+      const fundo = document.querySelector(".fundo-imagem");
+      let targetY = 0;
+      let currentY = 300;
+      let time = 0;
     
-    // Função para atualizar o ícone
-    function atualizarIcone() {
-      if (htmlElement.getAttribute('data-theme') === 'dark') {
-        button.textContent = '☾'; // Lua no modo escuro
-      } else {
-        button.textContent = ' 𖤓'; // Sol no modo claro
+      let tempoInicial = 0;
+      const duracaoSubida = 120;
+    
+      function animate() {
+        if (tempoInicial < duracaoSubida) {
+          currentY += (0 - currentY) * 0.04;
+          tempoInicial++;
+        } else {
+          currentY += (targetY - currentY) * 0.05;
+        }
+    
+        time += 0.01;
+        const offsetX = Math.sin(time * 3) * 2;
+        const offsetY = Math.cos(time) * 6;
+    
+        fundo.style.transform = `translate(calc(${offsetX}px), calc(-50% + ${currentY + offsetY}px))`;
+    
+        requestAnimationFrame(animate);
       }
-    }
     
-    // Checar tema salvo no localStorage ao carregar
-    if (localStorage.getItem('theme') === 'dark') {
-      htmlElement.setAttribute('data-theme', 'dark');
-    } else {
-      htmlElement.setAttribute('data-theme', 'light');
-    }
-    atualizarIcone(); // Atualiza ícone no início
+      window.addEventListener("scroll", () => {
+        targetY = window.scrollY * 0.1;
+      });
     
-    // Alternar tema ao clicar
-    button.addEventListener('click', () => {
-      if (htmlElement.getAttribute('data-theme') === 'dark') {
-        htmlElement.setAttribute('data-theme', 'light');
-        localStorage.setItem('theme', 'light');
-      } else {
-        htmlElement.setAttribute('data-theme', 'dark');
-        localStorage.setItem('theme', 'dark');
-      }
-      atualizarIcone(); // Atualiza o ícone sempre que mudar
+      animate();
     });
     </script>
+    
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const button = document.getElementById('toggle-theme');
+        const htmlElement = document.documentElement;
+        const fundoImagem = document.querySelector('.fundo-imagem');
+    
+        function atualizarTema() {
+          const tema = htmlElement.getAttribute('data-theme');
+          if (tema === 'dark') {
+            button.textContent = '☾';
+            fundoImagem.style.backgroundImage = "url('https://lh3.googleusercontent.com/d/1KFbJc069cJ1QLHxfvtE_RJlDcQCJmDUd=w3000')";
+          } else {
+            button.textContent = '☼';
+            fundoImagem.style.backgroundImage = "url('https://lh3.googleusercontent.com/d/16v8JvNRxA5UUVzRoLtxdHwbLb6h3kkTJ=w3000')";
+          }
+        }
+        
+        // Definir tema salvo
+        if (localStorage.getItem('theme') === 'dark') {
+          htmlElement.setAttribute('data-theme', 'dark');
+        } else {
+          htmlElement.setAttribute('data-theme', 'light');
+        }
+        atualizarTema();
+    
+        // Alternar tema ao clicar
+        button.addEventListener('click', () => {
+          const isDark = htmlElement.getAttribute('data-theme') === 'dark';
+          htmlElement.setAttribute('data-theme', isDark ? 'light' : 'dark');
+          localStorage.setItem('theme', isDark ? 'light' : 'dark');
+          atualizarTema();
+        });
+      });
+    </script>
+    
 </body>
-
-
 <!-- FIM - CAMPO INICIAL -->
 
 
