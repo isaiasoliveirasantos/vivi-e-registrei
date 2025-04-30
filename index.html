@@ -111,7 +111,7 @@
 
   nav a:hover {
     background: rgba(0, 0, 0, 0.05);
-    color: rgba(0, 0, 0, 1);
+    color: var(--COR-letraGeral);
   }
 
   .portfolio {
@@ -132,7 +132,7 @@
     position: absolute;
     top: 114%;
     left: 0;
-    background: rgba(255, 255, 255, 1);
+    background: var(--cor-nav);
     backdrop-filter: blur(20px);
     box-shadow: 0 0.5rem 0.9375rem rgba(0, 0, 0, 0.1);
     list-style: none;
@@ -154,7 +154,7 @@
   }
 
   .submenu a {
-    color: rgba(0, 0, 0, 0.7);
+    color: var(--cor-letranav2);
     font-weight: normal;
     padding: 0.3125rem 1rem;
     text-decoration: none;
@@ -165,7 +165,7 @@
 
   .submenu a:hover {
     background: rgba(0, 0, 0, 0.1);
-    color: rgba(0, 0, 0, 1);
+    color: var(--COR-letraGeral);
   }
 
   /* HAMBÚRGUER */
@@ -316,25 +316,33 @@
     --cor-letraTitulo: #4D4D4D;
     --cor-nav: rgba(255, 255, 255, 0.6);
     --cor-letranav: rgba(0, 0, 0, 0.7);
+    --cor-letranav2:  rgb(79, 79, 79);
     --cor-base3fotos: rgb(248, 248, 248);
     --COR-paginageral: #ffffff;
     --COR-letraGeral: #282828;
+    --COR-letraGeral2: #1b1b1b;
     --COR-base2: #ebebeb;
     --COR-dourado: rgb(124, 101, 32);
+    --COR-GradienteArvore:  rgba(255, 255, 255, 0.5);
+    --COR-BarraTranslúcida:  rgba(255, 255, 255, 0.54);
 }
 
 /* Modo escuro */
 [data-theme="dark"] {
     --cor-base: #0b0b12;
-    --cor-letraTitulo: #ebebeb;
+    --cor-letraTitulo: #d2d2d2;
     --cor-nav: rgba(95, 94, 94, 0.655);
-    --cor-letranav: rgba(196, 196, 196, 0.871);
+    --cor-letranav: rgba(224, 224, 224, 0.871);
+    --cor-letranav2:  rgb(165, 165, 165);
     --cor-base3fotos: #2f2f2f;
     --COR-paginageral: #000000;
     --COR-letraSubtitulo:#ffffff;
     --COR-letraGeral: #ececec;
+    --COR-letraGeral2: #ffffff;
     --COR-base2: #313131;
     --COR-dourado: rgb(202, 164, 50);
+    --COR-GradienteArvore: rgba(0, 0, 0, 0.611);
+    --COR-BarraTranslúcida:  rgba(0, 0, 0, 0.348);
   }
 
 
@@ -1135,7 +1143,7 @@
       width: 100vw;
       height: 100vh;
       background-image: 
-        linear-gradient(to bottom, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 10%),
+        linear-gradient(to bottom,var(--COR-GradienteArvore) 0%, rgba(255, 255, 255, 0) 10%),
         url('https://lh3.googleusercontent.com/d/144BNAminw-IEM3m9hDEUL5L7mqKiBsv2=w3000');
       background-size: 105%;
       background-position: top center;
@@ -1423,7 +1431,7 @@
 .video-comentario .comentario {
   flex: 1 1 300px;
   font-size: 18px;
-  color: #444;
+  color: var(--COR-letraGeral);
   max-width: 600px;
 }
 
@@ -1692,7 +1700,7 @@ footer {
   max-width: 10000px;
   width: 100%;
   line-height: 1.1;
-  color: var(--COR-letraGeral);
+  color: var(--COR-letraGeral2);
   font-weight: normal;
   display: inline-block;
 
@@ -1706,7 +1714,7 @@ footer {
 .Titulo2Horizonte strong span {
   display: inline-block;
   opacity: 0.8;
-  color: var(--COR-letraGeral);
+  color: var(--COR-letraGeral2);
   animation: fadeChic 6s infinite ease-in-out;
   position: relative;
 }
@@ -2211,7 +2219,7 @@ footer {
     left: 0;
     width: 100%;
     height: 10vh;
-    background: linear-gradient(to bottom, rgba(255, 255, 255, 0), #fbfbfb);
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0), var(--COR-GradienteArvore));
     pointer-events: none;
     z-index: 0;
     transition: transform 0.3s ease-out;
@@ -2533,7 +2541,7 @@ footer {
     max-width: 100%; /* A faixa pode ocupar até 100% da largura do container */
     width: 500px; /* Ajuste manual da largura da faixa. Substitua 500px pelo valor desejado */
     height: 70%; /* ajuste conforme o tamanho da faixa desejada */
-    background: rgba(255, 255, 255, 0.3); /* barra translúcida */
+    background: var(--COR-BarraTranslúcida); /* barra translúcida */
     backdrop-filter: blur(4px); /* Efeito vidro */
     -webkit-backdrop-filter: blur(4px); /* Compatibilidade Safari */
     border-radius: 20px;
@@ -2705,7 +2713,7 @@ footer {
   "
 >
   <div style="
-    background-color: #ebebeb;
+    background-color: var(--COR-BarraTranslúcida);
     color: #ffffff;
     padding: 20px;
     border-radius: 1rem;
