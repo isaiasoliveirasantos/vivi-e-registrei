@@ -780,6 +780,15 @@
       bottom: 10px;
     }
   }
+
+  @media only screen and (max-width: 400px) {
+  #galeria.gallery::before {
+    top: 5px;
+    left: 5px;
+    right: 5px;
+    bottom: 5px;
+  }
+}
 </style>
 
 <script>
@@ -1859,27 +1868,6 @@ footer {
           return `<span style="animation-delay: ${index * 0.1}s">${char}</span>`;
         })
         .join('');
-    });
-  
-    // Adiciona suavidade de aparecer e desaparecer ao rolar
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.style.transition = 'opacity 3s ease-out, transform 3s ease-out';
-          entry.target.style.opacity = 1;
-          entry.target.style.transform = 'translateY(0)';
-        } else {
-          entry.target.style.transition = 'opacity 2s ease-out, transform 2s ease-out';
-          entry.target.style.opacity = 0;
-          entry.target.style.transform = 'translateY(30px)';
-        }
-      });
-    }, { threshold: 0.3 });
-  
-    titulos.forEach(titulo => {
-      titulo.style.opacity = 0;
-      titulo.style.transform = 'translateY(30px)';
-      observer.observe(titulo);
     });
   };
   </script>
