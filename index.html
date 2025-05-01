@@ -1016,73 +1016,90 @@
 </section>
 
 <style>
-  .campo-meio {
-    width: 100%;
-    height: 50vw;
-    background-color:var(--COR-base2);
-    position: relative;
-    overflow: hidden;
-  }
+  /* ======== RESPONSIVO PARA DESKTOP ======== */
 
-  .titulos-laterais {
-    width: 60vw;
-    padding-right: 5vw;
-    position: absolute;
-    top: 80px; /* DESCIDO! Estava -60px */
-    right: 0;
-    font-size: 3vw;
-    font-family: 'Poppins', sans-serif;
-    line-height: 1;
-    color: var(--COR-letraGeral);
-  }
+/* CAMPO PRINCIPAL */
+.campo-meio {
+  width: 100%;
+  height: 50vw; /* Altura baseada no tamanho da tela */
+  background-color: var(--COR-base2);
+  position: relative;
+  overflow: hidden;
+}
 
-  .destaque-visual {
-    display: inline-block;
-    transition: color 0.4s ease, transform 0.4s ease, text-shadow 0.4s ease;
-    color: var(--COR-letraGeral);
-    cursor: pointer;
-  }
+/* TITULOS LATERAIS */
+.titulos-laterais {
+  width: 60vw; /* Largura dos títulos */
+  padding-right: 5vw; /* Espaçamento interno à direita */
+  position: absolute;
+  top: 80px; /* Distância do topo da seção */
+  right: 0;
+  font-size: 3vw; /* Tamanho da fonte baseado em vw */
+  font-family: 'Poppins', sans-serif;
+  line-height: 1;
+  color: var(--COR-letraGeral);
+}
 
-  .destaque-visual:hover {
+/* DESTAQUE VISUAL - Efeito de interação */
+.destaque-visual {
+  display: inline-block;
+  transition: color 0.4s ease, transform 0.4s ease, text-shadow 0.4s ease;
+  color: var(--COR-letraGeral);
+  cursor: pointer;
+}
+
+/* Efeito de hover */
+.destaque-visual:hover {
   color: #86712b; /* Amarelo esverdeado */
   transform: translateY(-3px);
   text-shadow: 0 0 10px rgba(118, 97, 43, 0.842), 0 0 10px rgba(255, 255, 255, 0.552); /* Adicionando o preto junto com o amarelo */
 }
 
-/* Adicionando o rastro sutil quando o mouse passa */
+/* RASTRO SUTIL nos títulos */
 .destaque-visual.rastro {
   color: #ac9a25; /* Amarelo esverdeado */
   text-shadow: 0 0 5px rgb(255, 255, 255), 0 0 15px rgba(232, 232, 232, 0.582), 0 0 20px rgba(139, 139, 139, 0.3); /* Efeito de rastro com preto suave */
   transition: text-shadow 1s ease-out; /* Transição suave para o rastro */
 }
 
+/* TÍTULOS LATERAIS - ANIMAÇÃO */
 .animated-titles h1 {
   cursor: pointer;
+  display: block;
+  margin: 0;
+  transition: transform 0.3s ease;
 }
 
-  .vivi2 {
-    margin: 0;
-    font-size: 2vw;
-    top: 5vh;
-    left: 11vh;
-    font-weight: 400;
-    font-family: 'Poppins', sans-serif;
-    color: var(--COR-letraGeral);
-    position: relative;
-    z-index: 1;
-    max-width: 45vw;
-  }
+/* Distância entre os títulos */
+.animated-titles h1 + h1 {
+  margin-top: 12px;
+}
 
-  .minhaexperiencia {
-    margin: 0;
-    font-size: 1vw;
-    padding-left: 5vw;
-    padding-top: 8vw;
-    font-family: 'Poppins', sans-serif;
-    color: var(--COR-letraGeral);
-    position: relative;
-    z-index: 1;
-  }
+/* TEXTO 'VIVI REGISTREI' */
+.vivi2 {
+  margin: 0;
+  font-size: 2vw; /* Tamanho da fonte */
+  top: 5vh; /* Distância do topo */
+  left: 11vh; /* Distância à esquerda */
+  font-weight: 400;
+  font-family: 'Poppins', sans-serif;
+  color: var(--COR-letraGeral);
+  position: relative;
+  z-index: 1;
+  max-width: 45vw; /* Largura máxima do texto */
+}
+
+/* TEXTO 'MINHA EXPERIÊNCIA' */
+.minhaexperiencia {
+  margin: 0;
+  font-size: 1vw; /* Tamanho da fonte */
+  padding-left: 5vw; /* Espaçamento à esquerda */
+  padding-top: 8vw; /* Espaçamento no topo */
+  font-family: 'Poppins', sans-serif;
+  color: var(--COR-letraGeral);
+  position: relative;
+  z-index: 1;
+}
 
   .animated-titles h1 {
     display: block;
@@ -1093,6 +1110,11 @@
   .animated-titles h1 + h1 {
     margin-top: 12px;
   }
+
+
+
+
+ 
 </style>
 
 <!-- SCRIPT JS para adicionar rastro suave nos títulos -->
@@ -1186,40 +1208,40 @@
       margin: 0;
 }
 
-    .about-content {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      align-items: center;
-      gap: 50px;
-      text-align: left;
-      margin-top: 58vw;
-      position: relative;
-      z-index: 2;
-    }
+.about-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 4vw; /* 50px ≈ 2.6vw */
+  text-align: left;
+  margin-top: 58vw;
+  position: relative;
+  z-index: 2;
+}
 
-    .about-content img {
-      width: 280px;
-      max-width: 100%;
-      border-radius: 150px;
-      object-fit: cover;
-    }
+.about-content img {
+  width: 18.6vw;
+  max-width: 100%;
+  border-radius: 10.8vw;
+  object-fit: cover;
+}
 
-    .about-text {
-      max-width: 800px;
-      width: 100%;
-      box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
+.about-text {
+  max-width: 52.6vw; /* 800px ≈ 41.6vw */
+  width: 100%;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
 
-    }
+.about-text p {
+  font-size: 1.5vw;
+  line-height: 2.3vw;
+  font-weight: 300;
+  margin-bottom: 1.2vw;
+  color: var(--COR-letraGeral);
+}
 
-    .about-text p {
-      font-size: 1.5vw;
-      line-height: 2.3rem;
-      font-weight: 300;
-      margin-bottom: 1.2rem;
-      color: var(--COR-letraGeral);
-    }
 
     .about-text b, strong {
       font-weight: 600;
@@ -1297,6 +1319,71 @@
   }
   100% {
     background-position: 0% 40%;
+  }
+}
+
+
+/* CELULARES MÉDIOS E GRANDES (de 481px até 767px) */
+@media (max-width: 767px) {
+  .about-content {
+    flex-direction: column;
+    margin-top: 32vw;
+    gap: 0.5vw;
+  }
+
+  .about-content img {
+    width: 18vw;
+    border-radius: 20vw;
+  }
+
+  .about-text {
+    max-width: 60vw;
+  }
+
+  .about-text p {
+    font-size: 1.5vw;
+    line-height: 2.1vw;
+  }
+
+  .about-header h2 {
+    font-size: 3.5vw;
+  }
+
+  .about-header {
+    padding-right: 0;
+    max-width: 100vw;
+  }
+}
+
+/* CELULARES PEQUENOS (até 480px) */
+@media (max-width: 480px) {
+  .about-content {
+    flex-direction: column;
+    margin-top: 25vw;
+    gap: 0.5vw;
+  }
+
+  .about-content img {
+    width: 20vw;
+    border-radius: 24vw;
+  }
+
+  .about-text {
+    max-width: 72vw;
+  }
+
+  .about-text p {
+    font-size: 2vw;
+    line-height: 2.5vw;
+  }
+
+  .about-header h2 {
+    font-size: 2vw;
+  }
+
+  .about-header {
+    padding-right: 0;
+    max-width: 94vw;
   }
 }
   </style>
